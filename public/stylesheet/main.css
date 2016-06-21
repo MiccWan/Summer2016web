@@ -3390,3 +3390,8 @@
 	width: 80%;
 	margin: 0 auto;
 }
+
+
+.deleteForm {
+	display: inline;
+}

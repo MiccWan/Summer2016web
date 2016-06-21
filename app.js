@@ -176,6 +176,17 @@ app.put('/:className/note/:id', function(req, res) {
 	});
 });
 
+app.delete('/:className/note/:id', function(req, res) {
+	Note.findByIdAndRemove(req.params.id, function(err) {
+		if (err) {
+			console.log(err);
+		}
+		else {
+			res.redirect('/' + req.params.className + '/note');
+		}
+	});
+});
+
 function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) {
 		next();

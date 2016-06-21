@@ -42,7 +42,10 @@
 					<% inforClass.notes.forEach(function(note) { %>
 						<pre><code><%= note.content %></code></pre>
 						<em><%= note.create.toDateString() %></em>
-						<a href="/<%= inforClass.name %>/note/<%= note._id %>/edit">Edit</a>
+						<button><a href="/<%= inforClass.name %>/note/<%= note._id %>/edit">Edit</a></button>
+						<form action='/<%= inforClass.name %>/note/<%= note._id %>?_method=delete' method='POST' class='deleteForm'>
+							<button>Delete</button>
+						</form>
 					<% }) %>
 					</section>
 			</div>
