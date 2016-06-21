@@ -1,0 +1,7 @@
+<% include partials/header.ejs %>
+<h1>New Note</h1>
+<form action='/<%= inforClass.name %>/note' method='POST'>
+	<textarea name='text'></textarea>
+	<button>Submit</button>
+</form>
+<% include partials/footer.ejs %>
