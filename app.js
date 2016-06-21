@@ -11,6 +11,7 @@ var User = require("./models/User.js");
 var Class = require('./models/class.js');
 var Note = require('./models/note.js');
 
+var middleware = require('./middleware');
 var seedDB = require('./seed.js');
 
 mongoose.connect('mongodb://localhost/infor');
@@ -43,7 +44,7 @@ app.get('/', function(req, res) {
 });
 
 
-app.get('/profile', isLoggedIn, function(req, res) {
+app.get('/profile', middleware.isLoggedIn, function(req, res) {
 	res.render('profile');
 });
 
@@ -82,7 +83,7 @@ app.get('/logout', function(req, res) {
 	res.redirect('/');
 });
 
-app.get('/:className', isLoggedIn, function(req, res) {
+app.get('/:className', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({"name": name}, function(err, foundClass) {
 		if (err) {
@@ -94,7 +95,7 @@ app.get('/:className', isLoggedIn, function(req, res) {
 	});
 });
 
-app.get('/:className/note', function(req, res) {
+app.get('/:className/note', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({"name": name}).populate("notes").exec(function(err, foundClass) {
 		if (err) {
@@ -106,7 +107,7 @@ app.get('/:className/note', function(req, res) {
 	});
 });
 
-app.get('/:className/note/new', function(req, res) {
+app.get('/:className/note/new', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({'name': name}, function(err, foundClass) {
 		if (err) {
@@ -118,7 +119,7 @@ app.get('/:className/note/new', function(req, res) {
 	});
 });
 
-app.post('/:className/note', function(req, res) {
+app.post('/:className/note', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({"name": name}, function(err, foundClass) {
 		if (err) {
@@ -141,7 +142,7 @@ app.post('/:className/note', function(req, res) {
 	});
 });
 
-app.get('/:className/note/:id/edit', function(req, res) {
+app.get('/:className/note/:id/edit', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({'name': name}, function(err, foundClass) {
 		if (err) {
@@ -160,7 +161,7 @@ app.get('/:className/note/:id/edit', function(req, res) {
 	});
 });
 
-app.put('/:className/note/:id', function(req, res) {
+app.put('/:className/note/:id', middleware.isLoggedIn, function(req, res) {
 	var text = req.body.text;
 	Class.findOne(req.params.className, function(err, foundClass) {
 		Note.findByIdAndUpdate(req.params.id, {content: text}, function(err, note) {
@@ -176,7 +177,7 @@ app.put('/:className/note/:id', function(req, res) {
 	});
 });
 
-app.delete('/:className/note/:id', function(req, res) {
+app.delete('/:className/note/:id', middleware.isLoggedIn, function(req, res) {
 	Note.findByIdAndRemove(req.params.id, function(err) {
 		if (err) {
 			console.log(err);
@@ -187,14 +188,6 @@ app.delete('/:className/note/:id', function(req, res) {
 	});
 });
 
-function isLoggedIn(req, res, next) {
-	if (req.isAuthenticated()) {
-		next();
-	}
-	else {
-		res.redirect('/login');
-	}
-}
 app.listen(7122, function() {
 	console.log("Server is Jizzing...");
 });
