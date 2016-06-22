@@ -1,11 +1,28 @@
 <% include partials/header.ejs %>
 <div class='container'>
 	<h1 class='registerh1'>Sign Up</h1>
-<form action='/register' method='POST' id='validatedForm' class='registerForm'>
-	<input type="text" name="username" placeholder="username" id='password'>
-	<input type="password" name="password" placeholder="password" id='cpassword'>
-	<button class='submitButton'>Submit</button>
-</form>
+	<form action='/register' method='POST' id='validatedForm' class='registerForm'>
+		<input type="text" name="username" placeholder="username" id='username'>
+		<input type="password" name="password" placeholder="password" id='password'>
+		<input type="password" name="" placeholder="Confirm password" id='cpassword'>
+		<button class='submitButton'>Submit</button>
+	</form>
 </div>
-
+<script type="text/javascript" src='/js/jquery.min.js'></script>
+<script type="text/javascript" src="http://jquery.validate.min.js"></script>
+<script>
+	// jQuery.validator.setDefaults({
+	// 	debug: true,
+	// 	success: "valid"
+	// });
+	$('#validatedForm').validate({
+		rules: {
+			username: "required",
+			password: "required",
+			cpassword: {
+				equalTo: "#password"
+			}
+		}
+	});
+</script>
 <% include partials/footer.ejs %>

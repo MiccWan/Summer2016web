@@ -14,6 +14,18 @@ var Note = require('./models/note.js');
 var middleware = require('./middleware');
 var seedDB = require('./seed.js');
 
+var realClassName = {
+	'python': 'Python',
+	'pygame': 'Pygame',
+	'cpp': 'C++',
+	'java': 'Java',
+	'unity': 'Unity 3D',
+	'web': 'Web',
+	'ai': 'AI/SAI',
+	'ae': 'AE',
+	'rpg': 'RPG Maker'
+};
+
 mongoose.connect('mongodb://localhost/infor');
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
@@ -36,6 +48,7 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req, res, next) {
 	res.locals.currentUser = req.user;
+	res.locals.realClassName = realClassName;
 	next();
 });
 
@@ -48,7 +61,7 @@ app.get('/profile', middleware.isLoggedIn, function(req, res) {
 	res.render('profile');
 });
 
-
+//Register
 app.get('/register', function(req, res) {
 	res.render("register");
 });
@@ -67,6 +80,7 @@ app.post('/register', function(req, res) {
 	});
 });
 
+//Login
 app.get('/login', function(req, res) {
 	res.render('login');
 });
@@ -78,11 +92,13 @@ app.post('/login', passport.authenticate('local', {
 
 });
 
+//Logout
 app.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/');
 });
 
+//Class - index
 app.get('/:className', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({"name": name}, function(err, foundClass) {
@@ -95,6 +111,7 @@ app.get('/:className', middleware.isLoggedIn, function(req, res) {
 	});
 });
 
+//Note - index
 app.get('/:className/note', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({"name": name}).populate("notes").exec(function(err, foundClass) {
@@ -107,6 +124,7 @@ app.get('/:className/note', middleware.isLoggedIn, function(req, res) {
 	});
 });
 
+//Note - new
 app.get('/:className/note/new', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({'name': name}, function(err, foundClass) {
@@ -119,6 +137,7 @@ app.get('/:className/note/new', middleware.isLoggedIn, function(req, res) {
 	});
 });
 
+//Note - post
 app.post('/:className/note', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({"name": name}, function(err, foundClass) {
@@ -142,6 +161,8 @@ app.post('/:className/note', middleware.isLoggedIn, function(req, res) {
 	});
 });
 
+
+//Note - edit
 app.get('/:className/note/:id/edit', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({'name': name}, function(err, foundClass) {
@@ -161,6 +182,8 @@ app.get('/:className/note/:id/edit', middleware.isLoggedIn, function(req, res) {
 	});
 });
 
+
+//Note - update
 app.put('/:className/note/:id', middleware.isLoggedIn, function(req, res) {
 	var text = req.body.text;
 	Class.findOne(req.params.className, function(err, foundClass) {
@@ -177,6 +200,7 @@ app.put('/:className/note/:id', middleware.isLoggedIn, function(req, res) {
 	});
 });
 
+//Note - destroy
 app.delete('/:className/note/:id', middleware.isLoggedIn, function(req, res) {
 	Note.findByIdAndRemove(req.params.id, function(err) {
 		if (err) {

@@ -20,12 +20,13 @@
 
 	<!-- Menu -->
 		<nav id="menu">
-			<h2><%= inforClass.name %></h2>
+			<h2><%= realClassName[inforClass.name] %></h2>
 			<ul>
 				<li><a href="/">Home</a></li>
 				<li><a href="">Book</a></li>	
 				<li><a href="/<%= inforClass.name %>/note">Notes</a></li>
-				<li><a href="">Resources</a></li>
+				<li><a href="/<%= inforClass.name %>/resource">Resources</a></li>
+				<li><a href="/<%= inforClass.name %>/judge">Judge</a></li>
 				<li><a href="/profile">Profile</a></li>
 			</ul>
 		</nav>
@@ -69,7 +70,7 @@
 						</span>
 						<a href="/java">
 							<h2>Java</h2>
-							<div class="/java">
+							<div class="content">
 								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 							</div>
 						</a>
@@ -80,7 +81,7 @@
 						</span>
 						<a href="/unity">
 							<h2>Unity 3D</h2>
-							<div class="/unity">
+							<div class="content">
 								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 							</div>
 						</a>
