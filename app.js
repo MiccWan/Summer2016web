@@ -52,31 +52,27 @@ app.use(function(req, res, next) {
 	next();
 });
 
+//Home
 app.get('/', function(req, res) {
 	res.render('index');
 });
 
-
+//Profile
 app.get('/profile', middleware.isLoggedIn, function(req, res) {
 	res.render('profile');
 });
 
-//Register
-app.get('/register', function(req, res) {
-	res.render("register");
-});
-
-app.post('/register', function(req, res) {
-	var username = req.body.username;
-	var password = req.body.password;
-	User.register(new User({username: username}), password, function(err, user) {
+//Rank
+app.get('/rank', function(req, res) {
+	User.find({}, function(err, allUser) {
 		if (err) {
 			console.log(err);
-			return res.render('register');
+		} else {
+			allUser.sort(function(a, b) {
+				return a.rank < b.rank;
+			});
+			res.render('rank', {allUser: allUser});
 		}
-		passport.authenticate('local')(req, res, function() {
-			res.redirect('/');
-		});
 	});
 });
 
@@ -96,6 +92,25 @@ app.post('/login', passport.authenticate('local', {
 app.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/');
+});
+
+//Register
+app.get('/register', function(req, res) {
+	res.render("register");
+});
+
+app.post('/register', function(req, res) {
+	var username = req.body.username;
+	var password = req.body.password;
+	User.register(new User({username: username}), password, function(err, user) {
+		if (err) {
+			console.log(err);
+			return res.render('register');
+		}
+		passport.authenticate('local')(req, res, function() {
+			res.redirect('/');
+		});
+	});
 });
 
 //Class - index
