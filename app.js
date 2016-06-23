@@ -1,3 +1,4 @@
+//Packages
 var express        = require('express'),
 		app            = express(),
 		bodyParser     = require('body-parser'),
@@ -7,9 +8,12 @@ var express        = require('express'),
 		methodOverride = require('method-override'),
 		flash          = require('connect-flash');
 
-var User = require("./models/User.js");
-var Class = require('./models/class.js');
-var Note = require('./models/note.js');
+//Models
+var User  = require("./models/User.js"),
+		Class = require('./models/class.js'),
+		Note  = require('./models/note.js'),
+		Judge = require('./models/judge.js');
+
 
 var middleware = require('./middleware');
 var seedDB = require('./seed.js');
@@ -72,6 +76,67 @@ app.get('/rank', function(req, res) {
 				return a.rank < b.rank;
 			});
 			res.render('rank', {allUser: allUser});
+		}
+	});
+});
+
+//Judge
+app.get('/:className/judge', function(req, res) {
+	Class.findOne({name: req.params.className}).populate('judges').exec(function(err, foundClass) {
+		if (err) {
+			console.log(err);
+		} else {
+			res.render('judges', {inforClass: foundClass});
+		}
+	});
+});
+
+app.get('/:className/judge/:id', function(req, res) {
+	Class.findOne({name: req.params.className}, function(err, foundClass) {
+		if (err) {
+			console.log(err);
+		} else {
+			Judge.findById(req.params.id, function(err, judge) {
+				if (err) {
+					console.log(err);
+				} else {
+					res.render('judge', {inforClass: foundClass, judge: judge});
+				}
+			});
+		}
+	});
+});
+
+//TODO
+app.post('/:className/judge/:id', function(req, res) {
+	var ans = req.body.ans;
+});
+
+app.get('/:className/judge/new', function(req, res) {
+	Class.findOne({name: req.params.className}, function(err, foundClass) {
+		if (err) {
+			console.log(err);
+		} else {
+			res.render('newJudge', {inforClass: foundClass});
+		}
+	});
+});
+
+app.post('/:className/judge', function(req, res) {
+	Class.findOne({name: req.params.className}, function(err, foundClass) {
+		if (err) {
+			console.log(err);
+		} else {
+			Judge.create(req.body.judge, function(err, judge) {
+				if (err) {
+					console.log(err);
+				} else {
+					judge.save();
+					foundClass.judges.push(save);
+					foundClass.save();
+					res.redirect('/' + foundClass.name + '/judge');
+				}
+			});
 		}
 	});
 });
