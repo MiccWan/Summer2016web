@@ -167,6 +167,9 @@ app.post('/:className/judge/:id', function(req, res) {
 									} else {
 										console.log('WA');
 									}
+									fs.unlink(path, (err) => {
+										if (err) console.log(err);
+									});
 									res.redirect('/' + foundClass.name + '/judge');
 								}
 							});
