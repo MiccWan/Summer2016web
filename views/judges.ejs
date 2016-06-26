@@ -1,4 +1,6 @@
+<% include partials/header.ejs %>
 <h1>Judge</h1>
 <% inforClass.judges.forEach(function(judge) { %>
 	<a href="/<%= inforClass.name %>/judge/<%= judge._id%>"><%= judge.name %></a>
 <% }) %>
+<% include partials/footer.ejs %>

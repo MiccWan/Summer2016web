@@ -1,7 +1,10 @@
+<% include partials/header.ejs %>
 <h1>New Judge</h1>
 <form action='/<%= inforClass.name %>/judge' method='POST'>
 	<input type="text" name="name" placeholder="Name">
-	<label>Description<textarea name='judge[description]'></textarea></label>
-	<label>Input<textarea name='judge[input]'></textarea></label>
-	<label>Output<textarea name='judge[output]'></textarea></label>
+	<label>Description<textarea name='description'></textarea></label>
+	<label>Input<textarea name='input'></textarea></label>
+	<label>Output<textarea name='output'></textarea></label>
+	<button>Submit</button>
 </form>
+<% include partials/footer.ejs %>

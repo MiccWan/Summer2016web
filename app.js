@@ -6,7 +6,10 @@ var express        = require('express'),
 		passport       = require('passport'),
 		localStrategy  = require('passport-local'),
 		methodOverride = require('method-override'),
-		flash          = require('connect-flash');
+		flash          = require('connect-flash'),
+		fs             = require('fs'),
+		tmp            = require('tmp'),
+		execFile       = require('child_process').execFile;
 
 //Models
 var User  = require("./models/User.js"),
@@ -33,7 +36,7 @@ var realClassName = {
 mongoose.connect('mongodb://localhost/infor');
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + '/public'));
 app.use(methodOverride("_method"));
 app.use(flash());
 // seedDB();
@@ -91,6 +94,16 @@ app.get('/:className/judge', function(req, res) {
 	});
 });
 
+app.get('/:className/judge/new', function(req, res) {
+	Class.findOne({name: req.params.className}, function(err, foundClass) {
+		if (err) {
+			console.log(err);
+		} else {
+			res.render('newJudge', {inforClass: foundClass});
+		}
+	});
+});
+
 app.get('/:className/judge/:id', function(req, res) {
 	Class.findOne({name: req.params.className}, function(err, foundClass) {
 		if (err) {
@@ -107,34 +120,59 @@ app.get('/:className/judge/:id', function(req, res) {
 	});
 });
 
-//TODO
-app.post('/:className/judge/:id', function(req, res) {
-	var ans = req.body.ans;
-});
-
-app.get('/:className/judge/new', function(req, res) {
-	Class.findOne({name: req.params.className}, function(err, foundClass) {
-		if (err) {
-			console.log(err);
-		} else {
-			res.render('newJudge', {inforClass: foundClass});
-		}
-	});
-});
-
 app.post('/:className/judge', function(req, res) {
 	Class.findOne({name: req.params.className}, function(err, foundClass) {
 		if (err) {
 			console.log(err);
 		} else {
-			Judge.create(req.body.judge, function(err, judge) {
+			var name = req.body.name;
+			var description = req.body.description;
+			var input = req.body.input;
+			var output = req.body.output;
+			Judge.create({name: name, description: description, input: input, output: output}, function(err, judge) {
 				if (err) {
 					console.log(err);
 				} else {
 					judge.save();
-					foundClass.judges.push(save);
+					foundClass.judges.push(judge);
 					foundClass.save();
 					res.redirect('/' + foundClass.name + '/judge');
+				}
+			});
+		}
+	});
+});
+
+//TODO
+app.post('/:className/judge/:id', function(req, res) {
+	var ans = req.body.ans;
+	Class.findOne({name: req.params.className}).populate('judges').exec(function(err, foundClass) {
+		if (err) {
+			console.log(err);
+		} else {
+			Judge.findById(req.params.id, function(err, judge) {
+				if (err) {
+					console.log(err);
+				} else {
+					writeTempFile(ans, (err, path) => {
+						if (err) {
+							console.log(err);
+						} else {
+							var child = execFile('python', [path], (err, stdout, stderr) => {
+								if (err) {
+									console.log(err);
+								} else {
+									if (stdout == judge.output + '\n') {
+										console.log('AC');
+									} else {
+										console.log('WA');
+									}
+									res.redirect('/' + foundClass.name + '/judge');
+								}
+							});
+							child.stdin.write(judge.input);
+						}
+					});
 				}
 			});
 		}
@@ -291,6 +329,21 @@ app.delete('/:className/note/:id', middleware.isLoggedIn, function(req, res) {
 		}
 	});
 });
+
+function writeTempFile(data, cb) {
+	tmp.tmpName((err, path)=> {
+		if (err)
+			cb(err);
+		else {
+			fs.writeFile(path, data, (err)=> {
+				if (err) 
+					cb(err);
+				else
+					cb(null, path);
+			});
+		}
+	});
+}
 
 app.listen(7122, function() {
 	console.log("Server is Jizzing...");
