@@ -1,14 +1,22 @@
-var express       = require('express'),
-	  router        = express.Router({mergeParams: true}),
-	  passport      = require('passport'),
-	  localStrategy = require('passport-local');
+var express        = require('express'),
+		app            = express(),
+		bodyParser     = require('body-parser'),
+		mongoose       = require('mongoose'),
+		passport       = require('passport'),
+		localStrategy  = require('passport-local'),
+		methodOverride = require('method-override'),
+		flash          = require('connect-flash'),
+		fs             = require('fs'),
+		tmp            = require('tmp'),
+		execFile       = require('child_process').execFile;
 
-var Note  = require('../models/note.js'),
-	  Class = require('../models/class.js'),
-	  Judge = require('../models/judge.js'),
-	  User  = require('../models/User.js');
-
+var router = express.Router();
 var middleware = require('../middleware/');
+
+var User  = require("../models/User.js"),
+		Class = require('../models/class.js'),
+		Note  = require('../models/note.js'),
+		Judge = require('../models/judge.js');
 
 //Index
 router.get('/', function(req, res) {
@@ -17,7 +25,7 @@ router.get('/', function(req, res) {
 
 //Profile
 router.get('/profile', middleware.isLoggedIn, function(req, res) {
-	res.render('profile');
+	res.render('index/profile');
 });
 
 //Rank
@@ -29,14 +37,14 @@ router.get('/rank', function(req, res) {
 			allUser.sort(function(a, b) {
 				return a.rank < b.rank;
 			});
-			res.render('rank', {allUser: allUser});
+			res.render('index/rank', {allUser: allUser});
 		}
 	});
 });
 
 //Login
 router.get('/login', function(req, res) {
-	res.render('login');
+	res.render('index/login');
 });
 
 router.post('/login', passport.authenticate('local', {
@@ -54,7 +62,7 @@ router.get('/logout', function(req, res) {
 
 //Register
 router.get('/register', function(req, res) {
-	res.render("register");
+	res.render("index/register");
 });
 
 router.post('/register', function(req, res) {
@@ -68,20 +76,6 @@ router.post('/register', function(req, res) {
 		passport.authenticate('local')(req, res, function() {
 			res.redirect('/');
 		});
-	});
-});
-
-
-//Class - index
-router.get('/:className', middleware.isLoggedIn, function(req, res) {
-	var name = req.params.className;
-	Class.findOne({"name": name}, function(err, foundClass) {
-		if (err) {
-			console.log(err);
-		}
-		else {
-			res.render('class', {inforClass: foundClass});
-		}
 	});
 });
 

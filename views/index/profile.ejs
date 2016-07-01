@@ -1,0 +1,9 @@
+<% include ../partials/header.ejs %>
+<h1>Username - <%= currentUser.username %></h1>
+<p>Score - <%= currentUser.rank %></p>
+<ul>
+<% for (var i = 0; i < 10; i++) { %>
+	<li><%= i + 1 %> - <%= currentUser.judges[i] %></li>
+<% } %>
+</ul>
+<% include ../partials/footer.ejs %>

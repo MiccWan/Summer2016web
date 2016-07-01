@@ -21,9 +21,8 @@ var User  = require("./models/User.js"),
 var middleware = require('./middleware');
 var seedDB = require('./seed.js');
 
-var indexRoute = require('./routes/index.js'),
-		noteRoute  = require('./routes/note.js'),
-		judgeRoute = require('./routes/judge.js');
+var classRouter = require('./routes/class.js');
+var indexRouter = require('./routes/index.js');
 
 var realClassName = {
 	'python': 'Python',
@@ -63,9 +62,8 @@ app.use(function(req, res, next) {
 	next();
 });
 
-app.use(indexRoute);
-app.use(noteRoute);
-app.use(judgeRoute);
+app.use(indexRouter);
+app.use(classRouter);
 
 app.listen(7122, function() {
 	console.log("Server is Jizzing...");

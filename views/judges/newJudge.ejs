@@ -1,10 +1,11 @@
-<% include partials/header.ejs %>
+<% include ../partials/header.ejs %>
 <h1>New Judge</h1>
-<form action='/<%= inforClass.name %>/judge' method='POST'>
+<form action='/class/<%= inforClass.name %>/judge' method='POST'>
 	<input type="text" name="name" placeholder="Name">
+	<input type="text" name="number" placeholder="Number">
 	<label>Description<textarea name='description'></textarea></label>
 	<label>Input<textarea name='input'></textarea></label>
 	<label>Output<textarea name='output'></textarea></label>
 	<button>Submit</button>
 </form>
-<% include partials/footer.ejs %>
+<% include ../partials/footer.ejs %>
