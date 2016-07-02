@@ -13,7 +13,7 @@ We are boring.
  
 ##Install
 ```bash
-  $ git clone https://github.com/TaWeiTu/Summer2016web/
+  $ git clone https://github.com/TaWeiTu/Summer2016web.git
  ```
 
 ##Contributors
