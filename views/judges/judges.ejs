@@ -1,6 +1,9 @@
 <% include ../partials/header.ejs %>
 <h1>Judge</h1>
+<ul>
 <% inforClass.judges.forEach(function(judge) { %>
-	<a href="/class/<%= inforClass.name %>/judge/<%= judge._id%>"><%= judge.name %></a>
+	<li><a href="/class/<%= inforClass.name %>/judge/<%= judge._id%>"><%=judge.number%> - <%= judge.name %></a></li>
 <% }) %>
+</ul>
+<button><a href="/class/<%=inforClass.name%>/judge/new">New Judge</a></button>
 <% include ../partials/footer.ejs %>

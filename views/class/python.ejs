@@ -37,17 +37,19 @@
 <section id="first">
 	<h4>a.  History</h4>
 	<p class="p_left">Python的創辦人為Guido van Rossum，在聖誕節時為了打發無聊，創辦了一個繼承ABC語言的新語言，優美而強大，即為Python。相較於大家可能較為熟悉的C語言為編譯式，Python為一直譯式語言，不需要像C一樣先將整個程式碼編譯(Compile)過後才能執行，因此Python執行快速，第二個特色為整齊乾淨的寫法以及極高的可讀性，亦即同一段程式碼基本上只有一種寫法，以及用縮排(Indent)來區分區塊(Scope)。</p>
-	<pre><code>#Python 
-	if n % 2 == 0:
-    	print(“Even”)
-	else:
-    	print(“Odd”)</code></pre>
-	<pre><code>//C
-	if (n % 2 == 0) {
-    	printf(“Even”);
-	} else {
-    	printf(“Odd”);
-	}</code></pre>
+	<pre><code>
+#Python 
+if n % 2 == 0:
+    print(“Even”)
+else:
+    print(“Odd”)</code></pre>
+	<pre><code>
+//C
+if (n % 2 == 0) {
+    printf(“Even”);
+} else {
+    printf(“Odd”);
+}</code></pre>
 </section>
 
 
@@ -176,11 +178,11 @@ Math
 >>>print(number_integer)
 7122
 >>>type(number_integer)
-&lt class ‘int’ &gt
+&lt; class ‘int’ &gt;
 >>>print(number_floating)
 71.22
 >>>type(number_floating)
-&lt class ‘float’ &gt
+&lt; class ‘float’ &gt;
 
 	</code></pre>
 	<p class="p_left">就像在數學中一樣，數字在Python中一樣可以做加減乘除等運算，其中除了熟悉的加(+)、減(-)、乘(*)、除(/)外，較不熟悉的還有取餘數(%)，指數(**)，如下：</p>
@@ -214,7 +216,7 @@ Math
 >>>total = number_int + string_number
 
 Traceback (most recent call last):
-  File “<pyshell#36>”, line 1, in <module>
+  File “&lt;pyshell#36&gt;”, line 1, in &lt;module&gt;
     total = number_int + string_number
 TypeError: unsupported operand type(s) for +: ‘int’ and ‘str’
 

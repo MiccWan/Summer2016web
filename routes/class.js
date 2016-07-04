@@ -25,6 +25,9 @@ router.get('/class/:className/judge', middleware.isLoggedIn, function(req, res) 
 		if (err) {
 			console.log(err);
 		} else {
+			foundClass.judges.sort(function(a, b) {
+				return a.number > b.number;
+			});
 			res.render('judges/judges', {inforClass: foundClass});
 		}
 	});
@@ -117,7 +120,7 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 											console.log('WA');
 											if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
 												var newJudge = req.user.judges;
-												newJudge[judge.number - 1] = 'WA';
+												newJudge[foundClass.name][judge.number - 1] = 'WA';
 												User.findByIdAndUpdate(req.user._id, {judges: newJudge}, function(err, user) {
 													if (err) {
 														console.log(err);
