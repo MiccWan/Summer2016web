@@ -19,7 +19,8 @@ var User  = require("../models/User.js"),
 		Note  = require('../models/note.js'),
 		Judge = require('../models/judge.js');
 
-var pythonJudge = require('../lib/pythonJudge.js');
+var pythonJudge = require('../lib/pythonJudge.js'),
+		cppJudge    = require('../lib/cppJudge.js');
 
 //Judge
 router.get('/class/:className/judge', middleware.isLoggedIn, function(req, res) {
@@ -97,14 +98,37 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 					if (err) {
 						console.log(err);
 					} else {
-						console.log(judge);
-							console.log(judge);
-							console.log(ans);
 						pythonJudge(ans, judge.input, judge.output, (err, status) => {
 							if (err) {
 								console.log(err);
 							} else {
 								console.log(status);
+								if (status == 'AC') {
+									if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
+										var newRank = req.user.rank + 100;
+										var newJudges = req.user.judges;
+										newJudges[foundClass.name][judge.number - 1] = 'AC';
+										User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudges}, function(err, user) {
+											if (err) {
+												console.log(err);
+											} else {
+												res.redirect('/class/' + foundClass.name + '/judge');
+											}
+										});
+									}
+								} else {
+									if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
+										var newJudges = req.user.judges;
+										newJudges[foundClass.name][judge.number - 1] = 'WA';
+										User.findByIdAndUpdate(req.user._id, {judges: newJudges}, function(err, user) {
+											if (err) {
+												console.log(err);
+											} else {
+												res.redirect('/class/' + foundClass.name + '/judge');
+											}
+										});
+									}
+								}
 							}
 						});
 					}
@@ -114,7 +138,39 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 					if (err) {
 						console.log(err);
 					} else {
-						
+						cppJudge(ans, judge.input, judge.output, (err, status) => {
+							if (err) {
+								console.log(err);
+							} else {
+								console.log(status);
+								if (status == 'AC') {
+									if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
+										var newRank = req.user.rank + 100;
+										var newJudges = req.user.judges;
+										newJudges[foundClass.name][judge.number - 1] = 'AC';
+										User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudges}, function(err, user) {
+											if (err) {
+												console.log(err);
+											} else {
+												res.redirect('/class/' + foundClass.name + '/judge');
+											}
+										});
+									}
+								} else {
+									if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
+										var newJudges = req.user.judges;
+										newJudges[foundClass.name][judge.number - 1] = 'WA';
+										User.findByIdAndUpdate(req.user._id, {judges: newJudges}, function(err, user) {
+											if (err) {
+												console.log(err);
+											} else {
+												res.redirect('/class/' + foundClass.name + '/judge');
+											}
+										});
+									}
+								}
+							}
+						});
 					}
 				});
 			}
