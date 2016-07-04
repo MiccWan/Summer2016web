@@ -8,9 +8,10 @@ var express        = require('express'),
 		flash          = require('connect-flash'),
 		fs             = require('fs'),
 		tmp            = require('tmp'),
-		execFile       = require('child_process').execFile;
+		execFile       = require('child_process').execFile,
+		exec           = require('child_process').exec;
 
-var router = express.Router();
+var router     = express.Router();
 var middleware = require('../middleware/');
 
 var User  = require("../models/User.js"),
@@ -86,38 +87,64 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 		if (err) {
 			console.log(err);
 		} else {
-			Judge.findById(req.params.id, function(err, judge) {
-				if (err) {
-					console.log(err);
-				} else {
-					writeTempFile(ans, (err, path) => {
-						if (err) {
-							console.log(err);
-						} else {
-							var child = execFile('python', [path], (err, stdout, stderr) => {
-								if (err) {
-									console.log(err);
-								} else {
-									if (stdout == judge.output + '\n') {
-										console.log('AC');
-										req.user.judges[judge.number - 1] = 'AC';
-										req.user.rank += 100;
-										console.log(req.user);
+			if (foundClass.name == 'python') {
+				Judge.findById(req.params.id, function(err, judge) {
+					if (err) {
+						console.log(err);
+					} else {
+						writeTempFile(ans, (err, path) => {
+							if (err) {
+								console.log(err);
+							} else {
+								var child = execFile('python', [path], (err, stdout, stderr) => {
+									if (err) {
+										console.log(err);
 									} else {
-										console.log('WA');
-										req.user.judges[judge.number - 1] = 'WA';
+										if (stdout == judge.output + '\n') {
+											console.log('AC');
+											if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
+												var newRank = req.user.rank;
+												newRank[foundClass.name] += 100;
+												var newJudge = req.user.judges;
+												newJudge[foundClass.name][judge.number - 1] = 'AC';
+												User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudge}, function(err, user) {
+													if (err) {
+														console.log(err);
+													}
+												});	
+											}
+										} else {
+											console.log('WA');
+											if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
+												var newJudge = req.user.judges;
+												newJudge[judge.number - 1] = 'WA';
+												User.findByIdAndUpdate(req.user._id, {judges: newJudge}, function(err, user) {
+													if (err) {
+														console.log(err);
+													}
+												});
+											}
+										}
+										fs.unlink(path, (err) => {
+											if (err) console.log(err);
+										});
+										res.redirect('/class/' + foundClass.name + '/judge');
 									}
-									fs.unlink(path, (err) => {
-										if (err) console.log(err);
-									});
-									res.redirect('/class/' + foundClass.name + '/judge');
-								}
-							});
-							child.stdin.write(judge.input);
-						}
-					});
-				}
-			});
+								});
+								child.stdin.write(judge.input);
+							}
+						});
+					}
+				});
+			} else if (foundClass.name == 'cpp') {
+				Judge.findById(req.params.id, function(err, judge) {
+					if (err) {
+						console.log(err);
+					} else {
+						
+					}
+				});
+			}
 		}
 	});
 });
@@ -231,7 +258,7 @@ router.get('/class/:className', middleware.isLoggedIn, function(req, res) {
 		if (err) {
 			console.log(err);
 		} else {
-			res.render('class', {inforClass: foundClass});
+			res.render('class/' + foundClass.name, {inforClass: foundClass});
 		}
 	});
 });
@@ -250,5 +277,73 @@ function writeTempFile(data, cb) {
 		}
 	});
 }
+
+// cb(err)
+// cb(null)
+function cppJudge(ans, output, cb) {
+	tmp.tmpName((err, path) => {
+		if (err) {
+			console.log(err);
+		} else {
+			tmp.tmpName((err, path2) => {
+				if (err) {
+					console.log(err);
+				} else {
+					fs.writeFile(ans, path, (err) => {
+						if (err) {
+							console.log(err);
+						} else {
+							var out = execFile('g++', ['-o', path2, path], (err, stdout, stderr) => {
+								if (err) {
+									console.log(err);
+								} else {
+									var child = exec('.' + path2, (err, stdout, stderr) => {
+										if (err) {
+											console.log(err);
+										} else {
+											if (stdout == judge.output + '\n') {
+												console.log('AC');
+												if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
+													var newRank = req.user.rank;
+													newRank[foundClass.name] += 100;
+													var newJudge = req.user.judges;
+													newJudge[foundClass.name][judge.number - 1] = 'AC';
+													User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudge}, function(err, user) {
+														if (err) {
+															console.log(err);
+														}
+													});	
+												}
+											} else {
+												console.log('WA');
+												if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
+													var newJudge = req.user.judges;
+													newJudge[judge.number - 1] = 'WA';
+													User.findByIdAndUpdate(req.user._id, {judges: newJudge}, function(err, user) {
+														if (err) {
+															console.log(err);
+														}
+													});
+												}
+											}
+										}
+										fs.unlink(path2, (err) => {
+											if (err) console.log(err);
+											res.redirect('/class/' + foundClass.name + '/judge');
+										});
+									});
+								}
+								fs.unlink(path, (err) => {
+									if (err) console.log(err);
+								});
+							});
+							out.stdin.write(judge.input);
+						}
+					});
+				}
+			});
+		}
+	});
+} 
 
 module.exports = router;

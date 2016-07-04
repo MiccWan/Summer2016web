@@ -1,5 +1,9 @@
 <% include ../partials/header.ejs %>
+<ul>
+<% var rank = 1 %>
 <% allUser.forEach(function(user) { %>
-	<p><%= user.username %> - <%= user.rank %></p>
+	<li><%= rank %> - <%=user.username %> - <%= user.rank.python + user.rank.cpp + user.rank.java %></li>
+	<% rank++ %>
 <% }) %>
+</ul>
 <% include ../partials/footer.ejs %>

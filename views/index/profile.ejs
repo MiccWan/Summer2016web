@@ -1,9 +1,23 @@
 <% include ../partials/header.ejs %>
 <h1>Username - <%= currentUser.username %></h1>
-<p>Score - <%= currentUser.rank %></p>
+<% var sum = currentUser.rank.python + currentUser.rank.cpp + currentUser.rank.java %>
+<p>Score - <%= sum %></p>
 <ul>
+<li>Python</li>
 <% for (var i = 0; i < 10; i++) { %>
-	<li><%= i + 1 %> - <%= currentUser.judges[i] %></li>
+	<li><%= i + 1 %> - <%= currentUser.judges.python[i] %></li>
+<% } %>
+</ul>
+<ul>
+<li>C++</li>
+<% for (var i = 0; i < 10; i++) { %>
+	<li><%= i + 1 %> - <%= currentUser.judges.cpp[i] %></li>
+<% } %>
+</ul>
+<ul>
+<li>Java</li>
+<% for (var i = 0; i < 10; i++) { %>
+	<li><%= i + 1 %> - <%= currentUser.judges.java[i] %></li>
 <% } %>
 </ul>
 <% include ../partials/footer.ejs %>

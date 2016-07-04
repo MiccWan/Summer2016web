@@ -13,8 +13,8 @@ We are boring.
  
 ##Install
 ```bash
-  $ git clone https://github.com/TaWeiTu/Summer2016web.git
- ```
+$ git clone https://github.com/TaWeiTu/Summer2016web.git
+```
 
 ##Contributors
 * [@TaWeiTu](http://github.com/taweitu)

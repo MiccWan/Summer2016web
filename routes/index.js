@@ -10,7 +10,7 @@ var express        = require('express'),
 		tmp            = require('tmp'),
 		execFile       = require('child_process').execFile;
 
-var router = express.Router();
+var router     = express.Router();
 var middleware = require('../middleware/');
 
 var User  = require("../models/User.js"),
@@ -35,12 +35,16 @@ router.get('/rank', function(req, res) {
 			console.log(err);
 		} else {
 			allUser.sort(function(a, b) {
-				return a.rank < b.rank;
+				return rankSum(a) > rankSum(b);
 			});
 			res.render('index/rank', {allUser: allUser});
 		}
 	});
 });
+
+function rankSum(a) {
+	return a.rank.python + a.rank.cpp + a.rank.javal;
+}
 
 //Login
 router.get('/login', function(req, res) {
