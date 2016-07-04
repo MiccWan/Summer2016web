@@ -19,6 +19,8 @@ var User  = require("../models/User.js"),
 		Note  = require('../models/note.js'),
 		Judge = require('../models/judge.js');
 
+var pythonJudge = require('../lib/pythonJudge.js');
+
 //Judge
 router.get('/class/:className/judge', middleware.isLoggedIn, function(req, res) {
 	Class.findOne({name: req.params.className}).populate('judges').exec(function(err, foundClass) {
@@ -95,46 +97,14 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 					if (err) {
 						console.log(err);
 					} else {
-						writeTempFile(ans, (err, path) => {
+						console.log(judge);
+							console.log(judge);
+							console.log(ans);
+						pythonJudge(ans, judge.input, judge.output, (err, status) => {
 							if (err) {
 								console.log(err);
 							} else {
-								var child = execFile('python', [path], (err, stdout, stderr) => {
-									if (err) {
-										console.log(err);
-									} else {
-										if (stdout == judge.output + '\n') {
-											console.log('AC');
-											if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
-												var newRank = req.user.rank;
-												newRank[foundClass.name] += 100;
-												var newJudge = req.user.judges;
-												newJudge[foundClass.name][judge.number - 1] = 'AC';
-												User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudge}, function(err, user) {
-													if (err) {
-														console.log(err);
-													}
-												});	
-											}
-										} else {
-											console.log('WA');
-											if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
-												var newJudge = req.user.judges;
-												newJudge[foundClass.name][judge.number - 1] = 'WA';
-												User.findByIdAndUpdate(req.user._id, {judges: newJudge}, function(err, user) {
-													if (err) {
-														console.log(err);
-													}
-												});
-											}
-										}
-										fs.unlink(path, (err) => {
-											if (err) console.log(err);
-										});
-										res.redirect('/class/' + foundClass.name + '/judge');
-									}
-								});
-								child.stdin.write(judge.input);
+								console.log(status);
 							}
 						});
 					}
