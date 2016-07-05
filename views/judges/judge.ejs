@@ -1,4 +1,5 @@
 <% include ../partials/header.ejs %>
+
 <h1><%= judge.name %></h1>
 <p><%= judge.description %></p>
 <form action='/class/<%= inforClass.name %>/judge/<%= judge._id %>' method='POST'>

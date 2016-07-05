@@ -3361,6 +3361,13 @@
   margin-right: auto;
   margin-left: auto;
 }
+.alertcontainer {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+}
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -3395,3 +3402,4 @@
 .deleteForm {
 	display: inline;
 }
+

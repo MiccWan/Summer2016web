@@ -5,5 +5,15 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/stylesheet/main.css"/>
+		<link rel="stylesheet" type="text/css" href="/stylesheet/flash.css">
 	</head>
 	<body>
+	<div class='alertcontainer'>
+		<% if (error && error.length > 0) { %>
+		<div class="alert alert-danger" role="alert"><%=error%></div>
+	<% } %>
+	<% if (success && success.length > 0) {%>
+		<div class="alert alert-success" role="alert"><%=success %></div>
+	<%	} %>
+	</div>
+		

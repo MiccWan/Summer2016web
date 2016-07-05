@@ -33,6 +33,9 @@ router.get('/rank', function(req, res) {
 	User.find({}, function(err, allUser) {
 		if (err) {
 			console.log(err);
+			req.flash("error", "Jizz, something went wrong...");
+			res.redirect("back");
+			
 		} else {
 			allUser.sort(function(a, b) {
 				return rankSum(a) > rankSum(b);
@@ -55,12 +58,13 @@ router.post('/login', passport.authenticate('local', {
 		successRedirect: '/',
 		failureRedirect: '/login'
 	}), function(req, res) {
-
+	req.flash('success', 'Successfully Log In!');
 });
 
 //Logout
 router.get('/logout', function(req, res) {
 	req.logout();
+	req.flash("success", "You have logged out");
 	res.redirect('/');
 });
 
@@ -75,9 +79,11 @@ router.post('/register', function(req, res) {
 	User.register(new User({username: username}), password, function(err, user) {
 		if (err) {
 			console.log(err);
+			req.flash("error", "Jizz, something went wrong...");
 			return res.render('index/register');
 		}
 		passport.authenticate('local')(req, res, function() {
+			req.flash("success", "Successfully Sign Up!");
 			res.redirect('/');
 		});
 	});

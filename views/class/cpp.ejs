@@ -8,6 +8,20 @@
 
 </head>
 <body>
+<div style='float: right'><a href="#menu" style='display: '>Menu</a></div>
+<nav id="menu">
+	<h2><%= realClassName[inforClass.name] %></h2>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="">Book</a></li>	
+		<li><a href="/class/<%= inforClass.name %>/note">Notes</a></li>
+		<li><a href="/class/<%= inforClass.name %>/resource">Resources</a></li>
+		<% if (inforClass.name == 'python' || inforClass.name == 'cpp' || inforClass.name == 'java') { %>
+			<li><a href="/class/<%= inforClass.name %>/judge">Judge</a></li>
+		<% } %>
+		<li><a href="/profile">Profile</a></li>
+	</ul>
+</nav>
 	<h1 style="text-align: center;" class="title"><img src="/class/cpp/art/logo.svg" width="40" height="40"> C++</h1>
 	<h2 style="text-align: center;">by INFOR 29th 霸霸</h2>
 
@@ -209,7 +223,13 @@ cout << vi << ‘ ‘ << v2 << endl;
 
 		</code></pre>
 	</section>
-
+<script src="/class/pygame/assets_2/js/jquery.min.js"></script>
+			<script src="/class/cpp/assets_2/js/jquery.scrollex.min.js"></script>
+			<script src="/class/cpp/assets_2/js/jquery.scrolly.min.js"></script>
+			<script src="/class/cpp/assets_2/js/skel.min.js"></script>
+			<script src="/class/cpp/assets_2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/class/cpp/assets_2/js/main.js"></script>
 </body>
 		<p style="padding-left: 50px"></p>
 

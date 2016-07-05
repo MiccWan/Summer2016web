@@ -27,6 +27,9 @@ router.get('/class/:className/judge', middleware.isLoggedIn, function(req, res) 
 	Class.findOne({name: req.params.className}).populate('judges').exec(function(err, foundClass) {
 		if (err) {
 			console.log(err);
+			req.flash("error", "Jizz, something went wrong...");
+			res.redirect("back");
+			
 		} else {
 			foundClass.judges.sort(function(a, b) {
 				return a.number > b.number;
@@ -40,6 +43,9 @@ router.get('/class/:className/judge/new', middleware.isLoggedIn, function(req, r
 	Class.findOne({name: req.params.className}, function(err, foundClass) {
 		if (err) {
 			console.log(err);
+			req.flash("error", "Jizz, something went wrong...");
+			res.redirect('back');
+			
 		} else {
 			res.render('judges/newJudge', {inforClass: foundClass});
 		}
@@ -50,10 +56,16 @@ router.get('/class/:className/judge/:id', middleware.isLoggedIn, function(req, r
 	Class.findOne({name: req.params.className}, function(err, foundClass) {
 		if (err) {
 			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+			
 		} else {
 			Judge.findById(req.params.id, function(err, judge) {
 				if (err) {
 					console.log(err);
+					req.flash('error', 'Jizz, something went wrong...');
+					res.redirect('back');
+					
 				} else {
 					res.render('judges/judge', {inforClass: foundClass, judge: judge});
 				}
@@ -66,6 +78,9 @@ router.post('/class/:className/judge', middleware.isLoggedIn, function(req, res)
 	Class.findOne({name: req.params.className}, function(err, foundClass) {
 		if (err) {
 			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+			
 		} else {
 			var name = req.body.name;
 			var number = parseInt(req.body.number);
@@ -75,11 +90,16 @@ router.post('/class/:className/judge', middleware.isLoggedIn, function(req, res)
 			Judge.create({name: name, number: number, description: description, input: input, output: output}, function(err, judge) {
 				if (err) {
 					console.log(err);
+					req.flash('error', 'Jizz, something went wrong...');
+					res.redirect('back');
+					
 				} else {
 					judge.save();
 					foundClass.judges.push(judge);
 					foundClass.save();
+					req.flash('success', 'Yeah, new judge');
 					res.redirect('/class/' + foundClass.name + '/judge');
+					
 				}
 			});
 		}
@@ -89,21 +109,33 @@ router.post('/class/:className/judge', middleware.isLoggedIn, function(req, res)
 //Judging
 router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, res) {
 	var ans = req.body.ans;
+	var flashStatus;
 	Class.findOne({name: req.params.className}).populate('judges').exec(function(err, foundClass) {
 		if (err) {
 			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+			
 		} else {
 			if (foundClass.name == 'python') {
 				Judge.findById(req.params.id, function(err, judge) {
 					if (err) {
 						console.log(err);
+						req.flash('error', 'Jizz, something went wrong...');
+						res.redirect('back');
+						
 					} else {
 						pythonJudge(ans, judge.input, judge.output, (err, status) => {
 							if (err) {
 								console.log(err);
+								req.flash('error', 'Jizz, something went wrong...');
+								res.redirect('back');
+								
 							} else {
 								console.log(status);
+								
 								if (status == 'AC') {
+									flashStatus = 'AC';
 									if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
 										var newRank = req.user.rank;
 										newRank[foundClass.name] += 100;
@@ -112,20 +144,18 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 										User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudges}, function(err, user) {
 											if (err) {
 												console.log(err);
-											} else {
-												res.redirect('/class/' + foundClass.name + '/judge');
 											}
 										});
 									}
 								} else {
+									flashStatus = 'WA';
 									if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
+										var newRank = req.user.rank;
 										var newJudges = req.user.judges;
 										newJudges[foundClass.name][judge.number - 1] = 'WA';
-										User.findByIdAndUpdate(req.user._id, {judges: newJudges}, function(err, user) {
+										User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudges}, function(err, user) {
 											if (err) {
 												console.log(err);
-											} else {
-												res.redirect('/class/' + foundClass.name + '/judge');
 											}
 										});
 									}
@@ -140,32 +170,34 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 						console.log(err);
 					} else {
 						cppJudge(ans, judge.input, judge.output, (err, status) => {
+							console.log("JIZZ");
 							if (err) {
 								console.log(err);
 							} else {
+								
 								console.log(status);
 								if (status == 'AC') {
+									flashStatus = 'AC';
 									if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
-										var newRank = req.user.rank + 100;
+										var newRank = req.user.rank;
+										newRank[foundClass.name] += 100;
 										var newJudges = req.user.judges;
 										newJudges[foundClass.name][judge.number - 1] = 'AC';
 										User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudges}, function(err, user) {
 											if (err) {
 												console.log(err);
-											} else {
-												res.redirect('/class/' + foundClass.name + '/judge');
 											}
 										});
 									}
 								} else {
+									flashStatus = 'WA';
 									if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
+										var newRank = req.user.rank;
 										var newJudges = req.user.judges;
 										newJudges[foundClass.name][judge.number - 1] = 'WA';
-										User.findByIdAndUpdate(req.user._id, {judges: newJudges}, function(err, user) {
+										User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudges}, function(err, user) {
 											if (err) {
 												console.log(err);
-											} else {
-												res.redirect('/class/' + foundClass.name + '/judge');
 											}
 										});
 									}
@@ -176,6 +208,14 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 				});
 			}
 		}
+		console.log(flashStatus);
+		if (flashStatus == 'WA') {
+			req.flash('error', 'Wrong Answer');
+		} else {
+			req.flash('success', 'Accepted');
+		}
+		res.redirect('/class/' + foundClass.name + '/judge');
+		
 	});
 });
 
@@ -185,6 +225,9 @@ router.get('/class/:className/note', middleware.isLoggedIn, function(req, res) {
 	Class.findOne({"name": name}).populate("notes").exec(function(err, foundClass) {
 		if (err) {
 			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+			
 		}
 		else {
 			res.render('notes/note', {inforClass: foundClass});
@@ -198,6 +241,9 @@ router.get('/class/:className/note/new', middleware.isLoggedIn, function(req, re
 	Class.findOne({name: name}, function(err, foundClass) {
 		if (err) {
 			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+			
 		}
 		else {
 			res.render('notes/newNote', {inforClass: foundClass});
@@ -211,18 +257,26 @@ router.post('/class/:className/note', middleware.isLoggedIn, function(req, res) 
 	Class.findOne({"name": name}, function(err, foundClass) {
 		if (err) {
 			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+			
 		}
 		else {
 			Note.create({content: req.body.text}, function(err, note) {
 				if (err) {
 					console.log(err);
+					req.flash('error', 'Jizz, something went wrong...');
+					res.redirect('back');
+					
 				}
 				else {
 					note.save();
 					foundClass.notes.push(note);
 					// console.log(note.content);
 					foundClass.save();
+					req.flash('success', 'Yeah, new note');
 					res.redirect('/class/' + foundClass.name + '/note');
+					
 				}
 			});
 		}
@@ -236,11 +290,17 @@ router.get('/class/:className/note/:id/edit', middleware.isLoggedIn, function(re
 	Class.findOne({name: name}, function(err, foundClass) {
 		if (err) {
 			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+			
 		}
 		else {
 			Note.findById(req.params.id, function(err, foundNote) {
 				if (err) {
 					console.log(err);
+					req.flash('error', 'Jizz, something went wrong...');
+					res.redirect('back');
+					
 				}
 				else {
 					res.render('notes/editNote', {inforClass: foundClass, note: foundNote});
@@ -258,11 +318,16 @@ router.put('/class/:className/note/:id', middleware.isLoggedIn, function(req, re
 		Note.findByIdAndUpdate(req.params.id, {content: text}, function(err, note) {
 			if (err) {
 				console.log(err);
+				req.flash('error', 'Jizz, something went wrong...');
+				res.redirect('back');
+				
 			}
 			else {
 				console.log(note);
 				console.log(foundClass);
+				req.flash('success', 'Note edited successfully');
 				res.redirect('/class/' + req.params.className + '/note');
+				
 			}
 		});
 	});
@@ -273,9 +338,14 @@ router.delete('/class/:className/note/:id', middleware.isLoggedIn, function(req,
 	Note.findByIdAndRemove(req.params.id, function(err) {
 		if (err) {
 			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+			
 		}
 		else {
+			req.flash('success', 'Note deleted successfully');
 			res.redirect('/class/' + req.params.className + '/note');
+			
 		}
 	});
 });
@@ -287,93 +357,14 @@ router.get('/class/:className', middleware.isLoggedIn, function(req, res) {
 	Class.findOne({name: req.params.className}, function(err, foundClass) {
 		if (err) {
 			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+			
 		} else {
 			res.render('class/' + foundClass.name, {inforClass: foundClass});
 		}
 	});
 });
 
-function writeTempFile(data, cb) {
-	tmp.tmpName((err, path)=> {
-		if (err)
-			cb(err);
-		else {
-			fs.writeFile(path, data, (err)=> {
-				if (err) 
-					cb(err);
-				else
-					cb(null, path);
-			});
-		}
-	});
-}
-
-// cb(err)
-// cb(null)
-function cppJudge(ans, output, cb) {
-	tmp.tmpName((err, path) => {
-		if (err) {
-			console.log(err);
-		} else {
-			tmp.tmpName((err, path2) => {
-				if (err) {
-					console.log(err);
-				} else {
-					fs.writeFile(ans, path, (err) => {
-						if (err) {
-							console.log(err);
-						} else {
-							var out = execFile('g++', ['-o', path2, path], (err, stdout, stderr) => {
-								if (err) {
-									console.log(err);
-								} else {
-									var child = exec('.' + path2, (err, stdout, stderr) => {
-										if (err) {
-											console.log(err);
-										} else {
-											if (stdout == judge.output + '\n') {
-												console.log('AC');
-												if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
-													var newRank = req.user.rank;
-													newRank[foundClass.name] += 100;
-													var newJudge = req.user.judges;
-													newJudge[foundClass.name][judge.number - 1] = 'AC';
-													User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudge}, function(err, user) {
-														if (err) {
-															console.log(err);
-														}
-													});	
-												}
-											} else {
-												console.log('WA');
-												if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
-													var newJudge = req.user.judges;
-													newJudge[judge.number - 1] = 'WA';
-													User.findByIdAndUpdate(req.user._id, {judges: newJudge}, function(err, user) {
-														if (err) {
-															console.log(err);
-														}
-													});
-												}
-											}
-										}
-										fs.unlink(path2, (err) => {
-											if (err) console.log(err);
-											res.redirect('/class/' + foundClass.name + '/judge');
-										});
-									});
-								}
-								fs.unlink(path, (err) => {
-									if (err) console.log(err);
-								});
-							});
-							out.stdin.write(judge.input);
-						}
-					});
-				}
-			});
-		}
-	});
-} 
 
 module.exports = router;
