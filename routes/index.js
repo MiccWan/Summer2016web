@@ -43,7 +43,7 @@ router.get('/rank', function(req, res) {
 });
 
 function rankSum(a) {
-	return a.rank.python + a.rank.cpp + a.rank.javal;
+	return a.rank.python + a.rank.cpp + a.rank.java;
 }
 
 //Login

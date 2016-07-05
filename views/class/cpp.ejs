@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Summer C++</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/class/cpp/assets_2/css/main.css">
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700italic' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+	<h1 style="text-align: center;" class="title"><img src="/class/cpp/art/logo.svg" width="40" height="40"> C++</h1>
+	<h2 style="text-align: center;">by INFOR 29th 霸霸</h2>
+
+	<hr>
+	<section>
+		<h2>C++ 的簡介</h2>
+		<p style="padding-left: 50px" class="left-line">在 1980 年時，Bjarne Stroustrup 博士創造出了強化 C 語言的程式語言。一開始它被叫做「C with Classes」，之後被添加了各種功能後，它就叫做 C++ 了。就目前學習 C++ 來說，它可以獨立於 C，同時它也是建中高一大部分資訊課教的程式語言。</p>
+		<br>
+		<h2>第一個C++ 程式開發</h2>
+	
+		<p style="padding-left: 50px" class="no-line">1.	開啟IDE（整合開發環境，我們用的是Code::Blocks）</p>
+		<p style="padding-left: 50px" class="no-line">2.	開新檔案，記得儲存的時候副檔名要設成 .cpp 喔</p>
+		<img src="/class/cpp/image/image001.jpg" style="padding-left: 150px" >
+		<p></p>
+		<p style="padding-left: 50px" class="no-line">3.	把這一段程式碼打上去：</p>
+		<img src="/class/cpp/image/image002.png" style="padding-left: 150px">
+		<p></p>
+		<p style="padding-left: 150px" class="no-line">一個 C++ 程式最少會包含一個函式，而且一定有個 main函式。它是程式的主體，程式執行的時候就會一一執行裡面的敘述。</p>
+		<p style="padding-left: 50px" class="no-line">4.	編譯並執行</p>
+		<img src="/class/cpp/image/image003.jpg" style="padding-left: 150px">
+		<p></p>
+		<p style="padding-left: 150px" class="no-line">如果不想用 IDE，其實用文字編輯器（推 sublime）撰寫程式，再直接用 gcc (C) 或 g++(C 或 C++) 編譯也是可以的。</p>
+		<p></p>
+		
+	
+
+	</section>
+		<hr>	
+		<p></p>
+	<section>
+		<h2>在剛剛寫的程式裡……</h2>
+		<p  style="padding-left: 50px" class="left-line">剛才的程式中，第一句是 #include &lt iostream &gt,<br>它的意思可以解釋成「讀取函式庫 <iostream> 的內容」。概念就如 Python 裡的 import 一樣，函式庫裡裝滿許多好用的函式，<iostream> 就有 cin、cout 分別用來處理輸入和輸出。 <br>接下來的 using namespace std; 指的是使用叫做 std 的名稱空間，如果不打的話，之後的 cin、cout 都要改寫為 std::cin、std::cout了。至於名稱空間是什麼，就問問其他講師囉。 <br>最後的 return 0; 顧名思義就是傳回整數 0（只打這句就什麼都沒有），其實可有可無，但由於是 main 函式的關係（因為 main 前面寫個int，所以應該傳回一個整數），有傳回值會比較完整。</p>
+		
+		<p></p>
+	</section>
+	
+	<hr>
+	<p></p>
+
+	<section>
+		<h2>敘述句 statement</h2>
+		<p style="padding-left: 50px" class="left-line">在上面的程式中，return 0;cout << “Hello, world” << endl; 都是敘述句。每個敘述句都會以分號 ; 作為結尾，而敘述句就是程式執行的單位。如果只有 ; 的話就叫做空敘述。</p>
+		<p></p>
+	</section>
+
+	<hr>
+	<p></p>
+
+	<section>
+		<h2>註解 comment</h2>
+		<p style="padding-left: 50px" class="left-line">簡單來說，就是程式不會執行，但是幫助你閱讀的文字。C++ 的註解寫法有兩種：
+第一種是在文字前面加上「//」，這種只能有一行。例如
+</p>
+		<pre><code>
+cout << “迎楓舞建”; //這是輸出
+		</code></pre>
+		<p style="padding-left: 50px" class="left-line">第二種是在註解的前後分別加上/* */，這種註解可以跨行，不過不能一個包一個。例如</p>
+		<pre><code>
+cout << “迎楓舞建”; /*這是
+輸出*/
+		</code></pre>
+		<p></p>
+	</section>
+
+	<hr>
+	<p></p>
+
+	<section>
+		<h2>縮排 indent</h2>
+		<p style="padding-left: 50px" class="left-line">原則上，把一開始寫的程式中用 {} 包起來兩句前面的空白全刪掉，對程式的編譯沒有影響。不過，有縮排的習慣可以幫助以後的閱讀。通常用 {} 包起來的敘述，會比上一層縮排一個 tab鍵，不過 Code::Blocks 全部幫你排好了。</p>
+		<p></p>
+	</section>
+
+	<hr>
+	<p></p>
+
+	<section>
+		<h2>變數宣告</h2>
+		<p style="padding-left: 50px" class="left-line">其實 C++ 真的和 Java 很像，除了變數宣告，運算子也根本一樣啊。
+宣告的方法如下：
+</p>	
+		<pre><code>
+（修飾詞） 資料型態 變數名稱 ;
+		</code></pre>
+		<p style="padding-left: 50px" class="left-line">如果一次要宣告很多變數，不同變數名稱間要用 , 隔開。</p>
+		<p></p>
+	</section>
+
+	<hr>
+	<p></p>
+
+	<section>
+		<h2>資料型態 Data Type</h2>
+		<table style=" width:60%;transform:translateX(50px);;height:40%" >
+			<tr>
+				<th>資料型態</th>
+				<th>解釋</th>
+				<th>例子</th>
+				<th>備註</th>
+			</tr>
+			<tr>
+				<td>bool</td>
+				<td>布林值</td>
+				<td>Ex: 0(False), 1(True)</td>
+				<td>只有 0、1</td>
+			</tr>
+			<tr>
+				<td>int</td>
+				<td>整數</td>
+				<td>Ex: 48763</td>
+				<td>-231 ~ 231-1（同long int）</td>
+			</tr>
+			<tr>
+				<td>double</td>
+				<td>倍精度浮點數</td>
+				<td>Ex: 1.1</td>
+				<td>約10-308 ~ 10308（有效15位）</td>
+			</tr>
+			<tr>
+				<td>char</td>
+				<td>字元</td>
+				<td>Ex: ‘s’、’%’、’\n’</td>
+				<td>0 ~ 255（ASCII）</td>
+			</tr>
+			<tr>
+				<td>string</td>
+				<td>字串</td>
+				<td>Ex: “Hello, World”、”C87”</td>
+				<td>記得 #include &ltcstring&gt</td>
+			</tr>
+			<tr>
+				<td>long long int</td>
+				<td>整數</td>
+				<td>Ex: 214748364700</td>
+				<td>-263 ~ 263-1（可寫long long）</td>
+			</tr>
+			<tr>
+				<td>short</td>
+				<td>整數</td>
+				<td>Ex: 1000</td>
+				<td>-215 ~ 215-1</td>
+			</tr>
+			<tr>
+				<td>float</td>
+				<td>單精度浮點數</td>
+				<td>Ex: 1.1</td>
+				<td>約10-38 ~ 1038（有效7位）</td>
+			</tr>
+		</table>
+		<p></p>
+		<p style="padding-left: 50px" class="left-line">好吧，感覺就很噁心，不過注意一下上面的 ASCII。
+電腦看得懂的就只有 0 和 1，因此，要把我們人類看得懂的文字編碼成數字，經過電腦運算後，再轉換成文字才行。因為當初的編碼方法太多了，1967 年美國國家標準局就制定了一套標準，就是現在的 ASCII囉。以下是 7-bit ASCII的表：
+例如打上 ‘e’–‘a’，傳回的值就會是4
+</p>
+		<img src="/class/cpp/image/image004.png" style="padding-left: 50px" >
+		<p></p>
+	</section>
+	<hr>
+	<p></p>
+
+	<section>
+		<h2>修飾詞 qualifier</h2>
+		
+		<p style="padding-left: 50px">unsigned（只有正的，比如 unsigned int 的範圍 0 ~ 232-1）、short、long、const（不能修改，只能被提取的常數) <br>
+
+		 </p>
+
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>變數名稱</h2><p style="padding-left: 50px">以大小字母為主，再加上數字、底線、金錢符號 $，不過不能以數字作為開頭。除此之外，關鍵字（具有語法功能的保留字）不能使用。</p>
+	</section>
+
+	<hr>
+
+	<section>
+		<h2>初始化 / 指定值 Assign</h2>
+		<p style="padding-left: 50px">我們可以用賦值運算子 = 在宣告變數的時候，就給它一個值。例如：</p>
+		<pre><code>
+int yee = 1;
+char x = ‘f’;
+string s = “迎楓舞建”;
+		</code></pre>
+		<br>
+	</section>
+
+	<hr>
+	<p></p>
+
+	<section>
+		<h2>輸入輸出 Input/Output</h2>
+		<p style="padding-left: 50px" class="left-line" >第一個程式裡面有講到 <iostream>，其實裡面就是 C++ 提供的標準輸入輸出工具。 <br>cin 的功能是用鍵盤輸入資料，用法是 cin >> 變數 ; <br>cout 的功能則是輸出資料，用法是 cout << 要輸出的東東 ;<br>有時我們要連續輸入輸出很多資料，這時可以把 << 或 >> 串接起來，例如：</p>
+		<pre><code>
+int v1, v2;
+cin >> v1 >> v2;
+cout << vi << ‘ ‘ << v2 << endl;
+
+		</code></pre>
+	</section>
+
+</body>
+		<p style="padding-left: 50px"></p>
+
+</html>

@@ -105,7 +105,8 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 								console.log(status);
 								if (status == 'AC') {
 									if (req.user.judges[foundClass.name][judge.number - 1] != 'AC') {
-										var newRank = req.user.rank + 100;
+										var newRank = req.user.rank;
+										newRank[foundClass.name] += 100;
 										var newJudges = req.user.judges;
 										newJudges[foundClass.name][judge.number - 1] = 'AC';
 										User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudges}, function(err, user) {
