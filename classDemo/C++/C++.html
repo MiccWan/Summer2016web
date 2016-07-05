@@ -208,8 +208,436 @@ cin >> v1 >> v2;
 cout << vi << ‘ ‘ << v2 << endl;
 
 		</code></pre>
+		<p style="padding-left: 50px" class="left-line">連續輸入變數的時候，不同變數之間用空白隔開也可以，因為抽取運算子 >> 會把空白字元、換行字元等等視為結束。例如上面的程式執行的時候，可以輸入「2空白3」，這樣的話 v1 會是 2，v2 會是 3。
+如果要輸出空白，可以用 ' '，換行則可以用換行字元 '\n' 或 endl。
+</p><br>
+		<p  style="padding-left: 50px" class="left-line">不過，在 C語言裡，還有更快更好用的輸入輸出方法。這裡會介紹 printf、scanf，記得引入標頭檔 <stdio.h>。（其實和 Java 差不多）
+printf() 用法是 printf(“格式”, 變數1, 變數2……);
+scanf() 用法是 scanf(“格式”, &變數1, &變數2……);
+例如：
+</p><br>
+		<pre><code>
+int y, m, d;
+scanf("%d/%d/%d", &y, &m, &d);
+printf("Year:%d\nMonth:%d\nDay:%d\n", y, m, d);
+		</code></pre>
+		<p style="padding-left: 50px">會產生:</p>
+		<img src="image/image005.jpg" style="padding-left: 50px" >
+		<p style="padding-left: 50px">其中的 %d 叫做格式指定字 (format specifier)，是指定整數、浮點數、字元等等顯示用的，有以下幾種：</p>
+
+		<table  style=" width:50%;transform:translateX(50px);height:40%" >
+			<tr>
+				<td>%d 或 %i</td>
+				<td style="padding-left:50px">10進制整數</td>
+			</tr>
+			<tr>
+				<td>%u</td>
+				<td style="padding-left:50px">10進制無號數</td>
+			</tr>
+			<tr>
+				<td>%o</td>
+				<td style="padding-left:50px">8進制無號數</td>
+			</tr>
+			<tr>
+				<td>%x</td>
+				<td style="padding-left:50px">16進制無號數（小寫）</td>
+			</tr>
+			<tr>
+				<td>%X</td>
+				<td style="padding-left:50px">16進制無號數（大寫）</td>
+			</tr>
+			<tr>
+				<td>%f</td>
+				<td style="padding-left:50px">單精度浮點數</td>
+			</tr>
+			<tr>
+				<td>%lf</td>
+				<td style="padding-left:50px">倍精度浮點數</td>
+			</tr>
+			<tr>
+				<td>%e 或 %E</td>
+				<td style="padding-left:50px">用科學記號表示</td>
+			</tr>
+			<tr>
+				<td>%c</td>
+				<td style="padding-left:50px">字元</td>
+			</tr>
+			<tr>
+				<td>%s</td>
+				<td style="padding-left:50px">字元陣列（不適合用 string）</td>
+			</tr>
+			
+		</table>
 	</section>
 
+	<p></p>
+	<hr>
+	<p></p>
+
+	<section>
+		<h2>運算子 operator</h2>
+		<p style="padding-left: 50px"  class="left-line">什麼是運算子呢？其實，平常寫的加 (+) 減 (-) 乘 (*) 除 (/) 就是，而電腦為了處理運算，還有很多其他的運算子，例如前面講的賦值運算子 (=)。
+算術運算子
+</p>
+
+		<table   style=" width:50%;transform:translateX(50px);height:40%" >
+			<tr>
+				<th>符號</th>
+				<th>意義</th>
+				<th>例子</th>
+			</tr>
+			<tr>
+				<td>-</td>
+				<td>相反數</td>
+				<td>-a</td>
+			</tr>
+			<tr>
+				<td>%</td>
+				<td>取餘數(模，mod)</td>
+				<td>a%b（只有整數喔</td>
+			</tr>
+			<tr>
+				<td>++</td>
+				<td>遞增(加上1)</td>
+				<td>a++ 或 ++a</td>
+			</tr>
+			<tr>
+				<td>--</td>
+				<td>遞減(減掉1)</td>
+				<td>a-- 或 –-a</td>
+			</tr>
+			<tr>
+				<td>+=</td>
+				<td>以加法賦值</td>
+				<td>a+=b</td>
+			</tr>
+			<tr>
+				<td>-=</td>
+				<td>以減法賦值</td>
+				<td>a-=b</td>
+			</tr>
+			<tr>
+				<td>*=</td>
+				<td>以乘法賦值</td>
+				<td>a*=b</td>
+			</tr>
+			<tr>
+				<td>/=</td>
+				<td>以除法賦值</td>
+				<td>a/=b</td>
+			</tr>
+			<tr>
+				<td>%=</td>
+				<td>以餘數賦值</td>
+				<td>a%=b</td>
+			</tr>
+		</table>
+
+		<p></p>
+	</section>
+
+	<hr>
+	<p></p>
+
+	<section>
+		<h2>關係、邏輯運算子</h2>
+		<table style=" width:50%;transform:translateX(50px);height:40%" >
+			<tr>
+				<th>符號</th>
+				<th>意義</th>
+				<th>例子</th>
+			</tr>
+
+			<tr>
+				<td>==</td>
+				<td>判斷是否相等</td>
+				<td>a==b</td>
+			</tr>
+			<tr>
+				<td>!=</td>
+				<td>判斷是否不相等</td>
+				<td>a!=b</td>
+			</tr>
+			<tr>
+				<td>></td>
+				<td>判斷是否大於</td>
+				<td>a>b</td>
+			</tr>
+			<tr>
+				<td>>=</td>
+				<td>判斷是否大於等於</td>
+				<td>a>=b</td>
+			</tr>
+			<tr>
+				<td><</td>
+				<td>判斷是否小於</td>
+				<td> a < b </td>
+			</tr>
+			<tr>
+				<td><=</td>
+				<td>判斷是否小於等於</td>
+				<td>a<=b</td>
+			</tr>
+			<tr>
+				<td>! 或 not</td>
+				<td>取相反</td>
+				<td>!a</td>
+			</tr>
+			<tr>
+				<td>&& 或 and</td>
+				<td>邏輯AND</td>
+				<td>a&&b</td>
+			</tr>
+			<tr>
+				<td>|| 或 or</td>
+				<td>邏輯OR</td>
+				<td>a||b</td>
+			</tr>
+		</table>
+		<p></p>
+
+	</section>
+
+	<hr>
+	<p></p>
+
+	<section>
+		<h2>條件敘述 if 和 switch</h2>
+		<p style="padding-left: 50px">if</p>
+		<pre><code>
+if(條件式)
+    敘述;
+		</code></pre>
+		<p style="padding-left: 50px">或是</p>
+		<pre><code>
+if(條件式){
+    敘述1;
+    敘述2;
+    ……
+}
+		</code></pre>
+
+		<p style="padding-left: 50px" class="left-line">如果條件式成立的話，才會執行裡面的敘述。不過條件式不一定要是判斷敘述，使用數值也可以。事實上，判斷句會產生一個布林值0 (False) 或 1 (True)，而程式再根據數值執行，如果是0以外的數字通通會被視為True。</p>
+		<p style="padding-left: 50px">if...else</p>
+		<pre><code>
+if(條件式){……
+}
+else{……
+}
+		</code></pre>
+		<p style="padding-left: 50px">如果條件式成立的話，會執行第一個 {} 內的敘述，否則執行第二個。</p>
+		<p style="padding-left: 50px" class="left-line">雖然只有一行的話，可以不用大括弧 {} 包起來，但還是習慣包起來會比較好。之後會學到的迴圈也是如此。用大括弧 {} 包起來的區域稱為區塊（Block），會被程式當做單一敘述句。除此之外，一堆 if…else 是可以串起來的，例如：</p>
+		<pre><code>
+int n = 10;
+if(n%3 == 0){
+    cout << “n = 3k” << endl;
+}
+else if(n%3 == 1){
+cout << “n = 3k+1” << endl;
+}
+else{
+    cout << “n = 3k+2” << endl;
+}
+
+		</code></pre>
+		<br>
+		<p style="padding-left: 50px">另外，{} 裡面是可以再加上 if 的，例如：</p>
+		<pre><code>
+int year = 2016;
+if(year%4 == 0){
+    if(year%100 == 0){
+        if(year%400 == 0){
+cout << “是閏年” << endl;
+}
+else{
+cout << “不是閏年” << endl;
+}
+}
+else{
+    cout << “是閏年” << endl;
+}
+}
+else{
+    cout << “不是閏年” << endl;
+}
+		</code></pre>
+		<p style="padding-left: 50px">switch（可能是你一生用過的唯一一次） 	<br>寫法： </p>
+		<pre><code>
+switch(數值或運算式){
+    case 數字或字元1:
+        敘述1;
+        break;
+    case 數字或字元2:
+        敘述2;
+        break;
+    ……
+    default:
+        敘述;
+}
+		</code></pre>
+		<p style="padding-left: 50px" class="left-line">其中「case 數字:」等後面用 : 結尾的標記是標籤（label），程式會根據小括號裡的整數，找到適合的標籤，執行裡面的敘述。如果都沒有，程式則會跑到default，沒有 default 就會跳出 switch。而 break; 則會使程式跳出switch，如果刪掉的話會連下面標籤的敘述一起執行。
+例如：
+</p>
+		<pre><code>
+int month = 7;
+switch(month/4){
+    case 0:
+        cout << "spring" << endl;
+        break;
+    case 1:
+        cout << "summer" << endl;
+        break;
+    case 2:
+        cout << "autumn" << endl;
+        break;
+    case 3:
+        cout << "winter" << endl;
+        break;
+    default:
+        cout << "error" << endl;
+}
+		</code></pre>
+		<p></p>
+
+
+	</section>
+	<hr>
+	<p></p>
+
+	<section>
+		<h2>迴圈 Loop</h2>
+		<p style="padding-left: 50px">需要重複執行某些敘述的時候，就需要迴圈啦。 <br><br>
+while迴圈
+</p>
+		<pre><code>
+while(數值或條件式){
+    敘述句;
+}
+		</code></pre>
+		<p style="padding-left: 50px">和 if 一樣，當數值是非 0 的值會繼續執行，否則會跳出。 <br>
+例如：
+</p>
+		<pre><code>
+int i = 0;
+while(i < 10){
+    cout << "^_^ ";
+    i++;
+}
+		</code></pre>
+		<p style="padding-left: 50px">do……while （和 switch 一樣也很少用）</p>
+		<pre><code>
+do{
+    敘述句;
+}while(數值或條件式); //分號很容易忘記寫啊
+		</code></pre>
+		<p style="padding-left: 50px">和 while 最大的差別在於，do…while 至少會執行一次再判斷條件式的真假。</p>
+
+		<br>
+		<hr>
+		<p style="padding-left: 50px">for 迴圈</p>
+		<pre><code>
+for(起始值; 條件式; 更新值){
+    敘述句;
+}
+		</code></pre>
+		<p style="padding-left: 50px">有點像「計數器」的概念，很適合用來執行確切知道多少次的敘述。執行順序如下：</p>
+		<p style="padding-left: 100px">1.	起始值：通常會宣告一個新的變數或是指定值給變數，類似「計數器」，只有剛進迴圈的時候會執行。</p>
+		<p style="padding-left: 100px">2.	條件式：如果為假就會跳出迴圈。</p>
+		<p style="padding-left: 100px">3.	執行大括弧 {} 中的敘述。</p>
+		<p style="padding-left: 100px">4.	更新值：改變當做「計數器」的變數，通常會遞增或遞減。</p>
+		<p style="padding-left: 100px">5.	回到步驟2重新執行。</p>
+		<br>
+		<p style="padding-left: 50px">例如改寫剛剛的例子：</p>
+		<pre><code>
+for(int i = 0; i < 10; i++){
+    cout << "^_^ ";
+}
+		</code></pre>
+		<br>
+		<hr>
+		<p style="padding-left: 50px">其他可以控制迴圈的敘述:</p>
+		<br>
+		<p style="padding-left: 50px"><b>break敘述</b></p>
+		<p style="padding-left: 100px">在 switch 裡面出現過，一樣是用來跳出迴圈的。</p>
+		<p style="padding-left: 50px"><b>continue 敘述</b></p>
+		<p style="padding-left: 100px">在 while 和 do……while 裡面，遇到 continue; 時會跳過其之後的敘述繼續執行下一輪。在 for 中還會更新控制迴圈的值。</p>
+		<p style="padding-left: 50px"><b>goto敘述</b></p>
+		<p style="padding-left: 100px">用法：</p>
+		<pre style="padding-left: 100px"><code>
+goto 標籤名稱;
+		</code></pre>
+		<p style="padding-left: 100px">會跳到標籤所在的地方，其實在程式的任何地方都可以使用。</p>
+		<br>
+		<hr>
+		<br><br>
+		<p style="padding-left: 50px" class="left-line">在迴圈裡面，有個不成文的規定，就是控制迴圈的變數習慣從 i 開始。據說，是因為早期的程式語言 FORTRAN，只有名稱第一個字元是 I ~ N 的變數會被視為整數。
+除此之外，迴圈也可以巢狀出現呢 <br>例如用 * 輸出直角三角形（不知道為什麼每本書都用這個範例）：
+</p>	
+		<pre><code>
+for(int i = 0; i < 10; i++){
+    for(int j = 0; j <= i; j++){
+        cout << '*';
+    }
+    cout << endl;
+}
+		</code></pre>
+		
+
+
+	</section>
+	<br>
+	<hr>
+	<br>
+	<section>
+		<h2>陣列 Array</h2>
+		<p style="padding-left: 50px" class="left-line" >當你需要100個變數的時候，難道真的要宣告100次嗎？因此，電腦科學家就發明了陣列，來儲存性質相同的資料。每個陣列元素都可以當做變數，並且占用連續的記憶體空間（去煩Java講師吧）。 <br>宣告方式：
+</p>
+
+		<pre><code>
+資料型態 陣列名稱[元素個數];
+		</code></pre>
+		<p style="padding-left: 50px">例如:</p>
+		<pre><code>
+int num[6]; //宣告資料型態為 int，名稱為 num，長度為6的陣列。
+		</code></pre>
+		<p style="padding-left: 50px">會產生:</p>
+		<table style="width:50%;transform:translateX(50px);height:40%">
+			<tr>
+				<td>num[0]</td>
+				<td>num[1]</td>
+				<td>num[2]</td>
+				<td>num[3]</td>
+				<td>num[4]</td>
+				<td>num[5]</td>
+			</tr>
+		</table>
+		<p style="padding-left: 50px" class="left-line">要注意的是，陣列的索引值（index，就是中括號 [] 裡的數字）是從 0 到元素個數-1，要使用元素的話只要打 陣列名稱[索引值]，就和普通的變數一樣。</p>
+		<br>
+		<hr>
+		<br>
+		<p style="padding-left: 50px"><b>陣列的初始化 </b><br> <br>
+當然，你可以一個一個去改變陣列中元素的值，比如讓 num 裡的每個值變成 0：
+</p>
+		<pre><code>
+int num[6];
+for(int i = 0; i < 6; i++){
+    num[i] = 0;
+}
+		</code></pre>
+		<p style="padding-left: 50px">也可以</p>
+		<pre><code>
+int num[6] = {0, 0, 0, 0, 0, 0};
+		</code></pre>
+		<p style="padding-left: 50px">或</p>
+		<pre><code>
+int num[6] = {0};
+		</code></pre>
+
+
+	</section>
+	<br>
+	<br>
+	<hr>
 </body>
 		<p style="padding-left: 50px"></p>
 
