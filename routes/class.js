@@ -160,6 +160,16 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 										});
 									}
 								}
+								
+								console.log(flashStatus);
+								if (flashStatus == 'WA') {
+									req.flash('error', 'Wrong Answer');
+								} else {
+									req.flash('success', 'Accepted');
+								}
+								res.redirect('/class/' + foundClass.name + '/judge');
+								
+
 							}
 						});
 					}
@@ -170,11 +180,10 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 						console.log(err);
 					} else {
 						cppJudge(ans, judge.input, judge.output, (err, status) => {
-							console.log("JIZZ");
+							
 							if (err) {
 								console.log(err);
 							} else {
-								
 								console.log(status);
 								if (status == 'AC') {
 									flashStatus = 'AC';
@@ -202,20 +211,20 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 										});
 									}
 								}
+								console.log(flashStatus);
+								if (flashStatus == 'WA') {
+									req.flash('error', 'Wrong Answer');
+								} else {
+									req.flash('success', 'Accepted');
+								}
+								res.redirect('/class/' + foundClass.name + '/judge');
 							}
+							
 						});
 					}
 				});
 			}
 		}
-		console.log(flashStatus);
-		if (flashStatus == 'WA') {
-			req.flash('error', 'Wrong Answer');
-		} else {
-			req.flash('success', 'Accepted');
-		}
-		res.redirect('/class/' + foundClass.name + '/judge');
-		
 	});
 });
 
@@ -259,7 +268,6 @@ router.post('/class/:className/note', middleware.isLoggedIn, function(req, res) 
 			console.log(err);
 			req.flash('error', 'Jizz, something went wrong...');
 			res.redirect('back');
-			
 		}
 		else {
 			Note.create({content: req.body.text}, function(err, note) {
