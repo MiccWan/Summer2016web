@@ -2,7 +2,7 @@
 <ul>
 <% var rank = 1 %>
 <% allUser.forEach(function(user) { %>
-	<li><%= rank %> - <%=user.username %> - <%= user.rank.python + user.rank.cpp + user.rank.java %></li>
+	<li><%= rank %> - <%=user.username %> - <%= user.rank.python + user.rank.cpp ></li>
 	<% rank++ %>
 <% }) %>
 </ul>

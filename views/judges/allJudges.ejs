@@ -3,11 +3,16 @@
 <ul>
 <% inforClass.judges.forEach(function(judge) { %>
 	<li><a href="/class/<%= inforClass.name %>/judge/<%= judge._id%>"><%=judge.number%> - <%= judge.name %></a></li>
-	<button><a href="/class/<%=inforClass.name%>/judge/<%=judge._id%>/edit">Edit</a></button>
-	<form action='/class/<%=inforClass.name%>/judge/<%=judge._id%>?_method=DELETE' method='POST'>
-		<button>Delete</button>
-	</form>
+	<% if (currentUser.username == 'infor') { %>
+		<button><a href="/class/<%=inforClass.name%>/judge/<%=judge._id%>/edit">Edit</a></button>
+		<form action='/class/<%=inforClass.name%>/judge/<%=judge._id%>?_method=DELETE' method='POST'>
+			<button>Delete</button>
+		</form>
+	<% } %>
 <% }) %>
 </ul>
-<button><a href="/class/<%=inforClass.name%>/judge/new">New Judge</a></button>
+<% if (currentUser.username == 'infor') { %>
+	<button><a href="/class/<%=inforClass.name%>/judge/new">New Judge</a></button>
+<% } %>
+
 <% include ../partials/footer.ejs %>
