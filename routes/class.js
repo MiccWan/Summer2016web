@@ -22,7 +22,7 @@ var User  = require("../models/User.js"),
 var pythonJudge = require('../lib/pythonJudge.js'),
 		cppJudge    = require('../lib/cppJudge.js');
 
-//Judge
+//Judge -Index
 router.get('/class/:className/judge', middleware.isLoggedIn, function(req, res) {
 	Class.findOne({name: req.params.className}).populate('judges').exec(function(err, foundClass) {
 		if (err) {
@@ -34,24 +34,12 @@ router.get('/class/:className/judge', middleware.isLoggedIn, function(req, res) 
 			foundClass.judges.sort(function(a, b) {
 				return a.number > b.number;
 			});
-			res.render('judges/judges', {inforClass: foundClass});
+			res.render('judges/allJudges', {inforClass: foundClass});
 		}
 	});
 });
 
-router.get('/class/:className/judge/new', middleware.isLoggedIn, function(req, res) {
-	Class.findOne({name: req.params.className}, function(err, foundClass) {
-		if (err) {
-			console.log(err);
-			req.flash("error", "Jizz, something went wrong...");
-			res.redirect('back');
-			
-		} else {
-			res.render('judges/newJudge', {inforClass: foundClass});
-		}
-	});
-});
-
+//Judge - Show one
 router.get('/class/:className/judge/:id', middleware.isLoggedIn, function(req, res) {
 	Class.findOne({name: req.params.className}, function(err, foundClass) {
 		if (err) {
@@ -68,38 +56,6 @@ router.get('/class/:className/judge/:id', middleware.isLoggedIn, function(req, r
 					
 				} else {
 					res.render('judges/judge', {inforClass: foundClass, judge: judge});
-				}
-			});
-		}
-	});
-});
-
-router.post('/class/:className/judge', middleware.isLoggedIn, function(req, res) {
-	Class.findOne({name: req.params.className}, function(err, foundClass) {
-		if (err) {
-			console.log(err);
-			req.flash('error', 'Jizz, something went wrong...');
-			res.redirect('back');
-			
-		} else {
-			var name = req.body.name;
-			var number = parseInt(req.body.number);
-			var description = req.body.description;
-			var input = req.body.input;
-			var output = req.body.output;
-			Judge.create({name: name, number: number, description: description, input: input, output: output}, function(err, judge) {
-				if (err) {
-					console.log(err);
-					req.flash('error', 'Jizz, something went wrong...');
-					res.redirect('back');
-					
-				} else {
-					judge.save();
-					foundClass.judges.push(judge);
-					foundClass.save();
-					req.flash('success', 'Yeah, new judge');
-					res.redirect('/class/' + foundClass.name + '/judge');
-					
 				}
 			});
 		}
@@ -228,6 +184,123 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 	});
 });
 
+//Judge - New
+router.get('/class/:className/judge/new', middleware.isLoggedIn, function(req, res) {
+	Class.findOne({name: req.params.className}, function(err, foundClass) {
+		if (err) {
+			console.log(err);
+			req.flash("error", "Jizz, something went wrong...");
+			res.redirect('back');
+			
+		} else {
+			res.render('judges/new', {inforClass: foundClass});
+		}
+	});
+});
+
+router.post('/class/:className/judge', middleware.isLoggedIn, function(req, res) {
+	Class.findOne({name: req.params.className}, function(err, foundClass) {
+		if (err) {
+			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+			
+		} else {
+			var name = req.body.name;
+			var number = parseInt(req.body.number);
+			var description = req.body.description;
+			var input = req.body.input;
+			var output = req.body.output;
+			Judge.create({name: name, number: number, description: description, input: input, output: output}, function(err, judge) {
+				if (err) {
+					console.log(err);
+					req.flash('error', 'Jizz, something went wrong...');
+					res.redirect('back');
+					
+				} else {
+					judge.save();
+					foundClass.judges.push(judge);
+					foundClass.save();
+					req.flash('success', 'Yeah, new judge');
+					res.redirect('/class/' + foundClass.name + '/judge');
+					
+				}
+			});
+		}
+	});
+});
+
+//Judge - Edit
+router.get('/class/:className/judge/:id/edit', function(req, res) {
+	Class.findOne({name: req.params.className}, function(err, foundClass) {
+		if (err) {
+			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+		} else {
+			Judge.findById(req.params.id, function(err, judge) {
+				if (err) {
+					console.log(err);
+					req.flash('error', 'Jizz, something went wrong...');
+					res.redirect('back');
+				} else {
+					res.render('judges/edit', {inforClass: foundClass, judge: judge});
+				}
+			});
+		}
+	});
+});
+
+router.put('/class/:className/judge/:id', function(req, res) {
+	var name = req.body.name;
+	var number = req.body.number;
+	var description = req.body.description;
+	var input = req.body.input;
+	var output = req.body.output;
+	Class.findOne({name: req.params.className}, function(err, foundClass) {
+		if (err) {
+			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+		} else {
+			Judge.findByIdAndUpdate(req.params.id, {name: name, number: number, description: description, input: input, output: output}, function(err, judge) {
+				if (err) {
+					console.log(err);
+					req.flash('error', 'Jizz, something went wrong...');
+					res.redirect('back');
+				} else {
+					req.flash('success', 'Judge edited successfully');
+					res.redirect('/class/' + foundClass.name + '/judge');
+				}
+			});
+		}
+	});
+});
+
+//Judge - Delete
+router.delete('/class/:className/judge/:id', function(req, res) {
+	Class.findOne({name: req.params.className}, function(err, foundClass) {
+		if (err) {
+			console.log(err);
+			req.flash('error', 'Jizz, something went wrong...');
+			res.redirect('back');
+		} else {
+			Judge.findByIdAndRemove(req.params.id, function(err, judge) {
+				if (err) {
+					console.log(err);
+					req.flash('error', 'Jizz, something went wrong...');
+					res,redirect('back');
+				} else {
+					req.flash('success', 'Judge deleted successfully');
+					res.redirect('/class/' + foundClass.name + '/judge');
+				}
+			});
+		}
+	});
+});
+
+//--------------------------------------------------------------------------------
+
 //Note - index
 router.get('/class/:className/note', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
@@ -244,7 +317,7 @@ router.get('/class/:className/note', middleware.isLoggedIn, function(req, res) {
 	});
 });
 
-//Note - new
+//Note - New
 router.get('/class/:className/note/new', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({name: name}, function(err, foundClass) {
@@ -255,12 +328,11 @@ router.get('/class/:className/note/new', middleware.isLoggedIn, function(req, re
 			
 		}
 		else {
-			res.render('notes/newNote', {inforClass: foundClass});
+			res.render('notes/new', {inforClass: foundClass});
 		}
 	});
 });
 
-//Note - post
 router.post('/class/:className/note', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({"name": name}, function(err, foundClass) {
@@ -291,8 +363,7 @@ router.post('/class/:className/note', middleware.isLoggedIn, function(req, res) 
 	});
 });
 
-
-//Note - edit
+//Note - Edit
 router.get('/class/:className/note/:id/edit', middleware.isLoggedIn, function(req, res) {
 	var name = req.params.className;
 	Class.findOne({name: name}, function(err, foundClass) {
@@ -311,15 +382,13 @@ router.get('/class/:className/note/:id/edit', middleware.isLoggedIn, function(re
 					
 				}
 				else {
-					res.render('notes/editNote', {inforClass: foundClass, note: foundNote});
+					res.render('notes/edit', {inforClass: foundClass, note: foundNote});
 				}
 			});
 		}
 	});
 });
 
-
-//Note - update
 router.put('/class/:className/note/:id', middleware.isLoggedIn, function(req, res) {
 	var text = req.body.text;
 	Class.findOne({name: req.params.className}, function(err, foundClass) {
@@ -335,13 +404,12 @@ router.put('/class/:className/note/:id', middleware.isLoggedIn, function(req, re
 				console.log(foundClass);
 				req.flash('success', 'Note edited successfully');
 				res.redirect('/class/' + req.params.className + '/note');
-				
 			}
 		});
 	});
 });
 
-//Note - destroy
+//Note - Delete
 router.delete('/class/:className/note/:id', middleware.isLoggedIn, function(req, res) {
 	Note.findByIdAndRemove(req.params.id, function(err) {
 		if (err) {
@@ -358,7 +426,7 @@ router.delete('/class/:className/note/:id', middleware.isLoggedIn, function(req,
 	});
 });
 
-
+//-----------------------------------------------------------------------------
 
 //Class - index
 router.get('/class/:className', middleware.isLoggedIn, function(req, res) {

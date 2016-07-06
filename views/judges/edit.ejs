@@ -1,0 +1,11 @@
+<% include ../partials/header.ejs %>
+<h1>Edit Judge</h1>
+<form action='/class/<%= inforClass.name %>/judge/<%= judge._id %>?_method=PUT' method='POST'>
+	<input type="text" name="name" value="<%= judge.name %>">
+	<input type="text" name="number" value="<%= judge.number %>">
+	<label>Description<textarea name='description'><%= judge.description %></textarea></label>
+	<label>Input<textarea name='input'><%= judge.input %></textarea></label>
+	<label>Output<textarea name='output'><%= judge.output %></textarea></label>
+	<button>Edit</button>
+</form>
+<% include ../partials/footer.ejs %>
