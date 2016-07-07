@@ -1,239 +1,341 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html>
-<head>
-	<title>Summer Pygame</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="assets_2/css/main.css">
-	<!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700italic' rel='stylesheet' type='text/css'> -->
-
-</head>
-<body>
-	<h1 style="text-align: center;" class="title"><img src="art/logo.svg" width="40" height="40">Unity 3D</h1>
-	<h2 style="text-align: center;">by INFOR 29th 廣廣、伊芙</h2>
-
-	<h2>介紹</h2>
-
-	<section>
-		<p>Unity3D 是現今被廣泛應用的跨平台遊戲引擎，可應用在OS、windows、Linux、手機與網頁平台，甚至虛擬實境，目前已有許多知名遊戲是以此引擎完成(可參考<a href="http://madewith.unity.com/">http://madewith.unity.com/</a>)
-下載-> <a href="https://goo.gl/Q1yADA">https://goo.gl/Q1yADA</a> (含安裝說明)
-</p>
-	</section>
-
-	<h2>介面介紹</h2>
-
-	<section>
-		<img src="/image/image2.jpg">
-	</section>
-
-	<section>
-		<h5>1.	到 http://www.lfd.uci.edu/~gohlke/pythonlibs/#pygame</h3>
-			<p></p>
-		<h5>2.	下載 pygame-1.9.2a0-cp35-none-win_amd64.whl</h3>
-		<img src="image/image001.jpg">
-		<p></p>
-		<h5>3.	下載完畢後，記得要用Winrar或者7-zip解壓縮</h5>
-		<img src="image/image002.jpg">
-		<p></p>
-		<h5>4.	然後解壓縮到C:/python34/Lib/sit-packages</h5>
-		<img src="image/image003.jpg">
-		<p></p>
-		<h5>5.	開啟你的python IDLE，輸入import pygame ，如果成功的話應該會出現下一行的>>> ，然後再輸入print(pygame.ver) 來檢查安裝的版本是否正確，如果最後的畫面跟下圖一樣的話，那就代表你成功安裝pygame囉!</h5>
-		<img src="image/image004.jpg">
-		<p></p>
-
-	</section>
-	<hr>
-	<p></p>
-	<section>
-		<h2 style="text-align:center">熟悉Pygame!</h2>
-
-		<h3>1.第一步:</h3>
-		<p>在每一個遊戲設計之前，我們要做的第一件事，就是將我們所有要用的模組導入，以及宣告常用到的變數。</p>
-		<img src="image/image005.jpg">
-		<p></p>
-		<p>前三行引入的os、pygame、time和random等等會在遊戲裡出現它的應用。</p>
-
-		<h3>2.建構視窗以及main函式:</h3>
-		<img src="image/image006.jpg">
-		<p></p>
-		<p>前兩行是我們自定義的變數，名稱隨便改都行，但是第四行的兩個參數一定要跟上面相同，否則就會compile error。
-	而第四行和第五行都有出現pygame.display，這就是我們接觸到的第一個pygame模組，主要是管理遊戲視窗的物件，像是第五行的set_caption，就是設定自己的遊戲標題。
-</p>
-		<img src="image/image007.jpg">
-		<p></p>
-		<p>上面的main()就是精簡到不行的main函式啦，換句話說就是什麼都沒有~，主要要記得的就是在main()其他程序開始之前，你都需要打上pygame.init()，意思就是讓電腦知道pygame這個模組要在這邊被宣告進來，不然後面的功能都沒辦法用喔!
-	最後，應該會有很多學生看到 if __name__==”__main__”:，那兩行感到很疑惑，其實那就只是電腦在編譯完你的程式後，會判斷要直接從這個檔案開始執行還是當作其他程式的模組來使用，但因為我們要做的遊戲並不大，就不用分成好幾個區塊來寫了，所以就直接在尾巴告訴電腦開始執行吧!
-	以下是目前為止什麼都沒有的遊戲畫面(而且還當掉):
-</p>
-		<img src="image/image008.jpg">
-		<p></p>
-
-	</section>
-	<hr>
-	<p></p>
-
-	<section>
-		<h2 style="text-align:center">放上你的背景!</h2>
-		<p>好，看到上面那張什麼都還沒有的遊戲畫面是不是很可悲?
-我們來為他加上一個能看的背景吧!
-</p>	
-		<img src="image/image009.jpg">
-		<p></p>
-		<p>可以看到多了幾行程式碼，首先是 clock=pygame.time.Clock()，意思就是為這個遊戲宣告一個計時表，主要是應用在設定遊戲楨格的更新幀率，如clock.tick(70)，也就是每70毫秒就更新一次遊戲畫面上的變動，最後還要加上pygame.display.update()才會正確的更新屏幕，否則就會讓你的物體定格在那裏喔!
-	然後還多了一行的screen.blit(background,0,0)，之後會很常應用到blit()，如果想要在遊戲畫面上新增物件的話，最後一定要加上screen.blit()，否則就什麼都沒有喔。
-
-	最後放上背景的樣子吧!
-</p>
-		<p></p>
-		<img src="image/image010.jpg">
-		<p></p>
-	</section>
-	<hr>
-	<p></p>
-	<section>
-		<h2 style="text-align:center">創建你的圈圈!</h2>
-		<p>接下來要為這個遊戲設計一些新玩意，會用到一些新模組:</p>
-		<img src="image/image011.jpg">
-		<p></p>
-		<p>可以看到新的用法，pygame.image.load()，意思很簡單，就是將電腦裡的圖片存進變數裡，後面的convert()就是讓圖片轉換成pygame能用的形式，最後set_colorkey()就是將特定的顏色透明化囉!</p>
-		<img src="image/image012.jpg">
-		<p></p>
-		<p>然後記得在程式尾端加上blit()，不然會什麼都沒有喔!(完成品在下圖)</p>
-		<img src="image/image013.jpg">
-		<p></p>
-	</section>
-	<hr>
-	<p></p>
-
-	<section>
-		<h2 style="text-align:center">創建你的第一個CLASS !</h2>
-		<p>好啦!要來到遊戲中最精華的部分了，創建你自己的物件!上一堂課應該都要介紹類別的基礎觀念，這一堂就要來實際應用了!首先將類別的init()打出來，大概是像這樣子:</p>
-
-		<img src="image/image014.jpg">
-		<p></p>
-		<p>恩，相信你們已經看得頭昏眼花了，其實真正重要的只有class scroll()括號裡面的pygame.sprite.Sprite ，以及super().__init__()，這兩行的意思是繼承pygame的sprite模組並將它宣告進物件裡，如果要用到sprite的模組的話，在寫物件時就一定要記得打上這兩行，反而其他的self.xxx並不是那麼重要。</p>
-		<p>	然後接下來看到倒數幾行有一些for迴圈，再說這些之前就必須要提到抓取幀格的方法，程式碼如下:</p>
-
-		<img src="image/image015.jpg">
-		<p></p>
-		<p>首先，建立另一個叫做SpriteSheet的類別，由於這個類別不需要用到pygame.sprite.Sprite，因此就不用在括號裡打上這行，也不用加上super().__init__()。 接著請看到def get_image():，裡面的第一行
-Pygame.Surface就是先創造一個指定長寬的畫布，接著由blit()來合上取得的圖像，最後在set_colorkey()並return圖像，簡單來說就是將一個個圖片割下來放到適合的容器，否則一張圖片就會向下圖一樣，只有好幾個幀格卻沒辦法一個個用:
-</p>	
-		<img src="image/image016.gif">
-		<p></p>
-		<p>好啦!回到最一開始那幾個for 迴圈，看得懂的人就知道他只是計算好每一個幀格的長寬，並且將割下來的圖像存取成陣列，等到需要用到時，再依序快速變換幀格，就會形成遊戲中的動畫了喔!</p>
-		<p></p>
-
-	</section>
-
-	<hr>
-	<p></p>
-
-	<section>
-		<h2 style="text-align:center">設計你的遊戲!</h2>
-		<p>既然創建好你的物件了，接下來就是將他放上我們的屏幕了，但這次可不是簡單的blit()而已，首先我們要在main()創建我們的精靈組:</p>
-
-		<img src="image/image017.jpg">
-		<p></p>
-		<p>上面四行其實都只是重複使用pygame.sprite.Group()，簡單來說就是把剛剛寫好的類別集結成群組，但為什麼要這樣做?因為在對於大量出現的物件時，不太可能一個個去管理他的運作，就以我們的遊戲來說，因為背景有四個軌道，所以就創建四個群組，分門別類又能有統一動作，而統一動作就要靠寫好在物件裡的update()，因為那相當於精靈組的管理員。
-那我們就先來看看我們scroll類別的update()吧!
-</p>
-
-		<img src="image/image018.jpg">
-		<p></p>
-		<p>恩，上面是滿滿的註解，因為太多東西要講了，所以就讓你們自己看看了解一下吧!</p>
-
-		<p></p>
-		<p>好!那麼關於我們物件都已經寫好了!接下來就只是在main()裡面每隔一小段時間創造我們的物件!</p>
-		<img src="image/image019.jpg">
-
-		<p></p>
-		<p>需要注意的只有tick=pygame.time.get_ticks()和他下面的tick-now>ok，因為這兩個的搭配很常用在需要計時的地方。接著還有一行是case=random.randint(1,4)，還記得我們最一開始有import random
-嗎?就是用在這個地方啦!隨機選取1到4的整數，剛好符合我們遊戲的需求，就像是隨機取四個軌道中的產生下一個物件。最後要記得加上now=tick這一行，否則會無限產生擠成一坨在螢幕上喔!
-</p>
-		<img src="image/image020.jpg">
-		
-		<p></p>
-		<p>弄完update()的東西以後，當然就是要在main()裡面呼叫他啦!但可不是一個個呼叫，而是使用精靈組喔!所以精靈組對遊戲來講真的很重要，不然會讓你的程式碼一直做重複的事情，最後，要記得使用精靈組的draw()
-，而且一定要放在背景和圈圈blit()後面，否則會被背景覆蓋過去喔!
-</p>
-
-		<p></p>
-		<p>下面是成品圖~</p>
-		<img src="image/image021.jpg">
-		<p></p>
-	</section>
-
-	<hr>
-	<p></p>
-
-	<section>
-		<h2 style="text-align:center">判斷玩家的動作!</h2>
-		<p>好的，上面的東西既然都做好了，接下來就要能讓他和玩家互動囉!既然說到玩家的動作，那就一定是使用鍵盤和滑鼠啦!但這個遊戲裡只需要用到鍵盤，我們就先從main()裡的鍵盤監聽器開始說吧!</p>
-		<img src="image/image022.jpg">
-		<p></p>
-		<p>上面那張圖的註解已經說明了大部分的觀念，其實在pygame裡面簡化了鍵盤的應用，需要注意的是有按下鍵盤就一定要有放開鍵盤，否則按下的事件會無限循環喔!判斷式裡面的one=False什麼的我們先在main()裡面宣告:</p>
-		<img src="image/image023.jpg">
-		<p></p>
-		<p>然後上面這四行的應用主要是在下面這張圖:</p>
-		<img src="image/image024.jpg">
-		<p></p>
-		<p>上面有一些重複的東西，分別是for scrol in green_list、
-If xxx==True and scroll.rect.y>490、以及下面三行的scrol的參數
-設定，意思是判斷每一個在精靈組裡面的物件，當物件的參數為True並且夠靠近圈圈時，就設定notstop=False(讓物件別往下掉了)、boom=True
-(物件可以開始爆炸了)以及初始化時間的start=pygame.time.get_ticks()。
-如果有不懂的參數的話，記得往上翻翻看前面update()那一段。
-</p>	
-
-		<p></p>
-		<p>OK，下面就是目前為止做出來的爆炸效果囉!</p>
-		<img src="image/image025.jpg">
-		<p></p>
-
-
-
-	</section>
-
-	<hr>
-	<p></p>
-
-	<section>
-		<h2 style="text-align:center">遊戲計時與計分!</h2>
-		<p>到了最後的階段，我們總要為遊戲放上計分和計時的系統吧!在此之前，我們先宣告一些變數，這些變數要記得是全域變數(不能在main裡面):</p>
-		<img src="image/image026.jpg">
-		<p></p>
-
-		<p>另外在main()裡面再加入一行，當作整個遊戲的計時器:</p>
-		<img src="image/image027.jpg">
-		<p></p>
-
-		<p>接下來我們就先介紹怎麼在遊戲中出現文字吧!</p>
-		<img src="image/image028.jpg">
-		<p></p>
-
-		<p>先看到第一個函式text_objects吧，他的功用是將文字轉成Surface(畫布)，
-然後再創建一個Rect(容器)，並將她們一起return 到message_display()，而在第二個函式裡最主要的就是pygame.font.Font()，這是設定字體的字型，然後再呼叫第一個函式轉換成pygame能用的Surface，最後，要記得加上
-Screen.blit()和pygame.display.update()，如果沒有前者的話，字體不會被建構在屏幕上，而沒有後者的話，即使建構了字體，但沒有update()，還是什麼都看不到，所以這兩行都是不可或缺的要素喔!
-</p>
-
-		<p>好啦!我們來把這些程式碼實際在main()裡面呼叫吧!</p>
-		<img src="image/image029.jpg">
-		<p></p>
-		<p>恩，先看到那行特別長的東東吧!那就是我們呼叫剛剛打的函式，裡面有一些奇怪的東西，像是str()，其實很簡單，就只是把整數型態轉換成換成字串，然後tick//1000，則是因為我們一開始宣告的tick是千毫秒為單位，所以要變成以秒為單位的話，就要除以1000。喔耶!下面就是最後成品啦!!!</p>
-		<img src="image/image030.jpg">
-		<p></p>
-		<p></p>
-
-
-
-	</section>
-
-			<script src="assets_2/js/jquery.min.js"></script>
-			<script src="assets_2/js/jquery.scrollex.min.js"></script>
-			<script src="assets_2/js/jquery.scrolly.min.js"></script>
-			<script src="assets_2/js/skel.min.js"></script>
-			<script src="assets_2/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets_2/js/main.js"></script>
-</body>
+	<head>
+		<title>Unity 3D</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/css/main.css" />
+	</head>
 </html>
+
+<body>
+	<div id="wrapper">
+	<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<!-- Logo -->
+				<h1>Unity 3D</h1>
+
+			<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+	<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="#C1">一、簡介</a></li>
+				<li><a href="#C2">二、介面介紹</a></li>
+				<li><a href="#C3">三、地形編輯器</a></li>
+				<li><a href="#C4">四、角色控制器</a></li>
+				<li><a href="#C5">五、拾取物品(簡單coding)</a></li>
+				<li><a href="#C6">六、遊戲介面</a></li>
+				<li><a href="#C7">七、天空系統</a></li>
+				<li><a href="#C8">八、光照系統</a></li>
+				<li><a href="#C9">九、總結</a></li>
+			</ul>
+		</nav>
+		<div id= "main">
+			<div class="inner">
+				<section id="C1">
+				<h2>一、簡介</h2>
+					<p>Unity3D是現今被廣泛應用的跨平台遊戲引擎，可應用在OS、windows、Linux、手機與網頁平台，甚至虛擬實境，目前已有許多知名遊戲是以此引擎完成(可參考<a href="http://madewith.unity.com/">http://madewith.unity.com/</a>)<br>
+					下載：<a href="https://goo.gl/Q1yADA">https://goo.gl/Q1yADA</a> (含安裝說明)</p>
+				</section>
+				<hr>
+				<section id="C2">
+					<h2>二、介面介紹</h2>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="12u$"><span class="image fit"><img src="/unity1.jpg" alt="" /></span></div>
+						</div>
+					</div>
+					<ol>
+						<li>Scene View(場景視窗)：可進行編輯(地形、角色、燈光等)</li>
+						<li>Game View(遊戲視窗)：顯示遊戲執行時玩家會看到的畫面</li>
+						<li>Hierarchy View(階層視窗)：顯示目前場景上的物件與他們之間的關係</li>
+						<li>Project View(專案視窗)：會顯示你現有的檔案、物件、材質、模型、音效等</li>
+						<li>Inspector View(屬性視窗)：可以對物件等進行調整</li>
+						<li>左至右分別是水平移動視角(Q)、物件移動(W)、物件旋轉(E)、物件縮放(R)、物件調整(T)，而滑鼠右鍵為旋轉視角，滑鼠滾輪為縮放視角</li>
+						<li>播放控制(Play/Pause/Step)：執行、暫停、單格前進</li>
+						<li>Asset Store：可以載一些別人做好的東西，物件、材質等</li>
+					</ol>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="12u$"><span class="image fit"><img src="/unity2.jpg" alt="" /></span></div>
+						</div>
+					</div>
+				</section>
+				<hr>
+				<section id="C3">
+					<h2>三、地形編輯器</h2>
+					<h3>(1)新建地形 GameObject-->3D Object-->Terrain</h3>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="6u"><span class="image fit"><img src="/unity3.jpg" alt="" /></span></div>
+							<div class="6u$"><span class="image fit"><img src="/unity4.jpg" alt="" /></span></div>
+						</div>
+					</div>
+					<h3>(2)地形起伏</h3>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="4u"><span class="image fit"><img src="/unity5.jpg" alt="" /> 上下起伏(按住Shift向下)</span></div>
+							<div class="4u"><span class="image fit"><img src="/unity6.jpg" alt="" />平坦化(至Flatten的數值) </span></div>
+							<div class="4u$"><span class="image fit"><img src="/unity7.jpg" alt="" />邊緣柔化</span></div>
+						</div>
+					</div>
+					<h3>(3)地形材質</h3>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="12u$"><span class="image fit"><img src="/unity8.jpg" alt="" />※先Import Package-->Environment</span></div>
+						</div>
+					</div>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="12u$"><span class="image fit"><img src="/unity9.jpg" alt="" />※右方點選Edit Texture-->select-->搜尋grass等並選擇-->點選Add</span></div>
+						</div>
+					</div>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="12u$"><span class="image fit"><img src="/unity10.jpg" alt="" />※一開始會全部變第一個新增的材質，可以自己再新增更多材質鋪上去</span></div>
+						</div>
+					</div>
+					<h3>(4)種樹</h3>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="12u$"><span class="image fit"><img src="/unity11.jpg" alt="" />※Edit Tree-->Add Tree --> 點選Tree Prefab那行尾端的圈圈後進行搜尋 -->Add</span></div>
+							<div class="6u 12u$(small)"><span class="image fit"><img src="/unity12.jpg" alt="" /></span></div>
+							<div class="6u 12u$(small)">
+								<p style = "font-size: 110%	">
+								◇&nbsp;Mass Place Tree --> 在整片地圖內鋪一定數量的樹<br>
+								◇&nbsp;Brush Size --> 一次種的範圍<br>
+								◇&nbsp;Tree Density --> 在範圍內樹的密度<br>
+								◇&nbsp;Tree Height --> 樹高度的範圍<br>
+								◇&nbsp;Lock width to Height --> 樹寬以樹高一定比例計算<br>
+								◇&nbsp;Random Tree Rotation --> 隨機設定樹的方向<br></p>
+							</div>
+						</div>
+					</div>
+					<h3>(5)風力系統</h3>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="3u 6u(small)"><span class="image fit"><img src="/unity13.jpg" alt="" /></span></div>
+							<div class="3u 6u(small)"><span class="image fit"><img src="/unity14.jpg" alt="" /></span></div>
+							<div class="6u$ 12u(small)">
+								<p style="font-size: 110%">
+								◇&nbsp;Main是風力大小<br>
+								◇&nbsp;Turbulence為樹枝受風吹拂的彎曲程度<br>
+								◇&nbsp;Pulse Magnitude是樹枝彎曲最大程度的持續時間<br>
+								◇&nbsp;Pulse Frequency是風停止的頻率<br>
+								</p>
+							</div>
+						</div>
+					</div>
+					<h1><span style="color: red">別種太多樹哦 會當掉!!!!</span></h1>	
+				</section>
+				<hr>
+				<section id="C4">
+					<h2>四、角色控制器</h2>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="12u$"><span class="image fit"><img src="/unity15.jpg" alt="" />在Aseets-->Standard資料夾中會多出character資料夾，在這裡我們使用資料夾中的Third Person Controller，也就是第三人稱</span></div>
+							<div class="12u$"><span class="image fit"><img src="/unity16.jpg" alt="" />匯入後調整攝影機到ThirdPersonController底下後，按下開始即可在樹林中奔跑，一個最簡單的第三人稱角色就完成惹~~</span></div>
+						</div>
+					</div>
+				</section>
+				<hr>
+				<section id="C5">
+					<h2>五、拾取物品(簡單coding)</h2>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="6u"><span class="image fit" style="font-size: 110%"><img src="/unity17.jpg" alt="">(1)先建一個方塊</span></div>
+							<div class="6u$"><span class="image fit" style="font-size: 110%"><img src="/unity18.jpg" alt="">(2)Box Collider的Is Trigger勾起來</span></div>
+						</div>
+					</div>
+					<p style="font-size:110%">(3)Add Tag(pick_up)</p>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="4u"><span class="image fit" style="font-size: 110%"><img src="/unity19.jpg" alt=""></span></div>
+							<div class="4u"><span class="image fit" style="font-size: 110%"><img src="/unity20.jpg" alt=""></span></div>
+							<div class="4u$"><span class="image fit" style="font-size: 110%"><img src="/unity21.jpg" alt=""></span></div>
+						</div>
+					</div>
+					<p style="font-size:110%">(4)新建一個script並啟動(預設會用visual studio)</p>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="4u"><span class="image fit" style="font-size: 110%"><img src="/unity22.jpg" alt=""></span></div>
+							<div class="8u$"><span class="image fit" style="font-size: 110%"><img src="/unity23.jpg" alt=""></span></div>
+						</div>
+					</div>
+					<p style="font-size:110%">(5)先寫一個觸碰方塊會將它消除並計算消幾顆和判斷獲勝的code</p>
+					<pre><code>
+using UnityEngine;
+
+public class pick_up: MonoBehavior {
+	private int count;//先宣告一個數來數消除的方塊數量
+
+	void Start(){
+	 count = 0;//一開始設為0
+	}
+	void Update(){
+
+	}
+	void OnTriggerEnter(Collider other)//若觸碰到其他Trigger
+	{
+		if(other.gameObject.CompareTag("pick_up"))//若其Tag為pick_up
+		{
+			other.gameObject.SetActive(false);//則將他的屬性全部消除
+			count++;//並把數方塊的數+1
+			Debug.Log(count);//在console視窗顯示撿到幾顆
+			if(count>=4)
+			{
+				Debug.Log("You Win!!");//如果count>=4就顯示你贏惹
+			}
+		}
+	}
+}
+					</code></pre>
+					<p style="font-size:110%">(6)丟到FirstPersonController身上並測試(Console視窗 – Ctrl+Shift+C )</p>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="12u"><span class="image fit" style="font-size: 110%"><img src="/unity24.jpg" alt=""></span></div>
+						</div>
+					</div>
+					<p style="font-size:110%">(7)現在已經可以撿東西惹，不過所有的顯示都出現在Console視窗，而玩家會看不到，所以就要設計UI讓它呈現</p>
+				</section>
+				<hr>
+				<section id="C6">
+					<h2>六、遊戲介面</h2>
+					<p>(1)先新增兩個text並命名(會自動建Canvas)</p>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="6u"><span class="image fit" style="font-size: 110%"><img src="/unity25.jpg" alt=""></span></div>
+							<div class="6u$"><span class="image fit" style="font-size: 110%"><img src="/unity26.jpg" alt=""></span></div>
+						</div>
+					</div>
+					<p>(2)先把他們移到想要的位置並調countText設定</p>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="9u"><span class="image fit" style="font-size: 110%"><img src="/unity27.jpg" alt="">讓他在各種視窗大小皆能在正確位置上</span></div>
+							<div class="3u$"><span class="image fit" style="font-size: 110%"><img src="/unity28.jpg" alt=""></span></div>
+						</div>
+					</div>
+					<p>(3)接下來要怎麼改字的內容呢?又來coding啦~</p>
+					<pre><code>
+using UnityEngine;
+using UnityEngine.UI;//先引入UI
+
+public class pick_up : MonoBehavior{
+	private int count;
+
+	public Text countText;//宣告一個Text叫做countText
+	public Text winText;//宣告一個Text叫做winText
+	
+	void Start(){
+		count = 0;
+		countText.test = count.ToString() + "/4";//遊戲開始先把countText自設為數量/4
+		winText.text = "";//遊戲開始時winText沒有字
+	}
+	void Update(){
+
+	}
+	void OnTriggerEnter(Collider other)
+	{
+		if(other.gameObject.CompareTag("pick_up"))
+		{
+			other.gameObject.SetActive(false);
+			count++;
+			countText.text = count.ToString() + "/4";//每碰到一次就更改countText的內容
+			if(count >= 4)
+			{
+				winText.text = "You win!!";//當得到4個以上時winText的內容將會改成You win!!
+			}
+		}
+	}
+}
+					</code></pre>
+					<p>(4)將剛調好的countText,winText拖曳至框框中並測試</p>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="3u"><span class="image fit" style="font-size: 110%"><img src="/unity29.jpg" alt=""></span></div>
+							<div class="9u$"><span class="image fit" style="font-size: 110%"><img src="/unity30.jpg" alt=""></span></div>
+						</div>
+					</div>
+					<p>最後左上角Files-->Build Settings-->Build即可輸出遊戲(會有一個data file跟exe.)
+					~~按下exe檔即可開始遊戲啦~
+					</p>
+				</section>
+				<hr>
+				<section id="C7">
+				<h2>七、天空系統</h2>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="12u"><p>(1)先新增一個材質並更改他的設定</p></div>
+							<div class="6u"><span class="image fit" style="font-size: 110%"><img src="/unity31.jpg" alt=""></span></div>
+							<div class="6u$"><span class="image fit" style="font-size: 110%"><img src="/unity32.jpg" alt=""></span></div>
+							<div class="12u"><p>(2)把圖片拖曳進框框上去(它的原理是將天空分成六塊，可上Assets Store抓別人完成的</p></div>
+							<div class="12u$"><span class="image fit" style="font-size: 110%"><img src="/unity33.jpg" alt=""></span></div>
+							<div class="12u"><p>(3)完成天空啦~~</p></div>
+						</div>
+					</div>
+				</section>
+				<hr>
+				<section id="C8">
+					<h2>八、光照系統</h2>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="12u"><p>(1)先新增光(這裡介紹三種常用的光)</p></div>
+							<div class="12u"><span class="image fit" style="font-size: 110%"><img src="/unity34.jpg" alt=""></span></div>
+							<div class="4u"><span class="image fit" style="font-size: 110%"><img src="/unity35.jpg" alt=""><p>(2)Point Light(點光源)</p></span></div>
+							<div class="4u"><span class="image fit" style="font-size: 110%"><img src="/unity36.jpg" alt=""><p>(3)Spot Light(聚光燈) --> 調整角度後放在主角上即可成為手電筒</p></span></div>
+							<div class="4u"><span class="image fit" style="font-size: 110%"><img src="/unity37.jpg" alt=""><p>(4)Direct Light(平行光) -->照射整個世界的光，例如:太陽光、月光</p></span></div>
+							<div class="12u"><p>(5)Inspector屬性視窗</p></div>
+							<div class="4u"><span class="image fit" style="font-size: 110%"><img src="/unity38.jpg" alt=""></span></div>
+							<div class="8u"><p>◇&nbsp;Color --> 顏色<br>
+											◇&nbsp;Intensity --> 強度<br>
+											◇&nbsp;Shadow Type --> 影字型式<br>
+											◇&nbsp;Cookie --> 可調整光的類型<br>
+											◇&nbsp;Draw Halo --> 光暈<br>
+											◇&nbsp;Flare --> 產生鏡頭光斑<br></p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<hr>
+				<section id="C9">
+					<h2>九、總結</h2>
+					<h3>Resources：</h3>
+					<p>
+					◇&nbsp;<a href="http://docs.unity3d.com/Manual/index.html" target="_blank"	>http://docs.unity3d.com/Manual/index.html(官網Doc)</a><br>
+					◇&nbsp;<a href="http://docs.unity3d.com/ScriptReference/index.html" target="_blank"	>http://docs.unity3d.com/ScriptReference/index.html(官網Doc)</a><br>
+					◇&nbsp;<a href="https://www.mixamo.com/" target="_blank"	>https://www.mixamo.com/(許多人物動畫的網站)</a><br>
+					◇&nbsp;<a href="http://www.autodesk.com/products/3ds-max/overview" target="_blank"	>http://www.autodesk.com/products/3ds-max/overview(好用的建模+動畫程式，而且學生專案可免費使用三年，不過下載非常困難，通常前幾次都會失敗)</a><br>
+					◇&nbsp;<a href="https://goo.gl/JhNaLw" target="_blank"	>張凱鈞大學長的講義</a><br><br>
+					※Unity 3D 還有非常多的功能，可以自己去摸索、Google。上面只是個很簡單很簡單的範例，要實際做出一個很漂亮的遊戲還有好一陣子要走，要有很棒的想法並堅持下去實踐，期待大家都能完成自己心目中的成品~~大家加油挖~~
+					</p>
+				</section>
+			</div>
+		</div>
+	</div>
+	<style type="text/css">
+		p {
+			font-size: 110%;
+		}
+		img {
+			 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+	</style>
+	<!-- Scripts -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/skel.min.js"></script>
+	<script src="/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="/js/main.js"></script>
+	<script src="/unity.js"></script>
+</body>
