@@ -5,8 +5,8 @@ var userSchema = new mongoose.Schema({
 	username: String,
 	password: String,
 	rank: {
-		python: {type: Number, default: 0},
-		cpp: {type: Number, default: 0},
+		python: [{type: Number, default: 0}],
+		cpp: [{type: Number, default: 0}],
 	},
 	judges: {
 		python: [{type: String, default: "--"}],
