@@ -23,6 +23,7 @@ var seedDB = require('./seed.js');
 
 var classRouter = require('./routes/class.js');
 var indexRouter = require('./routes/index.js');
+var include     = require('./lib/include.js');
 
 var realClassName = {
 	'python': 'Python',
@@ -35,6 +36,8 @@ var realClassName = {
 	'ae': 'AE',
 	'rpg': 'RPG Maker'
 };
+
+var roots = ["infor", "infor_william", "infor_wayne"];
 
 mongoose.connect('mongodb://localhost/infor');
 app.use(bodyParser.urlencoded({extended: true}));
@@ -60,7 +63,9 @@ app.use(function(req, res, next) {
 	res.locals.currentUser = req.user;
 	res.locals.realClassName = realClassName;
 	res.locals.error = req.flash('error');
-	res.locals.success = req.flash('success');
+	res.locals.success = req.flash('success'),
+	res.locals.roots = roots;
+	res.locals.include = include;
 	next();
 });
 
