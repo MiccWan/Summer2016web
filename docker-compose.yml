@@ -1,0 +1,15 @@
+version: '2'
+services:
+  db:
+    image: mongo
+    container_name: summer2016student-db
+    volumes:
+      - /data/summer2016student:/data/db
+  web:
+    build: .
+    container_name: summer2016student-web
+    depends_on:
+      - db
+
+    
+

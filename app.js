@@ -36,7 +36,7 @@ var realClassName = {
 	'rpg': 'RPG Maker'
 };
 
-mongoose.connect('mongodb://localhost/infor');
+mongoose.connect('mongodb://db:27017/summer2016student');
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
