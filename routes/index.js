@@ -18,35 +18,10 @@ var User  = require("../models/User.js"),
 		Note  = require('../models/note.js'),
 		Judge = require('../models/judge.js');
 
+
 //Index
 router.get('/', function(req, res) {
 	res.render('index');
-});
-
-//Profile
-router.get('/profile', middleware.isLoggedIn, function(req, res) {
-	var pyCnt, cppCnt;
-	Class.findOne({name: 'python'}, function(err, foundClass) {
-		if (err) {
-			console.log(err);
-			req.flash('error', 'Jizz, something went wrong...');
-			res.redirect('back');
-		} else {
-			pyCnt = foundClass.judges.length;
-			// console.log(pyCnt);
-		}
-	});
-	Class.findOne({name: 'cpp'}, function(err, foundClass) {
-		if (err) {
-			console.log(err);
-			req.flash('error', 'Jizz, something went wrong...');
-			res.redirect('back');
-		} else {
-			cppCnt = foundClass.judges.length;
-			// console.log(cppCnt);
-			res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt});
-		}
-	});
 });
 
 //Rank

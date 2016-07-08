@@ -24,6 +24,14 @@ var User  = require("../models/User.js"),
 var pythonJudge = require('../lib/pythonJudge.js'),
 		cppJudge    = require('../lib/cppJudge.js');
 
+var pyCnt = 0;
+var cppCnt = 0;
+
+//Profile
+router.get('/profile', middleware.isLoggedIn, function(req, res) {
+	res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt});
+});
+
 //Judge -Index
 router.get('/class/:className/judge', middleware.isLoggedIn, function(req, res) {
 	Class.findOne({name: req.params.className}).populate('judges').exec(function(err, foundClass) {
@@ -48,7 +56,6 @@ router.get('/class/:className/judge/new', middleware.isTeacher, function(req, re
 			console.log(err);
 			req.flash("error", "Jizz, something went wrong...");
 			res.redirect('back');
-			
 		} else {
 			res.render('judges/new', {inforClass: foundClass});
 		}
@@ -78,9 +85,10 @@ router.post('/class/:className/judge', middleware.isTeacher, function(req, res) 
 					judge.save();
 					foundClass.judges.push(judge);
 					foundClass.save();
+					if (foundClass.name == 'python') pyCnt++;
+					else cppCnt++;
 					req.flash('success', 'Yeah, new judge');
 					res.redirect('/class/' + foundClass.name + '/judge');
-					
 				}
 			});
 		}
@@ -148,6 +156,8 @@ router.delete('/class/:className/judge/:id', middleware.isTeacher, function(req,
 					req.flash('error', 'Jizz, something went wrong...');
 					res,redirect('back');
 				} else {
+					if (foundClass.name == 'python') pyCnt--;
+					else cppCnt--;
 					req.flash('success', 'Judge deleted successfully');
 					res.redirect('/class/' + foundClass.name + '/judge');
 				}
