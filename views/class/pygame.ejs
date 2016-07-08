@@ -9,11 +9,31 @@
 </head>
 
 <body>
-<div style='float: right'><a href="#menu" style='display: '>Menu</a></div>
+<header id="header">
+	<div class="inner">
+			<nav>
+				<ul>
+					<li><a href="#menu">Menu</a></li>
+				</ul>
+			</nav>
+	</div>
+</header>
 <nav id="menu">
 	<h2><%= realClassName[inforClass.name] %></h2>
 	<ul>
 		<li><a href="/">Home</a></li>
+		<li><a href=""></a></li>
+		<li><a href="#p1">Pygame是什麼?</a></li>
+		<li><a href="#p2">安裝Pygame</a></li>
+		<li><a href="#p3">熟悉Pygame!</a></li>
+		<li><a href="#p4">放上你的背景!</a></li>
+		<li><a href="#p10">創建你的圈圈!</a></li>
+		<li><a href="#p5">創建你的第一個CLASS !</a></li>
+		<li><a href="#p6">設計你的遊戲!</a></li>
+		<li><a href="#p7">判斷玩家的動作!</a></li>
+		<li><a href="#p8">遊戲計時與計分!</a></li>
+		<li><a href=""></a></li>
+		<li><a href=""></a></li>
 		<li><a href="">Book</a></li>	
 		<li><a href="/class/<%= inforClass.name %>/note">Notes</a></li>
 		<li><a href="/class/<%= inforClass.name %>/resource">Resources</a></li>
@@ -26,13 +46,13 @@
 	<h1 style="text-align: center;" class="title"><img src="/class/pygame/art/logo.svg" width="40" height="40"> Pygame</h1>
 	<h2 style="text-align: center;">by INFOR 29th 土匪、隨便</h2>
 
-	<h2>Pygame是什麼?</h2>
+	<h2 id='p1'>Pygame是什麼?</h2>
 
 	<section>
 		<p>pygame是 跨平台 Python模組，專為電子遊戲設計。包含圖像、聲音。建立在SDL基礎上，讓電子遊戲的研發無需被低階語言，如C語言或是更低階的組合語言束縛。基於這樣一個設想，所有需要的遊戲功能和理念都（主要是圖像方面）都包裝在遊戲邏輯本身，所有的資源結構都可以由高級語言提供，如Python</p>
 	</section>
 
-	<h2>安裝Pygame</h2>
+	<h2 id='p2'>安裝Pygame</h2>
 
 	<section>
 		<p>所謂工欲善其事，必先利其器。這堂課的起始當然也是從安裝pygame開始啦!首先，要先檢查妳電腦安裝的python版本，上一堂課應該都已經讓你們安裝python3了，想知道妳安裝的版本的話，就複習一下上一堂課吧!那廢話不多說，我們就直接從pygame的下載開始吧!</p>
@@ -58,7 +78,7 @@
 	<hr>
 	<p></p>
 	<section>
-		<h2 style="text-align:center">熟悉Pygame!</h2>
+		<h2 style="text-align:center" id='p3'>熟悉Pygame!</h2>
 
 		<h3>1.第一步:</h3>
 		<p>在每一個遊戲設計之前，我們要做的第一件事，就是將我們所有要用的模組導入，以及宣告常用到的變數。</p>
@@ -86,7 +106,7 @@
 	<p></p>
 
 	<section>
-		<h2 style="text-align:center">放上你的背景!</h2>
+		<h2 style="text-align:center" id='p4'>放上你的背景!</h2>
 		<p>好，看到上面那張什麼都還沒有的遊戲畫面是不是很可悲?
 我們來為他加上一個能看的背景吧!
 </p>	
@@ -104,7 +124,7 @@
 	<hr>
 	<p></p>
 	<section>
-		<h2 style="text-align:center">創建你的圈圈!</h2>
+		<h2 style="text-align:center" id='p10'>創建你的圈圈!</h2>
 		<p>接下來要為這個遊戲設計一些新玩意，會用到一些新模組:</p>
 		<img src="/class/pygame/image/image011.jpg">
 		<p></p>
@@ -119,7 +139,7 @@
 	<p></p>
 
 	<section>
-		<h2 style="text-align:center">創建你的第一個CLASS !</h2>
+		<h2 style="text-align:center" id='p5'>創建你的第一個CLASS !</h2>
 		<p>好啦!要來到遊戲中最精華的部分了，創建你自己的物件!上一堂課應該都要介紹類別的基礎觀念，這一堂就要來實際應用了!首先將類別的init()打出來，大概是像這樣子:</p>
 
 		<img src="/class/pygame/image/image014.jpg">
@@ -143,7 +163,7 @@ Pygame.Surface就是先創造一個指定長寬的畫布，接著由blit()來合
 	<p></p>
 
 	<section>
-		<h2 style="text-align:center">設計你的遊戲!</h2>
+		<h2 style="text-align:center" id='p6'>設計你的遊戲!</h2>
 		<p>既然創建好你的物件了，接下來就是將他放上我們的屏幕了，但這次可不是簡單的blit()而已，首先我們要在main()創建我們的精靈組:</p>
 
 		<img src="/class/pygame/image/image017.jpg">
@@ -181,7 +201,7 @@ Pygame.Surface就是先創造一個指定長寬的畫布，接著由blit()來合
 	<p></p>
 
 	<section>
-		<h2 style="text-align:center">判斷玩家的動作!</h2>
+		<h2 style="text-align:center" id='p7'>判斷玩家的動作!</h2>
 		<p>好的，上面的東西既然都做好了，接下來就要能讓他和玩家互動囉!既然說到玩家的動作，那就一定是使用鍵盤和滑鼠啦!但這個遊戲裡只需要用到鍵盤，我們就先從main()裡的鍵盤監聽器開始說吧!</p>
 		<img src="/class/pygame/image/image022.jpg">
 		<p></p>
@@ -211,7 +231,7 @@ If xxx==True and scroll.rect.y>490、以及下面三行的scrol的參數
 	<p></p>
 
 	<section>
-		<h2 style="text-align:center">遊戲計時與計分!</h2>
+		<h2 style="text-align:center" id='p8'>遊戲計時與計分!</h2>
 		<p>到了最後的階段，我們總要為遊戲放上計分和計時的系統吧!在此之前，我們先宣告一些變數，這些變數要記得是全域變數(不能在main裡面):</p>
 		<img src="/class/pygame/image/image026.jpg">
 		<p></p>

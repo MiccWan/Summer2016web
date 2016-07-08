@@ -438,6 +438,11 @@ router.delete('/class/:className/note/:id', middleware.isTeacher, function(req, 
 
 //-----------------------------------------------------------------------------
 
+
+router.get('/class/sai', middleware.isLoggedIn, function(req, res) {
+	res.render('class/sai');
+});
+
 //Class - index
 router.get('/class/:className', middleware.isLoggedIn, function(req, res) {
 	Class.findOne({name: req.params.className}, function(err, foundClass) {

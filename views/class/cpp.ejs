@@ -8,7 +8,15 @@
 
 </head>
 <body>
-<div style='float: right'><a href="#menu" style='display: '>Menu</a></div>
+<header id="header">
+	<div class="inner">
+			<nav>
+				<ul>
+					<li><a href="#menu">Menu</a></li>
+				</ul>
+			</nav>
+	</div>
+</header>
 <nav id="menu">
 	<h2><%= realClassName[inforClass.name] %></h2>
 	<ul>
@@ -132,7 +140,7 @@ cout << “迎楓舞建”; /*這是
 				<td>int</td>
 				<td>整數</td>
 				<td>Ex: 48763</td>
-				<td>-231 ~ 231-1（同long int）</td>
+				<td>-2^31 ~ 2^31-1（同long int）</td>
 			</tr>
 			<tr>
 				<td>double</td>
@@ -156,13 +164,13 @@ cout << “迎楓舞建”; /*這是
 				<td>long long int</td>
 				<td>整數</td>
 				<td>Ex: 214748364700</td>
-				<td>-263 ~ 263-1（可寫long long）</td>
+				<td>-2^63 ~ 2^63-1（可寫long long）</td>
 			</tr>
 			<tr>
 				<td>short</td>
 				<td>整數</td>
 				<td>Ex: 1000</td>
-				<td>-215 ~ 215-1</td>
+				<td>-2^15 ~ 2^15-1</td>
 			</tr>
 			<tr>
 				<td>float</td>
