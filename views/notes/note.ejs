@@ -43,7 +43,7 @@
 					<% inforClass.notes.forEach(function(note) { %>
 						<pre><code><%= note.content %></code></pre>
 						<em><%= note.create.toDateString() %></em>
-						<% if (currentUser.username == 'infor') { %>
+						<% if (include(roots, currentUser.username)) { %>
 							<button><a href="/class/<%= inforClass.name %>/note/<%= note._id %>/edit">Edit</a></button>
 							<form action='/class/<%= inforClass.name %>/note/<%= note._id %>?_method=delete' method='POST' class='deleteForm'>
 								<button>Delete</button>
@@ -51,7 +51,7 @@
 						<% } %>
 						
 					<% }) %>
-					<% if (currentUser.username == 'infor') { %>
+					<% if (include(roots, currentUser.username)) { %>
 						<button><a href="/class/<%= inforClass.name %>/note/new">New Notes</a></button>
 					<% } %>
 					</section>
