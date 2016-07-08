@@ -37,13 +37,12 @@ var realClassName = {
 	'rpg': 'RPG Maker'
 };
 
-<<<<<<< HEAD
 mongoose.connect('mongodb://db:27017/summer2016student');
-=======
+
 var roots = ["infor", "infor_william", "infor_wayne"];
 
 mongoose.connect('mongodb://localhost/infor');
->>>>>>> e3e47db80c14dbff1468e721bb846efcf23619b9
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
