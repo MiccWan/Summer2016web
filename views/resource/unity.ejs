@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Unity 3D</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/class/unity/assets/css/main.css" />
+	</head>
+</html>
+
+<body>
+	<div id="wrapper">
+	<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<!-- Logo -->
+				<h1>Unity 3D</h1>
+
+			<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+	<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/class/<%=inforClass.name%>">Book</a></li>	
+				<li><a href="/class/<%= inforClass.name %>/note">Notes</a></li>
+				<li><a href="/class/<%= inforClass.name %>/resource">Resources</a></li>
+				<% if (inforClass.name == 'python' || inforClass.name == 'cpp' || inforClass.name == 'java') { %>
+					<li><a href="/class/<%= inforClass.name %>/judge">Judge</a></li>
+				<% } %>
+				<li><a href="/profile">Profile</a></li>
+			</ul>
+		</nav>
+<h3>Resources：</h3>
+					<p>
+					◇&nbsp;<a href="http://docs.unity3d.com/Manual/index.html" target="_blank"	>http://docs.unity3d.com/Manual/index.html(官網Doc)</a><br>
+					◇&nbsp;<a href="http://docs.unity3d.com/ScriptReference/index.html" target="_blank"	>http://docs.unity3d.com/ScriptReference/index.html(官網Doc)</a><br>
+					◇&nbsp;<a href="https://www.mixamo.com/" target="_blank"	>https://www.mixamo.com/(許多人物動畫的網站)</a><br>
+					◇&nbsp;<a href="http://www.autodesk.com/products/3ds-max/overview" target="_blank"	>http://www.autodesk.com/products/3ds-max/overview(好用的建模+動畫程式，而且學生專案可免費使用三年，不過下載非常困難，通常前幾次都會失敗)</a><br>
+					◇&nbsp;<a href="https://goo.gl/JhNaLw" target="_blank"	>張凱鈞大學長的講義</a><br><br>
+
+					<style type="text/css">
+		p {
+			font-size: 110%;
+		}
+		img {
+			 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		}
+	</style>
+	<!-- Scripts -->
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/skel.min.js"></script>
+	<script src="/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="/js/main.js"></script>
+	<script src="/unity.js"></script>
+</body>

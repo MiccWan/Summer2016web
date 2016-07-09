@@ -17,7 +17,6 @@ var User  = require("./models/User.js"),
 		Note  = require('./models/note.js'),
 		Judge = require('./models/judge.js');
 
-
 var middleware = require('./middleware');
 var seedDB = require('./seed.js');
 

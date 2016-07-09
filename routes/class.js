@@ -32,6 +32,20 @@ router.get('/profile', middleware.isLoggedIn, function(req, res) {
 	res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt});
 });
 
+
+//Resources
+router.get('/class/:className/resource', middleware.isLoggedIn, function(req, res) {
+	Class.findOne({name: req.params.className}, function(err, foundClass) {
+		if (err) {
+			console.log(err);
+			req.flash('error', 'Jizz, something went wrong');
+			res.redirect('back');
+		} else {
+			res.render('resource/' + foundClass.name, {inforClass: foundClass});
+		}
+	});
+});
+
 //Judge -Index
 router.get('/class/:className/judge', middleware.isLoggedIn, function(req, res) {
 	Class.findOne({name: req.params.className}).populate('judges').exec(function(err, foundClass) {
