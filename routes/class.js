@@ -36,7 +36,7 @@ router.get('/profile', middleware.isLoggedIn, function(req, res) {
 //Resources
 router.get('/class/:className/resource', middleware.isLoggedIn, function(req, res) {
 	Class.findOne({name: req.params.className}, function(err, foundClass) {
-		if (err) {
+		if (err) {x
 			console.log(err);
 			req.flash('error', 'Jizz, something went wrong');
 			res.redirect('back');

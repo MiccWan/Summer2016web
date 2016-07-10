@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Summer RPG MAKER</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="assets_2/css/main.css">
+	<!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700italic' rel='stylesheet' type='text/css'> -->
+
+</head>
+<body>
+	<h1 style="text-align: center;" class="title"><img src="art/logo.svg" width="40" height="40">RPG MAKER</h1>
+	
+
+	<h2>新增專案</h2>
+
+	<section>
+		
+	</section>
+
+	<h2>安裝Pygame</h2>
+
+	<section>
+		<p>所謂工欲善其事，必先利其器。這堂課的起始當然也是從安裝pygame開始啦!首先，要先檢查妳電腦安裝的python版本，上一堂課應該都已經讓你們安裝python3了，想知道妳安裝的版本的話，就複習一下上一堂課吧!那廢話不多說，我們就直接從pygame的下載開始吧!</p>
+	</section>
+
+	<section>
+		<h5>1.	到 http://www.lfd.uci.edu/~gohlke/pythonlibs/#pygame</h3>
+			<p></p>
+		<h5>2.	下載 pygame-1.9.2a0-cp35-none-win_amd64.whl</h3>
+		<img src="image/image001.jpg">
+		<p></p>
+		<h5>3.	下載完畢後，記得要用Winrar或者7-zip解壓縮</h5>
+		<img src="image/image002.jpg">
+		<p></p>
+		<h5>4.	然後解壓縮到C:/python34/Lib/sit-packages</h5>
+		<img src="image/image003.jpg">
+		<p></p>
+		<h5>5.	開啟你的python IDLE，輸入import pygame ，如果成功的話應該會出現下一行的>>> ，然後再輸入print(pygame.ver) 來檢查安裝的版本是否正確，如果最後的畫面跟下圖一樣的話，那就代表你成功安裝pygame囉!</h5>
+		<img src="image/image004.jpg">
+		<p></p>
+
+	</section>
+	<hr>
+	<p></p>
+	<section>
+		<h2 style="text-align:center">熟悉Pygame!</h2>
+
+		<h3>1.第一步:</h3>
+		<p>在每一個遊戲設計之前，我們要做的第一件事，就是將我們所有要用的模組導入，以及宣告常用到的變數。</p>
+		<img src="image/image005.jpg">
+		<p></p>
+		<p>前三行引入的os、pygame、time和random等等會在遊戲裡出現它的應用。</p>
+
+		<h3>2.建構視窗以及main函式:</h3>
+		<img src="image/image006.jpg">
+		<p></p>
+		<p>前兩行是我們自定義的變數，名稱隨便改都行，但是第四行的兩個參數一定要跟上面相同，否則就會compile error。
+	而第四行和第五行都有出現pygame.display，這就是我們接觸到的第一個pygame模組，主要是管理遊戲視窗的物件，像是第五行的set_caption，就是設定自己的遊戲標題。
+</p>
+		<img src="image/image007.jpg">
+		<p></p>
+		<p>上面的main()就是精簡到不行的main函式啦，換句話說就是什麼都沒有~，主要要記得的就是在main()其他程序開始之前，你都需要打上pygame.init()，意思就是讓電腦知道pygame這個模組要在這邊被宣告進來，不然後面的功能都沒辦法用喔!
+	最後，應該會有很多學生看到 if __name__==”__main__”:，那兩行感到很疑惑，其實那就只是電腦在編譯完你的程式後，會判斷要直接從這個檔案開始執行還是當作其他程式的模組來使用，但因為我們要做的遊戲並不大，就不用分成好幾個區塊來寫了，所以就直接在尾巴告訴電腦開始執行吧!
+	以下是目前為止什麼都沒有的遊戲畫面(而且還當掉):
+</p>
+		<img src="image/image008.jpg">
+		<p></p>
+
+	</section>
+	<hr>
+	<p></p>
+
+	<section>
+		<h2 style="text-align:center">放上你的背景!</h2>
+		<p>好，看到上面那張什麼都還沒有的遊戲畫面是不是很可悲?
+我們來為他加上一個能看的背景吧!
+</p>	
+		<img src="image/image009.jpg">
+		<p></p>
+		<p>可以看到多了幾行程式碼，首先是 clock=pygame.time.Clock()，意思就是為這個遊戲宣告一個計時表，主要是應用在設定遊戲楨格的更新幀率，如clock.tick(70)，也就是每70毫秒就更新一次遊戲畫面上的變動，最後還要加上pygame.display.update()才會正確的更新屏幕，否則就會讓你的物體定格在那裏喔!
+	然後還多了一行的screen.blit(background,0,0)，之後會很常應用到blit()，如果想要在遊戲畫面上新增物件的話，最後一定要加上screen.blit()，否則就什麼都沒有喔。
+
+	最後放上背景的樣子吧!
+</p>
+		<p></p>
+		<img src="image/image010.jpg">
+		<p></p>
+	</section>
+	<hr>
+	<p></p>
+	<section>
+		<h2 style="text-align:center">創建你的圈圈!</h2>
+		<p>接下來要為這個遊戲設計一些新玩意，會用到一些新模組:</p>
+		<img src="image/image011.jpg">
+		<p></p>
+		<p>可以看到新的用法，pygame.image.load()，意思很簡單，就是將電腦裡的圖片存進變數裡，後面的convert()就是讓圖片轉換成pygame能用的形式，最後set_colorkey()就是將特定的顏色透明化囉!</p>
+		<img src="image/image012.jpg">
+		<p></p>
+		<p>然後記得在程式尾端加上blit()，不然會什麼都沒有喔!(完成品在下圖)</p>
+		<img src="image/image013.jpg">
+		<p></p>
+	</section>
+	<hr>
+	<p></p>
+
+	<section>
+		<h2 style="text-align:center">創建你的第一個CLASS !</h2>
+		<p>好啦!要來到遊戲中最精華的部分了，創建你自己的物件!上一堂課應該都要介紹類別的基礎觀念，這一堂就要來實際應用了!首先將類別的init()打出來，大概是像這樣子:</p>
+
+		<img src="image/image014.jpg">
+		<p></p>
+		<p>恩，相信你們已經看得頭昏眼花了，其實真正重要的只有class scroll()括號裡面的pygame.sprite.Sprite ，以及super().__init__()，這兩行的意思是繼承pygame的sprite模組並將它宣告進物件裡，如果要用到sprite的模組的話，在寫物件時就一定要記得打上這兩行，反而其他的self.xxx並不是那麼重要。</p>
+		<p>	然後接下來看到倒數幾行有一些for迴圈，再說這些之前就必須要提到抓取幀格的方法，程式碼如下:</p>
+
+		<img src="image/image015.jpg">
+		<p></p>
+		<p>首先，建立另一個叫做SpriteSheet的類別，由於這個類別不需要用到pygame.sprite.Sprite，因此就不用在括號裡打上這行，也不用加上super().__init__()。 接著請看到def get_image():，裡面的第一行
+Pygame.Surface就是先創造一個指定長寬的畫布，接著由blit()來合上取得的圖像，最後在set_colorkey()並return圖像，簡單來說就是將一個個圖片割下來放到適合的容器，否則一張圖片就會向下圖一樣，只有好幾個幀格卻沒辦法一個個用:
+</p>	
+		<img src="image/image016.gif">
+		<p></p>
+		<p>好啦!回到最一開始那幾個for 迴圈，看得懂的人就知道他只是計算好每一個幀格的長寬，並且將割下來的圖像存取成陣列，等到需要用到時，再依序快速變換幀格，就會形成遊戲中的動畫了喔!</p>
+		<p></p>
+
+	</section>
+
+	<hr>
+	<p></p>
+
+	<section>
+		<h2 style="text-align:center">設計你的遊戲!</h2>
+		<p>既然創建好你的物件了，接下來就是將他放上我們的屏幕了，但這次可不是簡單的blit()而已，首先我們要在main()創建我們的精靈組:</p>
+
+		<img src="image/image017.jpg">
+		<p></p>
+		<p>上面四行其實都只是重複使用pygame.sprite.Group()，簡單來說就是把剛剛寫好的類別集結成群組，但為什麼要這樣做?因為在對於大量出現的物件時，不太可能一個個去管理他的運作，就以我們的遊戲來說，因為背景有四個軌道，所以就創建四個群組，分門別類又能有統一動作，而統一動作就要靠寫好在物件裡的update()，因為那相當於精靈組的管理員。
+那我們就先來看看我們scroll類別的update()吧!
+</p>
+
+		<img src="image/image018.jpg">
+		<p></p>
+		<p>恩，上面是滿滿的註解，因為太多東西要講了，所以就讓你們自己看看了解一下吧!</p>
+
+		<p></p>
+		<p>好!那麼關於我們物件都已經寫好了!接下來就只是在main()裡面每隔一小段時間創造我們的物件!</p>
+		<img src="image/image019.jpg">
+
+		<p></p>
+		<p>需要注意的只有tick=pygame.time.get_ticks()和他下面的tick-now>ok，因為這兩個的搭配很常用在需要計時的地方。接著還有一行是case=random.randint(1,4)，還記得我們最一開始有import random
+嗎?就是用在這個地方啦!隨機選取1到4的整數，剛好符合我們遊戲的需求，就像是隨機取四個軌道中的產生下一個物件。最後要記得加上now=tick這一行，否則會無限產生擠成一坨在螢幕上喔!
+</p>
+		<img src="image/image020.jpg">
+		
+		<p></p>
+		<p>弄完update()的東西以後，當然就是要在main()裡面呼叫他啦!但可不是一個個呼叫，而是使用精靈組喔!所以精靈組對遊戲來講真的很重要，不然會讓你的程式碼一直做重複的事情，最後，要記得使用精靈組的draw()
+，而且一定要放在背景和圈圈blit()後面，否則會被背景覆蓋過去喔!
+</p>
+
+		<p></p>
+		<p>下面是成品圖~</p>
+		<img src="image/image021.jpg">
+		<p></p>
+	</section>
+
+	<hr>
+	<p></p>
+
+	<section>
+		<h2 style="text-align:center">判斷玩家的動作!</h2>
+		<p>好的，上面的東西既然都做好了，接下來就要能讓他和玩家互動囉!既然說到玩家的動作，那就一定是使用鍵盤和滑鼠啦!但這個遊戲裡只需要用到鍵盤，我們就先從main()裡的鍵盤監聽器開始說吧!</p>
+		<img src="image/image022.jpg">
+		<p></p>
+		<p>上面那張圖的註解已經說明了大部分的觀念，其實在pygame裡面簡化了鍵盤的應用，需要注意的是有按下鍵盤就一定要有放開鍵盤，否則按下的事件會無限循環喔!判斷式裡面的one=False什麼的我們先在main()裡面宣告:</p>
+		<img src="image/image023.jpg">
+		<p></p>
+		<p>然後上面這四行的應用主要是在下面這張圖:</p>
+		<img src="image/image024.jpg">
+		<p></p>
+		<p>上面有一些重複的東西，分別是for scrol in green_list、
+If xxx==True and scroll.rect.y>490、以及下面三行的scrol的參數
+設定，意思是判斷每一個在精靈組裡面的物件，當物件的參數為True並且夠靠近圈圈時，就設定notstop=False(讓物件別往下掉了)、boom=True
+(物件可以開始爆炸了)以及初始化時間的start=pygame.time.get_ticks()。
+如果有不懂的參數的話，記得往上翻翻看前面update()那一段。
+</p>	
+
+		<p></p>
+		<p>OK，下面就是目前為止做出來的爆炸效果囉!</p>
+		<img src="image/image025.jpg">
+		<p></p>
+
+
+
+	</section>
+
+	<hr>
+	<p></p>
+
+	<section>
+		<h2 style="text-align:center">遊戲計時與計分!</h2>
+		<p>到了最後的階段，我們總要為遊戲放上計分和計時的系統吧!在此之前，我們先宣告一些變數，這些變數要記得是全域變數(不能在main裡面):</p>
+		<img src="image/image026.jpg">
+		<p></p>
+
+		<p>另外在main()裡面再加入一行，當作整個遊戲的計時器:</p>
+		<img src="image/image027.jpg">
+		<p></p>
+
+		<p>接下來我們就先介紹怎麼在遊戲中出現文字吧!</p>
+		<img src="image/image028.jpg">
+		<p></p>
+
+		<p>先看到第一個函式text_objects吧，他的功用是將文字轉成Surface(畫布)，
+然後再創建一個Rect(容器)，並將她們一起return 到message_display()，而在第二個函式裡最主要的就是pygame.font.Font()，這是設定字體的字型，然後再呼叫第一個函式轉換成pygame能用的Surface，最後，要記得加上
+Screen.blit()和pygame.display.update()，如果沒有前者的話，字體不會被建構在屏幕上，而沒有後者的話，即使建構了字體，但沒有update()，還是什麼都看不到，所以這兩行都是不可或缺的要素喔!
+</p>
+
+		<p>好啦!我們來把這些程式碼實際在main()裡面呼叫吧!</p>
+		<img src="image/image029.jpg">
+		<p></p>
+		<p>恩，先看到那行特別長的東東吧!那就是我們呼叫剛剛打的函式，裡面有一些奇怪的東西，像是str()，其實很簡單，就只是把整數型態轉換成換成字串，然後tick//1000，則是因為我們一開始宣告的tick是千毫秒為單位，所以要變成以秒為單位的話，就要除以1000。喔耶!下面就是最後成品啦!!!</p>
+		<img src="image/image030.jpg">
+		<p></p>
+		<p></p>
+
+
+
+	</section>
+
+			<script src="assets_2/js/jquery.min.js"></script>
+			<script src="assets_2/js/jquery.scrollex.min.js"></script>
+			<script src="assets_2/js/jquery.scrolly.min.js"></script>
+			<script src="assets_2/js/skel.min.js"></script>
+			<script src="assets_2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets_2/js/main.js"></script>
+</body>
+</html>
