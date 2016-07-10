@@ -278,7 +278,7 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 									if (results[i] == 'AC') {
 										score += 100 / judge.data;
 									} else if (results[i] == 'CE') {
-										allAC = 'CE;
+										allAC = 'CE';
 									} else {
 										if (allAC == 'AC') {
 											allAC = 'WA';
