@@ -240,7 +240,7 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 					if (err) {
 						console.log(err);
 					} else {
-						var allAC = true;
+						var allAC = 'AC';
 						var score = 0;
 						var tasks = [];
 						var oldScore = req.user.rank[foundClass.name][judge.number - 1];
@@ -263,25 +263,31 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 								for (var i = 0; i < judge.data; i++) {
 									if (results[i] == 'AC') {
 										score += 100 / judge.data;
+									} else if (results[i] == 'CE') {
+										allAC = 'CE;
 									} else {
-										allAC = false;
+										if (allAC == 'AC') {
+											allAC = 'WA';
+										}
 									}
 								}
 								if (score > oldScore || !oldScore) {
 									var newRank = req.user.rank;
 									newRank[foundClass.name][judge.number - 1] = score;
 									var newJudges = req.user.judges;
-									newJudges[foundClass.name][judge.number - 1] = allAC ? 'AC' : 'WA';
+									newJudges[foundClass.name][judge.number - 1] = allAC;
 									User.findByIdAndUpdate(req.user._id, {rank: newRank, judges: newJudges}, function(err, user) {
 										if (err) {
 											console.log(err);
 											req.flash('error', 'Jizz, something went wrong...');
 											res.redirect('back');
 										} else {
-											if (allAC) {
+											if (allAC == 'AC') {
 												req.flash('success', 'Accepted');
-											} else {
+											} else if (allAC == 'WA') {
 												req.flash('error', 'Wrong Answer');
+											} else {
+												req.flash('jizz', 'Compilation Error');
 											}
 											res.redirect('/class/' + foundClass.name + '/judge');
 										}
