@@ -1,3 +1,4 @@
+
 @import url(font-awesome.min.css);
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
 
@@ -1546,10 +1547,15 @@
 		top: -0.5em;
 	}
 
-	hr {
+	/*hr {
 		border: 0;
 		border-bottom: solid 2px #fff;
 		margin: 3em 0;
+	}*/
+	hr{
+		border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
 	}
 
 		hr.major {
