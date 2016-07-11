@@ -95,8 +95,6 @@ router.post('/class/:className/judge', middleware.isTeacher, function(req, res) 
 					judge.save();
 					foundClass.judges.push(judge);
 					foundClass.save();
-					if (foundClass.name == 'python') pyCnt++;
-					else cppCnt++;
 					req.flash('success', 'Yeah, new judge');
 					res.redirect('/class/' + foundClass.name + '/judge');
 				}
@@ -166,8 +164,6 @@ router.delete('/class/:className/judge/:id', middleware.isTeacher, function(req,
 					req.flash('error', 'Jizz, something went wrong...');
 					res,redirect('back');
 				} else {
-					if (foundClass.name == 'python') pyCnt--;
-					else cppCnt--;
 					req.flash('success', 'Judge deleted successfully');
 					res.redirect('/class/' + foundClass.name + '/judge');
 				}

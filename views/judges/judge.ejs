@@ -1,11 +1,63 @@
-<% include ../partials/header.ejs %>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Jizz</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/stylesheet/main.css"/>
+		<link rel="stylesheet" type="text/css" href="/stylesheet/flash.css">
+		<link rel=stylesheet href="/CodeMirror/doc/docs.css">
+<link rel="stylesheet" href="/CodeMirror/lib/codemirror.css">
+<script src="/CodeMirror/lib/codemirror.js"></script>
+<script src="/CodeMirror/addon/edit/matchbrackets.js"></script>
+<% if (inforClass.name == 'python') { %>
+	<script src="/CodeMirror/mode/python/python.js"></script>
+<% } %>
+
+<style type="text/css">.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}</style>
+	</head>
+	<body>
+	<div class='alertcontainer'>
+		<% if (error && error.length > 0) { %>
+		<div class="alert alert-danger" role="alert"><%=error%></div>
+	<% } %>
+	<% if (success && success.length > 0) {%>
+		<div class="alert alert-success" role="alert"><%=success %></div>
+	<%	} %>
+	<% if (jizz && jizz.length > 0) {%>
+		<div class='alert alert-warning' role='alert'><%=jizz%></div>
+	<% } %>
+	</div>
 <div class='container'>
 	<h1><%= judge.name %></h1>
 	<p><%= judge.description %></p>
 	<form action='/class/<%= inforClass.name %>/judge/<%= judge._id %>' method='POST'>
-	<textarea name="ans"></textarea>
+	<article>
+		<div>
+			<textarea id="code" name="ans"></textarea>
+		</div>
+	</article>
 	<button>Submit</button>
 </form>
 	
 </div>
+<script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        mode: {name: "python",
+               version: 3,
+               singleLineStringErrors: false},
+        lineNumbers: true,
+        indentUnit: 4,
+        matchBrackets: true
+    });
+
+    // CodeMirror.fromTextArea(document.getElementById("code-cython"), {
+    //     mode: {name: "text/x-cython",
+    //            version: 2,
+    //            singleLineStringErrors: false},
+    //     lineNumbers: true,
+    //     indentUnit: 4,
+    //     matchBrackets: true
+    //   });
+    </script>
 <% include ../partials/footer.ejs %>

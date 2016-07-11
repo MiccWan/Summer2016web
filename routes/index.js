@@ -35,7 +35,7 @@ router.get('/profile', middleware.isLoggedIn, function(req, res) {
 	var t = [[], []];	
 	var name = ['python', 'cpp'];
 	var task = [];
-	
+	res.render('index/profile');
 });
 
 
