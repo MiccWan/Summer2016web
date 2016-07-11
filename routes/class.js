@@ -183,6 +183,11 @@ router.delete('/class/:className/judge/:id', middleware.isTeacher, function(req,
 	});
 });
 
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};
+
 //Judging
 router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, res) {
 	var ans = req.body.ans;
@@ -206,8 +211,8 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 						var tasks = [];
 						var oldScore = req.user.rank[foundClass.name][judge.number - 1];
 						for (var i = 0; i < judge.data; i++) {
-							let input = judge.input[i];
-							let output = judge.output[i];
+							let input = judge.input[i].replaceAll('\r', '');
+							let output = judge.output[i].replaceAll('\r', '');
 							tasks.push(function(cb) {
 								pythonJudge(ans, input, output, (err, status) => {
 									cb(err, status);
@@ -268,8 +273,8 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 						var tasks = [];
 						var oldScore = req.user.rank[foundClass.name][judge.number - 1];
 						for (var i = 0; i < judge.data; i++) {
-							let input = judge.input[i];
-							let output = judge.output[i];
+							let input = judge.input[i].replaceAll('\r', '');
+							let output = judge.output[i].replaceAll('\r', '');
 							tasks.push(function(cb) {
 								cppJudge(ans, input, output, (err, status) => {
 									cb(err, status);
@@ -324,6 +329,7 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 		}
 	});
 });
+
 
 //Judge - Show one
 router.get('/class/:className/judge/:id', middleware.isLoggedIn, function(req, res) {

@@ -35,7 +35,7 @@
 	<% } %>
 	</div>
 <div class='container'>
-	<h1><%=judge.number%><%= judge.name %></h1>
+	<h1><%=judge.number%>.&nbsp;<%= judge.name %></h1>
 	<p><%= judge.description %></p>
 	<form action='/class/<%= inforClass.name %>/judge/<%= judge._id %>' method='POST'>
 	<% if (inforClass.name == 'python') {%>
