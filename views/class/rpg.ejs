@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Summer RPG MAKER</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="/class/rpg/assets_2/css/main.css">
+	<!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700italic' rel='stylesheet' type='text/css'> -->
+
+</head>
+<body>
+<header id="header">
+	<div class="inner">
+			<nav>
+				<ul>
+					<li><a href="#menu">Menu</a></li>
+				</ul>
+			</nav>
+	</div>
+</header>
+<nav id="menu">
+	<h2><%= realClassName[inforClass.name] %></h2>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="">Book</a></li>	
+		<li><a href="/class/<%= inforClass.name %>/note">Notes</a></li>
+		<li><a href="/class/<%= inforClass.name %>/resource">Resources</a></li>
+		<% if (inforClass.name == 'python' || inforClass.name == 'cpp' || inforClass.name == 'java') { %>
+			<li><a href="/class/<%= inforClass.name %>/judge">Judge</a></li>
+		<% } %>
+		<li><a href="/profile">Profile</a></li>
+	</ul>
+</nav>
+	<h1 style="text-align:center">RPG MAKER</h1>
+	<h4 style="TEXT-ALIGN:center">RPG製作大師，是一款角色扮演遊戲製作軟體，宗旨為不懂程式編輯的一般玩家也能做出RPG遊戲，以簡單指令取代程式語言的事件編輯器，讓不會編程的人也能享受製作遊戲的樂趣</h4>
+	
+	<hr>
+
+	<div id="wrapper" >
+		<div id="main">
+			<div class="inner">
+				<section>
+				<h2>新增專案</h2>
+				<div class="box alt">
+						<div class="row uniform">
+							
+							<br>
+
+							<div class="8u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image005.jpg" alt="" /></span></div>
+						</div>
+					</div>
+				</section>
+				<br>
+				<hr>
+				<br>
+				<section>
+					<h2>地圖</h2>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="6u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image006.jpg" alt=""  /></span></div>
+							<div class="6u" style="padding-left:10%;"><span class="image fit" ><b>右鍵地圖可以改變地圖設定，可以變換場景的物件喔!</b></span></div>
+					</div>
+						</div>	
+				</section>
+				<br>
+				<hr>
+				<br>
+				<section>
+					<div class="box alt">
+						<div class="row uniform" >
+							
+							<div class="4u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image007.png" alt=""  /></span></div>
+							<div class="6u" style="padding-left:10% ; "><span class="image fit"><b>地圖分成三層，第一層會被第二層蓋住，以此類推
+第一層通常是地質，第二層是裝飾物，第三層則是讓物品有層次，有前後的效果
+</b></span></div>
+						</div>
+					</div>
+				</section>
+
+				
+				<section style="padding-left:10%">
+				<h2>EX:</h2>
+					<div class="box alt">
+						<div class="row uniform" >
+							<div class="4u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image008.jpg" alt=""  />第一層</span></div>
+							<div class="4u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image009.jpg" alt=""  />第二層</span></div>
+
+						</div>
+					</div>
+					<div class="box alt">
+						<div class="row uniform" >
+							<div class="4u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image010.jpg" alt=""  />第三層</span></div>
+							<div class="4u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image011.jpg" alt=""  />完成了~｡:.ﾟヽ(*´∀`)ﾉﾟ.:｡</span></div>
+
+						</div>
+					</div>
+				</section>
+				<br>
+				<hr>
+				<br>
+				<section>
+				<h2>事件</h2>
+					<div class="box alt">
+						<div class="row uniform" >
+						<span style="padding-left:10%"><img src="/class/rpg/image/image012.jpg"><b>  點選事件，在地圖上你想要的方格點兩下會跳出製作事件，可以製作的指令有三頁，會挑部分來講~</b></span>
+						<div class="6u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image017.png" alt=""  /></span>
+						</div><br><br><br><br>
+						<div class="6u" style="padding-left:10%"><span class="image fit"><b>A事件出現條件:</b> <br>		當開關為ON的時候會出現的事件，適合用在有支線出現或要達到一定條件才可以繼續的時候 <br><br>
+						<b>B非主角製作:</b> <br>	製作路人或是怪物等非玩家操縱的角色，可以自行控制他移動的路線及速度 <br><br><b>C事件開始條件:</b>   <br>		改變事件如何開始</span>
+						</div>
+					</div>
+
+					<div class="box alt">
+						<div class="row uniform" >
+							<span style="padding-left:10%"><b>D事件指令:</b></span><br><br>
+							<span class="6u" style="padding-left:15%">第一頁→</span><br><br>
+							<div class="8u" style="padding-left:20%">
+								<p>顯示對話: 製作旁白或人物對話 <br>
+								開關操作: 建立事件出現條件的開關 <br>
+								暫時消除事件: 如果事件開始條件是自動執行記得要開
+								</p>
+							</div>
+
+							<span class="6u" style="padding-left:15%">第二頁→</span><br><br>
+							<div class="8u" style="padding-left:20%">
+								<p>場所移動: 可以切換地圖，記得做雙向道!!! <br>
+									畫面的震動: 可以製作地震
+
+								</p>
+							</div>
+							<span class="6u" style="padding-left:15%">第三頁→</span><br><br>
+							<div class="8u" style="padding-left:20%">
+								<p>戰鬥處理: 可以進入戰鬥畫面 <br>
+									遊戲結束: 在出現jump scare後死亡在恐怖rpg中很常見
+
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<br>
+				<hr>
+				<br>
+
+				<section>
+					<h2>遊戲設定</h2>
+					<div class="box alt">
+						<div class="row uniform" >
+							<div class="8u" style="padding-left:10%">
+								<span><img src="/class/rpg/image/image018.jpg"> 在資料庫中可以改變角色、敵人、技能等等設定 <br><br>
+								<b>角色→</b></span>
+							</div>
+							
+						</div>
+					</div>
+
+					<div class="box alt">
+						<div class="row uniform" >
+							<div class="5u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image022.png" alt=""  /></span></div>
+							<div class="5u" style="padding-left:10%"><span class="image fit">
+								A變更最大值: 可以增加角色 <br><br>
+								B角色基本設定: 更改名字等等 <br><br>
+								C能力值: <br>
+								力量→物理攻擊 熟練→命中率
+								魔力→魔法攻擊 速度→閃躲率
+
+							</span></div>
+						</div>
+					</div>
+					<br>
+
+					<div class="box alt">
+						<div class="row uniform" >
+							<div class="8u" style="padding-left:10%">
+								<span>
+								<b>隊伍→</b></span>
+							</div>
+							
+						</div>
+					</div>
+
+					<div class="box alt">
+						<div class="row uniform" >
+							<div class="5u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image025.png" alt=""  /></span></div>
+							<div class="5u" style="padding-left:10%"><span class="image fit">
+								隊伍是你會遇到的敵人隊伍，可以設置你自己想遇到的敵人
+								加入→加入你在敵人製作的角色 <br><br>
+								戰鬥條件→當敵人HP低於10%會增加HP，類似這樣的條件設置
+								<br>
+
+							</span></div>
+						</div>
+					</div>
+
+					<div class="box alt">
+						<div class="row uniform" >
+							<div class="8u" style="padding-left:10%">
+								<span>
+								<b>系統→</b></span>
+							</div>
+							
+						</div>
+					</div>
+
+					<div class="box alt">
+						<div class="row uniform" >
+							<div class="5u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image026.jpg" alt=""  /></span></div>
+							<div class="5u" style="padding-left:10%"><span class="image fit">
+								各種初期同伴設置、開頭畫面、音樂設置等等都在這裡~!
+								<br>
+
+							</span></div>
+						</div>
+					</div>
+
+				</section>
+				<br>
+				<hr>
+				<br>
+
+				<section>
+					<h2>匯入</h2>
+					<div class="box alt">
+						<div class="row uniform" >
+							<div class="8u" style="padding-left:10%">
+								<span><img src="/class/rpg/image/image027.jpg" alt=""  />
+								打開媒體庫可以匯入相應的圖像或音樂</span>
+							</div>
+							
+						</div>
+					</div>
+					<div class="box alt">
+						<div class="row uniform" >
+							<div class="5u" style="padding-left:10%"><span class="image fit"><img src="/class/rpg/image/image028.jpg" alt=""  /></span></div>
+							<div class="5u" style="padding-left:10%"><span class="image fit">
+								EX: <br><br>
+								Battlers→戰鬥圖像<br><br>
+								Icons→物品<br><br>
+								Characters<br><br>
+								→人物行走圖<br><br>
+								BGM→背景音樂<br><br>
+
+							</span></div>
+						</div>
+					</div>
+
+				</section>
+
+				<section>
+					<h2>實用網站</h2>
+					<div class="box alt">
+						<div class="row uniform" >
+							<div class="8u" style="padding-left:10%">
+								<span><b>Rpg Material→ http://mgshellc.lix.jp/tkxp.html</b> <br><br>
+								(有許多物品、戰鬥背景等等，另存匯入即可使用) <br><br>
+								<b>Loose leaf rpg人物製作→</b>
+								http://www.geocities.jp/kurororo4/looseleaf/ <br><br>
+								(可以製作人物行走圖，製作好截圖並匯入即可使用) <br><br>
+								魔王魂→ http://maoudamashii.jokersounds.com/ <br><br>
+								(超多遊戲使用的音樂素材，超好聽~)
+								</span>
+							</div>
+							
+						</div>
+					</div>
+
+				</section>
+				<br>
+				<hr>
+				<br>
+			</div>
+			
+		</div>
+	</div>
+
+			<script src="/class/rpg/assets_2/js/jquery.min.js"></script>
+			<script src="/class/rpg/assets_2/js/jquery.scrollex.min.js"></script>
+			<script src="/class/rpg/assets_2/js/jquery.scrolly.min.js"></script>
+			<script src="/class/rpg/assets_2/js/skel.min.js"></script>
+			<script src="/class/rpg/assets_2/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/class/rpg/assets_2/js/main.js"></script>
+</body>
+</html>
