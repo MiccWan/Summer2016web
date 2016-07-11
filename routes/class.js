@@ -32,7 +32,7 @@ var pythonJudge = require('../lib/pythonJudge.js'),
 //Resources
 router.get('/class/:className/resource', middleware.isLoggedIn, function(req, res) {
 	Class.findOne({name: req.params.className}, function(err, foundClass) {
-		if (err) {x
+		if (err) {
 			console.log(err);
 			req.flash('error', 'Jizz, something went wrong');
 			res.redirect('back');

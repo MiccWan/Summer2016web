@@ -6,15 +6,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="/stylesheet/main.css"/>
 		<link rel="stylesheet" type="text/css" href="/stylesheet/flash.css">
-		<link rel=stylesheet href="/CodeMirror/doc/docs.css">
+		<!--....................................................-->
+		<link rel="stylesheet" href="/CodeMirror/doc/docs.css">
 <link rel="stylesheet" href="/CodeMirror/lib/codemirror.css">
 <script src="/CodeMirror/lib/codemirror.js"></script>
 <script src="/CodeMirror/addon/edit/matchbrackets.js"></script>
 <% if (inforClass.name == 'python') { %>
 	<script src="/CodeMirror/mode/python/python.js"></script>
-<% } %>
+	<style type="text/css">.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}</style>
+<% } else { %>
+	<link rel="stylesheet" href="/CodeMirror/addon/hint/show-hint.css"></link>
+	<script type="text/javascript" src="/CodeMirror/mode/clike/clike.js"></script>
+<%	} %>
 
-<style type="text/css">.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}</style>
+
+
 	</head>
 	<body>
 	<div class='alertcontainer'>
@@ -32,6 +38,7 @@
 	<h1><%= judge.name %></h1>
 	<p><%= judge.description %></p>
 	<form action='/class/<%= inforClass.name %>/judge/<%= judge._id %>' method='POST'>
+	<% if (inforClass.name == 'python') {%>
 	<article>
 		<div>
 			<textarea id="code" name="ans"></textarea>
@@ -60,4 +67,52 @@
     //     matchBrackets: true
     //   });
     </script>
+    <% } else { %>
+    	<article>
+    		<div>
+    			<textarea id='cpp-code' name='ans'></textarea>
+    		</div>
+    	</article>
+    	<button>Submit</button>
+    	<script>
+
+      // var cEditor = CodeMirror.fromTextArea(document.getElementById("c-code"), {
+      //   lineNumbers: true,
+      //   matchBrackets: true,
+      //   mode: "text/x-csrc"
+      // });
+      var cppEditor = CodeMirror.fromTextArea(document.getElementById("cpp-code"), {
+        lineNumbers: true,
+        matchBrackets: true,
+        mode: "text/x-c++src"
+      });
+      // var javaEditor = CodeMirror.fromTextArea(document.getElementById("java-code"), {
+      //   lineNumbers: true,
+      //   matchBrackets: true,
+      //   mode: "text/x-java"
+      // });
+      // var objectivecEditor = CodeMirror.fromTextArea(document.getElementById("objectivec-code"), {
+      //   lineNumbers: true,
+      //   matchBrackets: true,
+      //   mode: "text/x-objectivec"
+      // });
+      // var scalaEditor = CodeMirror.fromTextArea(document.getElementById("scala-code"), {
+      //   lineNumbers: true,
+      //   matchBrackets: true,
+      //   mode: "text/x-scala"
+      // });
+      // var kotlinEditor = CodeMirror.fromTextArea(document.getElementById("kotlin-code"), {
+      //     lineNumbers: true,
+      //     matchBrackets: true,
+      //     mode: "text/x-kotlin"
+      // });
+      // var ceylonEditor = CodeMirror.fromTextArea(document.getElementById("ceylon-code"), {
+      //     lineNumbers: true,
+      //     matchBrackets: true,
+      //     mode: "text/x-ceylon"
+      // });
+      var mac = CodeMirror.keyMap.default == CodeMirror.keyMap.macDefault;
+      CodeMirror.keyMap.default[(mac ? "Cmd" : "Ctrl") + "-Space"] = "autocomplete";
+    </script>
+    	<% } %>
 <% include ../partials/footer.ejs %>
