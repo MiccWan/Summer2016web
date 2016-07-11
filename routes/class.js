@@ -164,8 +164,19 @@ router.delete('/class/:className/judge/:id', middleware.isTeacher, function(req,
 					req.flash('error', 'Jizz, something went wrong...');
 					res,redirect('back');
 				} else {
-					req.flash('success', 'Judge deleted successfully');
-					res.redirect('/class/' + foundClass.name + '/judge');
+					let num = judge.number;
+					User.find({}, function(err, user) {
+						if (err) {
+							console.log(err);
+						} else {
+							user.forEach(function(u) {
+								u.rank[foundClass.name][num - 1] = null;
+								u.judges[foundClass.name][num - 1] = null;
+							});
+							req.flash('success', 'Judge deleted successfully');
+							res.redirect('/class/' + foundClass.name + '/judge');
+						}
+					});
 				}
 			});
 		}
