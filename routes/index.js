@@ -1,3 +1,4 @@
+'use strict'
 var express        = require('express'),
 		app            = express(),
 		bodyParser     = require('body-parser'),
@@ -8,7 +9,8 @@ var express        = require('express'),
 		flash          = require('connect-flash'),
 		fs             = require('fs'),
 		tmp            = require('tmp'),
-		execFile       = require('child_process').execFile;
+		execFile       = require('child_process').execFile,
+		async          = require('async');
 
 var router     = express.Router();
 var middleware = require('../middleware/');
@@ -23,6 +25,19 @@ var User  = require("../models/User.js"),
 router.get('/', function(req, res) {
 	res.render('index');
 });
+
+//Profile
+router.get('/profile', middleware.isLoggedIn, function(req, res) {
+	var score = [];
+	score[0] = 0;
+	score[1] = 0;
+	var py, cpp;
+	var t = [[], []];	
+	var name = ['python', 'cpp'];
+	var task = [];
+	
+});
+
 
 //Rank
 router.get('/rank', function(req, res) {
