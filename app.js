@@ -20,8 +20,13 @@ var User  = require("./models/User.js"),
 var middleware = require('./middleware');
 var seedDB = require('./seed.js');
 
-var classRouter = require('./routes/class.js');
-var indexRouter = require('./routes/index.js');
+//Routers
+var classRouter = require('./routes/class.js'),
+    indexRouter = require('./routes/index.js'),
+    judgeRouter = require('./routes/judge.js'),
+    noteRouter  = require('./routes/note.js');
+
+
 var include     = require('./lib/include.js');
 
 var realClassName = {
@@ -72,6 +77,8 @@ app.use(function(req, res, next) {
 });
 
 app.use(indexRouter);
+app.use("/class/:className/judge", judgeRouter);
+app.use("/class/:className/note", noteRouter);
 app.use(classRouter);
 
 app.listen(7122, function() {
