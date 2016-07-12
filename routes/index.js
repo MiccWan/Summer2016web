@@ -28,14 +28,63 @@ router.get('/', function(req, res) {
 
 //Profile
 router.get('/profile', middleware.isLoggedIn, function(req, res) {
-	var score = [];
-	score[0] = 0;
-	score[1] = 0;
-	var py, cpp;
-	var t = [[], []];	
-	var name = ['python', 'cpp'];
-	var task = [];
-	
+	var pyCnt = 0; var cppCnt = 0;
+	var p = []; var c = [];
+	var t = 0;
+	var delay = 500;
+	Class.findOne({name: 'python'}, function(err, foundClass) {
+		if (err) {
+			console.log(err);
+		} else {
+			for (let i = 0; i < foundClass.judges.length; i++) {
+				p.push(function(cb) {
+					Judge.findById(foundClass.judges[i], function(err ,judge) {
+						let j = judge;
+						cb(err, j);	
+					});
+				});
+			}
+			async.series(p, (err, results) => {
+				if (err) {
+					console.log(err);
+				} else {
+					for (let i = 0; i < foundClass.judges.length; i++) {
+						if (results[i]) {
+							pyCnt++;
+						}
+					}
+				}
+			});
+		}
+	});
+	setTimeout(function(){
+		Class.findOne({name: 'cpp'}, function(err, foundClass) {
+			if (err) {
+				console.log(err);
+			} else {
+				for (let i = 0; i < foundClass.judges.length; i++) {
+					c.push(function(cb) {
+						Judge.findById(foundClass.judges[i], function(err, judge) {
+							let j = judge;
+							cb(err, j);
+						});
+					});
+				}
+				async.series(c, (err, results) => {
+					if (err) {
+						console.log(err);
+					} else {
+						for (let i = 0; i < foundClass.judges.length; i++) {
+							if (results[i]) {
+								cppCnt++;
+							}
+						}
+						res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt});
+					}
+				});
+			}
+		});
+	}, delay);
 });
 
 

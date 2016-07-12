@@ -4,6 +4,7 @@
 <form action='/class/<%= inforClass.name %>/judge' method='POST'>
 	<input type="text" name="name" placeholder="Name" required>
 	<input type="text" name="number" placeholder="Number" required>
+	<label>Description<textarea name='description' required></textarea></label>
 	<select name="data" id='data'>
 		<option>How many data</option>
 		<option>1</option>
@@ -13,7 +14,7 @@
 		<option>10</option>
 	</select>
 	<p id='confirm'>Ok</p>
-	<label>Description<textarea name='description' required></textarea></label>
+	
 	<div id='io'>
 	</div>
 	

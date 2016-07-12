@@ -45,7 +45,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride("_method"));
 app.use(flash());
-//seedDB();
+// seedDB();
 
 app.use(require('express-session')({
 	secret: "Jizz",
@@ -74,5 +74,5 @@ app.use(indexRouter);
 app.use(classRouter);
 
 app.listen(7122, function() {
-	console.log("Server is Jizzing...");
+	console.log("Server is running on port 7122...");
 });
