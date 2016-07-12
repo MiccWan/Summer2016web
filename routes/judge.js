@@ -28,7 +28,6 @@ var pythonJudge = require('../lib/pythonJudge.js'),
 //Judge -Index
 router.get('/', middleware.isLoggedIn, function(req, res) {
 	Class.findOne({name: req.params.className}).populate('judges').exec(function(err, foundClass) {
-		console.log(req.params.className);
 		if (err) {
 			console.log(err);
 			req.flash("error", "Jizz, something went wrong...");
