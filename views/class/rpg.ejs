@@ -8,28 +8,6 @@
 
 </head>
 <body>
-<header id="header">
-	<div class="inner">
-			<nav>
-				<ul>
-					<li><a href="#menu">Menu</a></li>
-				</ul>
-			</nav>
-	</div>
-</header>
-<nav id="menu">
-	<h2><%= realClassName[inforClass.name] %></h2>
-	<ul>
-		<li><a href="/">Home</a></li>
-		<li><a href="">Book</a></li>	
-		<li><a href="/class/<%= inforClass.name %>/note">Notes</a></li>
-		<li><a href="/class/<%= inforClass.name %>/resource">Resources</a></li>
-		<% if (inforClass.name == 'python' || inforClass.name == 'cpp' || inforClass.name == 'java') { %>
-			<li><a href="/class/<%= inforClass.name %>/judge">Judge</a></li>
-		<% } %>
-		<li><a href="/profile">Profile</a></li>
-	</ul>
-</nav>
 	<h1 style="text-align:center">RPG MAKER</h1>
 	<h4 style="TEXT-ALIGN:center">RPG製作大師，是一款角色扮演遊戲製作軟體，宗旨為不懂程式編輯的一般玩家也能做出RPG遊戲，以簡單指令取代程式語言的事件編輯器，讓不會編程的人也能享受製作遊戲的樂趣</h4>
 	
