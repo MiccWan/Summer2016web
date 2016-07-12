@@ -231,12 +231,17 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 										score += 100 / judge.data;
 									} else if (results[i] == 'CE') {
 										status = 'CE';
+									} else if (results[i] == 'TLE') {
+										if (status == 'AC' || status == 'WA') {
+											status = 'TLE';
+										}
 									} else {
 										if (status == 'AC') {
 											status = 'WA';
 										}
 									}
 								}
+								console.log(status);
 								if (score > oldScore || !oldScore) {
 									var newRank = req.user.rank;
 									newRank[foundClass.name][judge.number - 1] = score;
@@ -252,20 +257,25 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 												req.flash('success', 'Accepted');
 											} else if (status == 'WA') {
 												req.flash('error', 'Wrong Answer');
-											} else {
+											} else if (status == 'CE') {
 												req.flash('jizz', 'Compilation Error');
+											} else {
+
+												req.flash('tle', 'Time Limit Exceed');
 											}
 											res.redirect('/class/' + foundClass.name + '/judge');
 										}
 									});
-								}
-								else {
+								} else {
 									if (status == 'AC') {
 										req.flash('success', 'Accepted');
 									} else if (status == 'WA') {
 										req.flash('error', 'Wrong Answer');
-									} else {
+									} else if (status == 'CE') {
 										req.flash('jizz', 'Compilation Error');
+									} else {
+										console.log('TLETLE');
+										req.flash('tle', 'Time Limit Exceed');
 									}
 									res.redirect('/class/' + foundClass.name + '/judge');
 								}
@@ -304,8 +314,15 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 									} else if (results[i] == 'CE') {
 										status = 'CE';
 									} else {
-										if (status == 'AC') {
-											status = 'WA';
+										if (results[i] == 'TLE') {
+											if (status == 'WA' || status == 'AC') {
+												status = 'TLE';
+											}
+										}
+										else {
+											if (status == 'AC') {
+												status = 'WA';
+											}
 										}
 									}
 								}
@@ -324,8 +341,10 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 												req.flash('success', 'Accepted');
 											} else if (status == 'WA') {
 												req.flash('error', 'Wrong Answer');
-											} else {
+											} else if (status == 'CE') {
 												req.flash('jizz', 'Compilation Error');
+											} else {
+												req.flash('tle', 'Time Limit Exceed');
 											}
 											res.redirect('/class/' + foundClass.name + '/judge');
 										}
@@ -335,8 +354,10 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 										req.flash('success', 'Accepted');
 									} else if (status == 'WA') {
 										req.flash('error', 'Wrong Answer');
-									} else {
+									} else if (status == 'CE') {
 										req.flash('jizz', 'Compilation Error');
+									} else {
+										req.flash('tle', 'Time Limit Exceed');
 									}
 									res.redirect('/class/' + foundClass.name + '/judge');
 								}

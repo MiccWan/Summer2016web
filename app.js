@@ -67,6 +67,7 @@ app.use(function(req, res, next) {
 	res.locals.roots = roots;
 	res.locals.include = include;
 	res.locals.jizz = req.flash('jizz');
+	res.locals.tle = req.flash('tle');
 	next();
 });
 

@@ -1,10 +1,10 @@
-var cppJudge = require('../lib/cppJudge.js');
+var TLE = require('../lib/tleTest.js');
 
-var ans = "#include <iostream>\n\r using namespace std;\n\r int main()\n\r {\n\rcout << '3' << endl; \n\rreturn 0;\n\r}";
-var input = "1\n\r2\n\r";
-var output = '3';
+var ans = "using namespace std;\nint main() {\nwhile (true) {}\n return 0;}";
+var input = "";
+var output = "";
 
-cppJudge(ans, input, output, (err, status) => {
+TLE(ans, input, output, (err, status) => {
 	if (err) {
 		console.log(err);
 	} else {
