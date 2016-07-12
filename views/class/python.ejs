@@ -6,7 +6,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" type="text/css" href="/class/python/assets/css/main.css">
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700italic' rel='stylesheet' type='text/css'>
-	
+	<style type="text/css">
+	#jizz {
+		border: 0;
+		border-bottom: solid 1px #c9c9c9;
+		margin: 2em 0;
+	}
+
+		#jizz.major {
+			margin: 3em 0;
+		}</style>
 </head>
 <body>
 <h1 style="text-align: center;" class="title"><img src="/class/python/art/logo.svg" width="40" height="40"> Python</h1>
@@ -24,15 +33,14 @@
 	<h2><%= realClassName[inforClass.name] %></h2>
 	<ul>
 		<li><a href="/">Home</a></li>
-		<li><a href=""></a></li>
+		<hr id='jizz'>
 		<li><a href="#p1">What is Python</a></li>
 		<li><a href="#p2">Variable</a></li>
 		<li><a href="#p3">Function</a></li>
 		<li><a href="#p4">Class</a></li>
-		<li><a href=""></a></li>
+		<hr id='jizz'>
 		<li><a href="">Book</a></li>	
 		<li><a href="/class/<%= inforClass.name %>/note">Notes</a></li>
-		<li><a href="/class/<%= inforClass.name %>/resource">Resources</a></li>
 		<% if (inforClass.name == 'python' || inforClass.name == 'cpp' || inforClass.name == 'java') { %>
 			<li><a href="/class/<%= inforClass.name %>/judge">Judge</a></li>
 		<% } %>

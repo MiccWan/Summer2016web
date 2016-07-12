@@ -5,8 +5,42 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="/class/ai/assets/css/main.css">
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700italic' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+	#jizz {
+		border: 0;
+		border-bottom: solid 1px #c9c9c9;
+		margin: 2em 0;
+	}
+
+		#jizz.major {
+			margin: 3em 0;
+		}</style>
 </head>
 <body>
+<header id="header">
+	<div class="inner">
+			<nav>
+				<ul>
+					<li><a href="#menu">Menu</a></li>
+				</ul>
+			</nav>
+	</div>
+</header>
+<nav id="menu">
+	<h2>SAI</h2>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<hr id='jizz'>
+		<li><a href="#s1">基本介面</a></li>
+		<li><a href="#s2">鼠繪</a></li>
+		<li><a href="#s3">新增筆刷&畫紙材質</a></li>
+		<li><a href="#s4">素材應用</a></li>
+		<li><a href="#s5">推薦素材網站</a></li>
+		<hr id='jizz'>
+		<li><a href="/class/sai">Book</a></li>
+		<li><a href="/profile">Profile</a></li>
+	</ul>
+</nav>
 <h1 style="text-align: center;margin-bottom:0px" class="title">EASY PAINT TOOL SAI</h1><br>
 <hr>
 <br>
@@ -15,10 +49,10 @@
 		<p style="text-align:center"><b>SAI是一款免費的繪圖軟體，因為操縱簡單而被許多人使用，但不具備文字、形狀工具等功能</b></p>
 
 		<section>
-			<h2>基本介面</h2>
+			<h2 id='s1'>基本介面</h2>
 					<div class="box alt" style="padding-left:10%">
 						<div class="row uniform">
-							<div class="8u"><span class="image fit"><img src="/class/ai/image01/image004.	" alt="" /></span></div>
+							<div class="8u"><span class="image fit"><img src="/class/ai/image01/image004.jpg	" alt="" /></span></div>
 							
 						</div>
 						<ul>
@@ -34,7 +68,7 @@
 		<hr>
 		<br>
 		<section>
-			<h2>鼠繪</h2>
+			<h2 id='s2'>鼠繪</h2>
 			<p style="padding-left:10%"><b>鼠繪就是用滑鼠畫畫，適合沒有繪圖板的人，但是畫出來相較之下比較差，但SAI可以使用鋼筆圖層來畫出與繪圖板品質差不多的畫作</b></p>
 		</section>
 		<ol style="padding-left:10%">
@@ -60,7 +94,7 @@
 		<hr>
 		<br>
 		<section>
-			<h2>新增筆刷&畫紙材質</h2>
+			<h2 id='s3'>新增筆刷&畫紙材質</h2>
 			<ol style="padding-left:10%">
 
 				<li><b>在brushtex的資料夾選擇喜歡的筆刷樣式並複製名字</b></li>
@@ -81,7 +115,7 @@
 		<hr>
 		<br>
 		<section>
-			<h2>素材應用</h2>
+			<h2 id='s4'>素材應用</h2>
 			<br>
 			<p><b>比如說我現在想把貓關進籠子裡，但四周會變得白白的</b></p>
 			<div class="5u" style="padding-left:10%"><span class="image fit"><img src="/class/ai/image01/image014.jpg" alt=""  /></span></div>
@@ -93,7 +127,7 @@
 		<hr>
 		<br>
 		<section>
-			<h2>推薦素材網站</h2>
+			<h2 id='s5'>推薦素材網站</h2>
 			<br>
 			<p style="padding-left:10%"><b>PIXIV：http://www.pixiv.net</b></p>
 			<p style="padding-left:10%"> <b>搜尋フリー素材或自由加工</b></p>
@@ -107,5 +141,4 @@
 		</div>
 	</div>
 </div>
-</body>
-</html>
+<% include ../partials/footer.ejs %>

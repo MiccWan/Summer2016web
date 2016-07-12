@@ -5,8 +5,43 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="/class/ai/assets/css/main.css">
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700italic' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+	#jizz {
+		border: 0;
+		border-bottom: solid 1px #c9c9c9;
+		margin: 2em 0;
+	}
+
+		#jizz.major {
+			margin: 3em 0;
+		}</style>
 </head>
 <body>
+<header id="header">
+	<div class="inner">
+			<nav>
+				<ul>
+					<li><a href="#menu">Menu</a></li>
+				</ul>
+			</nav>
+	</div>
+</header>
+<nav id="menu">
+	<h2><%= realClassName[inforClass.name] %></h2>
+	<ul>
+		<li><a href="/">Home</a></li>
+		<hr id='jizz'>
+		<li><a href="#a1">操作介面</a></li>
+		<li><a href="#a2">新增文件</a></li>
+		<hr id='jizz'>
+		<li><a href="">Book</a></li>	
+		<!-- <li><a href="/class/<%= inforClass.name %>/note">Notes</a></li> -->
+		<% if (inforClass.name == 'python' || inforClass.name == 'cpp' || inforClass.name == 'java') { %>
+			<li><a href="/class/<%= inforClass.name %>/judge">Judge</a></li>
+		<% } %>
+		<li><a href="/profile">Profile</a></li>
+	</ul>
+</nav>
 	<h1 style="text-align: center;margin-bottom:0px" class="title">Adobe illustrator</h1>
 	<h1 style="text-align: center;margin-bottom:0px" >X</h1>
 	<h1 style="text-align: center;margin-top:0px" class="title">EASY PAINT TOOL SAI</h1>
@@ -16,7 +51,7 @@
 	<p style="padding-left: 50px" class="left-line"><b>Adobe illustrator</b> 是一套向量繪圖軟體，可以運用在插畫、海報、型錄、書籍、網頁、視訊等視覺設計，不管怎麼修改圖形，都可以維持乾淨俐落的邊緣及線條。</p>
 
 	<ul>
-		<li><h2>操作介面</h2></li>
+		<li><h2 id='a1'>操作介面</h2></li>
 	</ul>
 	<section>
 		<img src="/class/ai/image/image004.PNG" style="padding-left:50px ; " width="40%" height="50%";  align="left" >
@@ -32,7 +67,7 @@
 		<br>
 		
 		<ul>
-			<li><h2>新增文件</h2></li>
+			<li><h2 id='a2'>新增文件</h2></li>
 		</ul>
 		<p style="padding-left: 50px">-檔案>>新增（Ctrl+N）</p>
 
@@ -122,5 +157,4 @@
 		<a  href="/class/sai" class="button special">Next Page</a>
 	</div>
 	
-</body>
-</html>
+<% include ../partials/footer.ejs %>

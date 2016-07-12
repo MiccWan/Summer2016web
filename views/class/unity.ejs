@@ -31,20 +31,18 @@
 			<h2>Menu</h2>
 			<ul>
 				<li><a href="/">Home</a></li>
-				<li><a href=""></a></li>
-				<li><a href="#C1">一、簡介</a></li>
-				<li><a href="#C2">二、介面介紹</a></li>
-				<li><a href="#C3">三、地形編輯器</a></li>
-				<li><a href="#C4">四、角色控制器</a></li>
-				<li><a href="#C5">五、拾取物品(簡單coding)</a></li>
-				<li><a href="#C6">六、遊戲介面</a></li>
-				<li><a href="#C7">七、天空系統</a></li>
-				<li><a href="#C8">八、光照系統</a></li>
-				<li><a href="#C9">九、總結</a></li>
-				<li><a href=""></a></li>
+				<hr>
+				<li><a href="#C1">簡介</a></li>
+				<li><a href="#C2">介面介紹</a></li>
+				<li><a href="#C3">地形編輯器</a></li>
+				<li><a href="#C4">角色控制器</a></li>
+				<li><a href="#C5">拾取物品(簡單coding)</a></li>
+				<li><a href="#C6">遊戲介面</a></li>
+				<li><a href="#C7">天空系統</a></li>
+				<li><a href="#C8">光照系統</a></li>
+				<li><a href="#C9">總結</a></li>
+				<hr>
 				<li><a href="/class/<%=inforClass.name %>">Book</a></li>	
-				<li><a href="/class/<%= inforClass.name %>/note">Notes</a></li>
-				<li><a href="/class/<%= inforClass.name %>/resource">Resources</a></li>
 				<% if (inforClass.name == 'python' || inforClass.name == 'cpp' || inforClass.name == 'java') { %>
 					<li><a href="/class/<%= inforClass.name %>/judge">Judge</a></li>
 				<% } %>
