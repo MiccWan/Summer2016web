@@ -320,6 +320,15 @@ router.post('/class/:className/judge/:id', middleware.isLoggedIn, function(req, 
 											res.redirect('/class/' + foundClass.name + '/judge');
 										}
 									});
+								} else {
+									if (status == 'AC') {
+										req.flash('success', 'Accepted');
+									} else if (status == 'WA') {
+										req.flash('error', 'Wrong Answer');
+									} else {
+										req.flash('jizz', 'Compilation Error');
+									}
+									res.redirect('/class/' + foundClass.name + '/judge');
 								}
 							}
 						});
