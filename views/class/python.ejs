@@ -17,6 +17,7 @@
 			margin: 3em 0;
 		}</style>
 </head>
+
 <body>
 <h1 style="text-align: center;" class="title"><img src="/class/python/art/logo.svg" width="40" height="40"> Python</h1>
 <h2 style="text-align: center;">by INFOR 29th 土匪、隨便</h2>
@@ -47,11 +48,11 @@
 		<li><a href="/profile">Profile</a></li>
 	</ul>
 </nav>
-<h3 id='p1'>1.  What is Python?</h3>
+<h1 id='p1'>1.  What is Python?</h1>
 <hr>
 
 <section id="first">
-	<h4>a.  History</h4>
+	<h2>a.  History</h2>
 	<p class="p_left">Python的創辦人為Guido van Rossum，在聖誕節時為了打發無聊，創辦了一個繼承ABC語言的新語言，優美而強大，即為Python。相較於大家可能較為熟悉的C語言為編譯式，Python為一直譯式語言，不需要像C一樣先將整個程式碼編譯(Compile)過後才能執行，因此Python執行快速，第二個特色為整齊乾淨的寫法以及極高的可讀性，亦即同一段程式碼基本上只有一種寫法，以及用縮排(Indent)來區分區塊(Scope)。</p>
 	<pre><code>
 #Python 
@@ -70,7 +71,7 @@ if (n % 2 == 0) {
 
 
 <section>
-	<h4>b.  Installation</h4>
+	<h2>b.  Installation</h2>
 	<p>1.到: https://www.python.org/downloads/</p>
 	<p>2.下載windows版本的 Python 3.5.1</p>
 	<img src="/class/python/image/python/image003.png">
@@ -82,10 +83,10 @@ if (n % 2 == 0) {
 </section>
 <p></p>
 <p></p>
-<h3 id='p2'>2. 變數 Variable</h3>
+<h1 id='p2'>2. 變數 Variable</h1>
 <hr>
 <section>
-	<h4>a.  宣告 Declare 及指派 Assign</h4>
+	<h2>a.  宣告 Declare 及指派 Assign</h2>
 	<p class="p_left">變數為記憶體上的一塊空間，在Python中可以透過呼叫變數名稱來叫出變數的值，不像C語言，Python的變數宣告不需加上變數型別(Type)，宣告方法如下：</p>
 	<pre><code>
 variable_name = value
@@ -110,7 +111,7 @@ firstThreeLetters = “ABC”
 </section>
 
 <section>
-	<h4>b.  字串 String</h4>
+	<h2>b.  字串 String</h2>
 	<p class="p_left">字串用來表示文字，一串字母、一個句子、甚至一篇文章都可以使用字串來儲存，在Python中，字串會被標在單引號(‘ ‘)或雙引號(“ “)中，如下：</p>
 	<pre><code>
 fruit1 = “apple”
@@ -185,7 +186,7 @@ Math
 
 
 <section>
-	<h4>c.  數字 Number</h4>
+	<h2>c.  數字 Number</h2>
 
 	<p class="p_left">在Python中，數字有兩種，一種是整數(Integer)，一種為浮點數(Floating Number)，前者資料型別為int，後者為float，如下：</p>
 	<pre><code>
@@ -257,7 +258,7 @@ TypeError: unsupported operand type(s) for +: ‘int’ and ‘str’
 </section>
 
 <section>
-	<h4>d.  布林值及流程控制 Booleans & Conditionals</h4>
+	<h2>d.  布林值及流程控制 Booleans & Conditionals</h2>
 	<p class="p_left">布林值是一種只有兩種值的資料型別，分別為True及False，沒有其他可能的值會出現。指派Boolean的方法同字串及數字，如下：</p>
 	<pre><code>
 >>>I_Love_INFOR = True
@@ -348,7 +349,7 @@ else:
 </section>
 
 <section>
-	<h4>e.  串列(List)、Tuple及字典(Dictionary)</h4>
+	<h2>e.  串列(List)、Tuple及字典(Dictionary)</h2>
 	<p class="p_left">當需要處理一堆資料的時候，可以使用串列，在裡面放入有關連的資料們，在使用Index去呼叫他們，資料可為不同型別，甚至可以在串列中放入串列，宣告方法為用中括號[]將元素放入，並用逗號分開，如下：</p>
 	<pre><code>
 >>>one_to_ten = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -451,10 +452,10 @@ False
 
 </section>
 
-<h3 id='p3'>3.   函式 Function</h3>
+<h1 id='p3'>3.   函式 Function</h1>
 <hr>
 <section>
-	<h4>a.  def</h4>
+	<h2>a.  def</h2>
 	<p class="p_left">什麼是函式呢？如同先前介紹過的一樣，在Python中的函式跟在數學中的函式是差不多的，在電腦語言中有一個很重要的原則就是「不做重複的事」，因此，我們將不斷重複的程式碼設計成函式，只要寫好一遍，之後就能隨時取用，有關函式的寫法如下：</p>
 	<pre><code>
 >>>def say():
@@ -468,7 +469,7 @@ I Love INFOR.
 </section>
 
 <section>
-	<h4>b.  參數 Parameters</h4>
+	<h2>b.  參數 Parameters</h2>
 	<p class="p_left">就跟數學中的函式一樣，可以傳入參數，而函式可以取用傳入的參數，如下：</p>
 	<pre><code>
 >>>def say(s):
@@ -518,7 +519,7 @@ My name is Wayne
 
 </section>
 <section>
-	<h4>c.  Import</h4>
+	<h2>c.  Import</h2>
 	<p class="p_left">Python一個強大的功能在於說他建立了大量的函式庫，很多函式其實我們不必自己慢慢一行一行寫，只需要要將別人寫好的函式匯入(Import)進來就可以直接使用了。我們舉時間(time)函式及隨機函式(random)來做說明，如下：</p>
 	<pre><code>
 >>>import time
@@ -544,10 +545,10 @@ Fri Jun  3 12:54:41 2016
 
 </section>
 
-<h3 id='p4'>4.   類別 Class</h3>
+<h1 id='p4'>4.   類別 Class</h1>
 <hr>
 <section>
-	<h4>a.  成員Member</h4>
+	<h2>a.  成員Member</h2>
 	<p class="p_left">何謂類別？類別是物件導向中最重要的觀念，簡單來說，就是把有相關的東西放在一起，可以包含數字、字串、函式等等，亦可包含另一個類別，以下舉一個簡單的例子來說明：</p>
 	<pre><code>
 class student:
@@ -570,7 +571,7 @@ class student:
 </section>
 
 <section>
-	<h4>b.  建構子 Constructor</h4>
+	<h2>b.  建構子 Constructor</h2>
 	<p class="p_left">有的時候我們並不會再宣告類別的時候就知道內部成員的資訊，舉上述的例子來說，有各種不同名字的人，不同年齡的人，不同的成績，這個時候我們會需要用到建構子來「建構」這個類別，如下</p>
 	<pre><code>
 class student:

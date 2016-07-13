@@ -26,7 +26,7 @@ router.get('/', function(req, res) {
 	res.redirect('/login');
 });
 
-router.get('/index', function(req, res) {
+router.get('/index', middleware.isLoggedIn, function(req, res) {
 	res.render('index');
 });
 
