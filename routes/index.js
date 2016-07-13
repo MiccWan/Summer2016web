@@ -23,6 +23,10 @@ var User  = require("../models/User.js"),
 
 //Index
 router.get('/', function(req, res) {
+	res.redirect('/login');
+});
+
+router.get('/index', function(req, res) {
 	res.render('index');
 });
 
@@ -125,7 +129,7 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local', {
-		successRedirect: '/',
+		successRedirect: '/index',
 		failureRedirect: '/login'
 	}), function(req, res) {
 	req.flash('success', 'Successfully Log In!');
@@ -135,7 +139,7 @@ router.post('/login', passport.authenticate('local', {
 router.get('/logout', function(req, res) {
 	req.logout();
 	req.flash("success", "You have logged out");
-	res.redirect('/');
+	res.redirect('/index');
 });
 
 //Register
@@ -154,7 +158,7 @@ router.post('/register', function(req, res) {
 		}
 		passport.authenticate('local')(req, res, function() {
 			req.flash("success", "Successfully Sign Up!");
-			res.redirect('/');
+			res.redirect('/index');
 		});
 	});
 });
