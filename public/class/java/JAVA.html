@@ -15,13 +15,397 @@
 				<h2>Chapter1—安裝JDK</h2>
 				
 				<section>
-					<p class="12u" style="padding-left:10%"><b>JDK(Java SE Development Kit)是Java的開發套件，內含函式庫、編譯器等寫程式所必要的元件，和一般電腦上所裝的Java(JRE)是不一樣的喔！</b></p>
+					<p class="12u"><b>JDK(Java SE Development Kit)是Java的開發套件，內含函式庫、編譯器等寫程式所必要的元件，和一般電腦上所裝的Java(JRE)是不一樣的喔！</b></p>
 
-					<ul class="alt 8u">
+					<ul class="alt 8u" style="padding-left:10%">
 						<li><b>前往</b><br>http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html 下載JDK。</li>
 						<li><b>在此，選擇最新版的JDK下載，作業系統選Windows X64。</b></li>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="8u"><span class="image fit"><img src="image/image002.gif" alt="" /></span></div>
+						</div>
+					</div>
+
+					<li><b>下載完成後，執行安裝。使用預設的選項不需更改，全部按下一步即可。</b></li><br>
+					<li><b>安裝完成後，需要進行一點小設定，才能正常使用編譯器。由於在執行命令時，系統需要到指定的資料夾下尋找程式，但編譯器在安裝完成後是不會自動加入裡頭的，所以需要手動設定。</b></li><br>
+
+					<li><b>電腦｢右鍵｣->內容->進階系統設定->環境變數->系統變數->Path->編輯</b></li><br>
+
+					<div class="box alt">
+						<div class="row uniform">
+							<div ><span class="image fit"><img src="image/image003.gif" alt="" /></span></div>
+
+							<div ><span class="image fit"><img src="image/image004.gif" alt="" /></span></div>
+						</div>
+					</div>
+
+					<div class="box alt">
+						<div class="row uniform">
+							<div ><span class="image fit"><img src="image/image005.gif" alt="" /></span></div>
+
+							<div ><span class="image fit"><img src="image/image006.gif" alt="" /></span></div>
+						</div>
+					</div>
+
+					<li><b>6.	把JDK的路徑C:\Program Files\Java\jdk<版本號>\bin加到最後 <span style="color:red">※切記：記得要和前面的路徑之間有｢分號｣分隔</span></b></li>
+
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="8u"><span class="image fit"><img src="image/image007.gif" alt="" /></span></div>
+						</div>
+					</div>
+
+					<li><b>最後，在開始功能表中輸入｢cmd｣開啟命令提示字元，輸入javac -version，如果出現了JDK的版本，就表示安裝成功了！</b></li>
+
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="8u"><span class="image fit"><img src="image/image008.gif" alt="" /></span></div>
+						</div>
+					</div>
 					</ul>
 				</section>
+				<br><hr><br>
+
+				<section>
+					<h2>Chapter2—基本程式實作</h2>
+
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="8u"><span class="image fit"><h3>第一個程式—HelloWorld</h3></span></div>
+						</div>
+					</div>
+					<ol style="padding-left:10%">
+						<li><b>先建立一個名稱為HelloWorld.java的檔案。</b></li><br>
+						<li><b>用記事本開啟後輸入：</b></li>
+						<pre><code>
+public class HelloWorld
+{
+    public static void main(String[] args)
+    {
+        System.out.println("Hello World!");
+    }
+}
+						</code></pre>
+						<br>
+						<li><b>在資料夾空白處，先按住Shift鍵，然後點一下右鍵</b></li>
+
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="6u"><span class="image fit"><img src="image/image010.gif" alt ="">聰明的你，會發現這個｢特殊｣的右鍵選單多了一個選項，選它就會出現cmd喔！</span></div>
+						</div>
+					</div>
+
+						<br>
+						<li><b>編譯並執行剛才的程式</b></li>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="6u"><span class="image fit"><img src="image/image011.gif" alt =""></span></div>
+						</div>
+					</div>
+
+					</ol>
+				</section>
+				<br><hr><br>
+				<section>
+					<h2>Chapter3—基本概念</h2>
+					<div class="box alt" >
+						<div class="row uniform">
+							<div class="8u"><span class="image fit"><h3>資料型別與變數</h3></span></div>
+						</div>
+					</div>
+
+					<div style="padding-left:10%">
+						<table class="8u" >
+						<tr>
+							<th>類型</th>
+							<th>名稱</th>
+							<th>空間</th>
+							<th>範圍</th>
+						</tr>
+						<tr>
+							<td>整數</td>
+							<td>byte</td>
+							<td>1</td>
+							<td>-128~127</td>
+						</tr>
+						<tr>
+							<td>整數</td>
+							<td>short</td>
+							<td>2</td>
+							<td>-32768~32767</td>
+						</tr>
+						<tr>
+							<td>整數</td>
+							<td>int</td>
+							<td>4</td>
+							<td>-2^31~2^31-1</td>
+						</tr>
+						<tr>
+							<td>整數</td>
+							<td>long</td>
+							<td>8</td>
+							<td>-2^63~2^63-1</td>
+						</tr>
+						<tr>
+							<td>浮點數</td>
+							<td>float</td>
+							<td>4</td>
+							<td>1.4E-45~3.4E+38  -1.4E-45~-3.4E+38</td>
+						</tr>
+						<tr>
+							<td>浮點數</td>
+							<td>double</td>
+							<td>8</td>
+							<td>4.9E-324~1.79E+308 -4.9E-324~-1.79E+308</td>
+						</tr>
+						<tr>
+							<td>字元</td>
+							<td>char</td>
+							<td>2</td>
+							<td>一個字</td>
+						</tr>
+						<tr>
+							<td>布林</td>
+							<td>boolen</td>
+							<td>1</td>
+							<td>true/false</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="box alt" style="padding-left:10%">
+						<div class="row uniform">
+							<div class="5u$"><span class="image fit"><p><b>變數的定義規則及方式為：</b></p></span></div>
+							<ul>
+								<li><b>名稱只能由A~Z、a~z、0~9、_、$ 等字元組成</b></li>
+								<li><b>名稱不可以數字開頭</b></li>
+								<li><b>名稱不可和關鍵字重複</b></li>
+								<li><b>可以用中文 <span style="color:red">(極度不建議！！！)</span></b></li><br>
+								<pre><code>
+public class Var
+{
+    public static void main(String[] args)
+    {
+        int a; //定義一個叫a的int變數
+        int b=2016; //定義時順便指定
+        boolean c18=false;
+        int 123; //錯誤！名稱不可以數字開頭
+        a=100; //把a設定成100
+    }
+}
+								</code></pre>
+							</ul>
+						</div>
+				</div>
+
+				</section>
+				<br><hr><br>
+
+				<section>
+					<h2>運算子</h2>
+					<div class="box alt" style="padding-left:10%">
+						<div class="row uniform">
+							<div class="7u"><span class="image fit"><img src="image/image000.jpg" alt="" /></span></div>
+						</div>
+					</div>
+				</section>
+				<br><hr><br>
+
+				<section>
+					<h2>Chapter4—條件式與迴圈</h2>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="8u"><span class="image fit"><h3>if條件式</h3></span></div>
+						</div>
+					</div>
+					<br>
+					<pre  style="padding-left:10%"><code>
+if (條件) {  //條件成立
+    要做的事;
+}
+if (條件) {  //條件成立
+    要做的事;
+} else {  //條件不成立
+    要做的事;
+}
+//多個連用(if…else if…else)
+if (條件) {
+    要做的事;
+} else if (條件) {
+    要做的事;
+}
+					</code></pre><br>
+
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="8u"><span class="image fit"><h3>while迴圈</h3></span></div>
+						</div>
+					</div>
+					<br>
+					<pre  style="padding-left:10%"><code>
+while (條件) {
+    要做的事;
+} //會不斷的執行裡面的指令直到條件為false時
+do {
+    要做的事;
+} while (條件); //在後面判斷條件
+					</code></pre>
+
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="8u"><span class="image fit"><h3>switch陳述</h3></span></div>
+						</div>
+					</div>
+					<br>
+					<pre style="padding-left:10%"><code>
+switch (判斷資料) {
+    case 數值:
+        要做的事;
+        break;
+    default:
+        要做的事;
+        break;
+}
+					</code></pre><br>
+
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="8u"><span class="image fit"><h3>for迴圈</h3></span></div>
+						</div>
+					</div>
+					<br>
+					<pre  style="padding-left:10%"><code >
+for (起始值;條件;每次執行) {
+    要做的事;
+} 
+/*進入迴圈時會執行起始值，每次執行前會判斷條件，true才繼續執行，否則跳出迴圈，每次執行後會執行最後一格的程式。*/
+					</code></pre>					
+				</section>
+				<br><hr><br>
+				<section>
+					<h2>Chapter5—輸入與輸出</h2>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="8u">
+								<ul>
+									<li><b>輸入—Scanner</b><ol style="padding-left:10%">
+										<li>需在檔頭加上import java.util.Scanner;</li>
+										<li>使用前須宣告為物件</li>
+										<li>
+										使用next()方法取出字串，nextInt()方法取出整數(還有其他類型的方法喔！)
+										</li>
+									</ol></li>
+									<li><b>輸出—System.out.print</b><ol style="padding-left:10%">
+										<li>在螢幕上輸出一串文字。例：System.out.print("Hello World!");</li>
+									</ol></li>
+									<li><b>輸出—System.out.println</b><ol style="padding-left:10%">
+										<li>在一串字中填入指定的變數，然後輸出。 <br>例：System.out.printf("Hello! %s!", name);</li>
+										<li>會用後面的參數，取代原文字中的 %s轉換字符</li><br>
+										<table class="12u">
+											<tr>
+												<th>轉換字符</th>
+												<th>說明</th>
+												
+											</tr>
+											<tr>
+												<td>%b/%B</td>
+												<td>真假值</td>
+
+											</tr>
+											<tr>
+												<td>%h/%H</td>
+												<td>雜湊碼</td>
+
+											</tr>
+											<tr>
+												<td>%s/%S</td>
+												<td>字串</td>
+
+											</tr>
+											<tr>
+												<td>%%</td>
+												<td>百分比符號</td>
+
+											</tr>
+											<tr>
+												<td>%c/%C</td>
+												<td>字元</td>
+
+											</tr>
+											<tr>
+												<td>%d</td>
+												<td>十進位整數</td>
+
+											</tr>
+											<tr>
+												<td>%o</td>
+												<td>八進位整數</td>
+
+											</tr>
+											
+											<tr>
+												<td>%n</td>
+												<td>換行符號</td>
+
+											</tr>
+											<tr>
+												<td>%x/%X</td>
+												<td>十六進位整數</td>
+
+											</tr>
+											<tr>
+												<td>%e/%E</td>
+												<td>科學記號浮點數</td>
+
+											</tr>
+											<tr>
+												<td>%f</td>
+												<td>十進位浮點數</td>
+
+											</tr>
+											<tr>
+												<td>%g/%G</td>
+												<td>科學記號浮點數</td>
+
+											</tr>
+											<tr>
+												<td>%a/%A</td>
+												<td>十六進位浮點數</td>
+
+											</tr>
+											<tr>
+												<td>%t/%T</td>
+												<td>日期時間</td>
+
+											</tr>
+										</table>
+									</ol></li>
+
+									<li><b>
+									範例—奇數還是偶數</b></li><br>
+									<pre><code>
+import java.util.Scanner; //引入Scanner
+public class OddEven {
+    public static void main(String[] args) {
+        Scanner sin = new Scanner(System.in);    //宣告Scanner
+        System.out.println("Enter your name.");   //使用println
+        String name = sin.next();               //讀入字串
+        System.out.println("Enter a number.");   //使用println
+        System.out.print(">");                 //使用print
+        int a = sin.nextInt();                    //讀入整數
+        System.out.printf("%s, you enter a ",name); //使用printf
+        if(a % 2 == 1) System.out.println("odd number.");  //輸出奇數
+        else System.out.println("even number.");        //輸出偶數
+    }
+}
+									</code></pre>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
+				<br><hr><br>
 			</div>
 	</div>
 </body>

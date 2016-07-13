@@ -5,7 +5,16 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="/class/cpp/assets_2/css/main.css">
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700italic' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+	#jizz {
+		border: 0;
+		border-bottom: solid 1px #c9c9c9;
+		margin: 2em 0;
+	}
 
+		#jizz.major {
+			margin: 3em 0;
+		}</style>
 </head>
 <body>
 <header id="header">
@@ -21,6 +30,16 @@
 	<h2><%= realClassName[inforClass.name] %></h2>
 	<ul>
 		<li><a href="/">Home</a></li>
+		<hr id='jizz'>
+		<li><a href="#c1">1. C++ 的簡介</a></li>
+		<li><a href="#c2">2. 第一個C++ 程式開發</a></li>
+		<li><a href="#c3">3. 資料型態 Data Type</a></li>
+		<li><a href="#c4">4. 輸入輸出 Input/Output</a></li>
+		<li><a href="#c5">5. 運算子 operator</a></li>
+		<li><a href="#c6">6. 條件敘述 if 和 switch</a></li>
+		<li><a href="#c7">7. 迴圈 Loop</a></li>
+		<li><a href="#c8">8. 陣列 Array</a></li>
+		<hr id='jizz'>
 		<li><a href="">Book</a></li>	
 		<li><a href="/class/<%= inforClass.name %>/note">Notes</a></li>
 		<li><a href="/class/<%= inforClass.name %>/resource">Resources</a></li>
@@ -35,10 +54,10 @@
 
 	<hr>
 	<section>
-		<h2>C++ 的簡介</h2>
+		<h2 id='c1'>C++ 的簡介</h2>
 		<p style="padding-left: 50px" class="left-line">在 1980 年時，Bjarne Stroustrup 博士創造出了強化 C 語言的程式語言。一開始它被叫做「C with Classes」，之後被添加了各種功能後，它就叫做 C++ 了。就目前學習 C++ 來說，它可以獨立於 C，同時它也是建中高一大部分資訊課教的程式語言。</p>
 		<br>
-		<h2>第一個C++ 程式開發</h2>
+		<h2 id='c2'>第一個C++ 程式開發</h2>
 	
 		<p style="padding-left: 50px" class="no-line">1.	開啟IDE（整合開發環境，我們用的是Code::Blocks）</p>
 		<p style="padding-left: 50px" class="no-line">2.	開新檔案，記得儲存的時候副檔名要設成 .cpp 喔</p>
@@ -122,7 +141,7 @@ cout << “迎楓舞建”; /*這是
 	<p></p>
 
 	<section>
-		<h2>資料型態 Data Type</h2>
+		<h2 id='c3'>資料型態 Data Type</h2>
 		<table style=" width:60%;transform:translateX(50px);;height:40%" >
 			<tr>
 				<th>資料型態</th>
@@ -222,7 +241,7 @@ string s = “迎楓舞建”;
 	<p></p>
 
 	<section>
-		<h2>輸入輸出 Input/Output</h2>
+		<h2 id='c4'>輸入輸出 Input/Output</h2>
 		<p style="padding-left: 50px" class="left-line" >第一個程式裡面有講到 <iostream>，其實裡面就是 C++ 提供的標準輸入輸出工具。 <br>cin 的功能是用鍵盤輸入資料，用法是 cin >> 變數 ; <br>cout 的功能則是輸出資料，用法是 cout << 要輸出的東東 ;<br>有時我們要連續輸入輸出很多資料，這時可以把 << 或 >> 串接起來，例如：</p>
 		<pre><code>
 int v1, v2;
@@ -297,7 +316,7 @@ printf("Year:%d\nMonth:%d\nDay:%d\n", y, m, d);
 	<p></p>
 
 	<section>
-		<h2>運算子 operator</h2>
+		<h2 id='c5'>運算子 operator</h2>
 		<p style="padding-left: 50px"  class="left-line">什麼是運算子呢？其實，平常寫的加 (+) 減 (-) 乘 (*) 除 (/) 就是，而電腦為了處理運算，還有很多其他的運算子，例如前面講的賦值運算子 (=)。
 算術運算子
 </p>
@@ -424,7 +443,7 @@ printf("Year:%d\nMonth:%d\nDay:%d\n", y, m, d);
 	<p></p>
 
 	<section>
-		<h2>條件敘述 if 和 switch</h2>
+		<h2 id='c6'>條件敘述 if 和 switch</h2>
 		<p style="padding-left: 50px">if</p>
 		<pre><code>
 if(條件式)
@@ -527,7 +546,7 @@ switch(month/4){
 	<p></p>
 
 	<section>
-		<h2>迴圈 Loop</h2>
+		<h2 id='c7'>迴圈 Loop</h2>
 		<p style="padding-left: 50px">需要重複執行某些敘述的時候，就需要迴圈啦。 <br><br>
 while迴圈
 </p>
@@ -611,7 +630,7 @@ for(int i = 0; i < 10; i++){
 	<hr>
 	<br>
 	<section>
-		<h2>陣列 Array</h2>
+		<h2 id='c8'>陣列 Array</h2>
 		<p style="padding-left: 50px" class="left-line" >當你需要100個變數的時候，難道真的要宣告100次嗎？因此，電腦科學家就發明了陣列，來儲存性質相同的資料。每個陣列元素都可以當做變數，並且占用連續的記憶體空間（去煩Java講師吧）。 <br>宣告方式：
 </p>
 
