@@ -10,46 +10,82 @@
 <body>
 <h1 style="text-align: center;" class="title"><img src="art/logo.svg" width="40" height="40"> Python</h1>
 <h2 style="text-align: center;">by INFOR 29th 土匪、隨便</h2>
+<div id= "main">
+		<div class="inner">
+			<h3>1.  What is Python?</h3>
+			<hr>
+			<section >
+				<div class="box alt">
+					<div class="row uniform"><br><br>
 
-<h3>1.  What is Python?</h3>
-<hr>
-<section id="first">
-	<h4>a.  History</h4>
-	<p class="p_left">Python的創辦人為Guido van Rossum，在聖誕節時為了打發無聊，創辦了一個繼承ABC語言的新語言，優美而強大，即為Python。相較於大家可能較為熟悉的C語言為編譯式，Python為一直譯式語言，不需要像C一樣先將整個程式碼編譯(Compile)過後才能執行，因此Python執行快速，第二個特色為整齊乾淨的寫法以及極高的可讀性，亦即同一段程式碼基本上只有一種寫法，以及用縮排(Indent)來區分區塊(Scope)。</p>
-	<pre><code>#Python 
-	if n % 2 == 0:
-    	print(“Even”)
-	else:
-    	print(“Odd”)</code></pre>
-	<pre><code>//C
-	if (n % 2 == 0) {
-    	printf(“Even”);
-	} else {
-    	printf(“Odd”);
-	}</code></pre>
-</section>
+						<div class="8u"><span class="image fit "><h4>a.  History</h4></span></div>
+						
+						<div class="12u " style="padding-left:10%"><span class="image fit"><p>Python的創辦人為Guido van Rossum，在聖誕節時為了打發無聊，創辦了一個繼承ABC語言的新語言，優美而強大，即為Python。相較於大家可能較為熟悉的C語言為編譯式，Python為一直譯式語言，不需要像C一樣先將整個程式碼編譯(Compile)過後才能執行，因此Python執行快速，第二個特色為整齊乾淨的寫法以及極高的可讀性，亦即同一段程式碼基本上只有一種寫法，以及用縮排(Indent)來區分區塊(Scope)。</p></span></div>
 
 
-<section>
-	<h4>b.  Installation</h4>
-	<p>1.到: https://www.python.org/downloads/</p>
-	<p>2.下載windows版本的 Python 3.5.1</p>
-	<img src="image/python/image003.png">
-	<p>3.下載完畢後，就按照你們應該都知道的順序一直按下去:</p>
-	<img src="image/python/image005.png">
-	<img src="image/python/image007.png">
-	<p>4.最後打開來就是這樣子了，不知道怎麼打開的話，就打開WINDOWS 搜尋視窗搜尋IDLE吧!</p>
-	<img src="image/python/image009.png">
-</section>
-<p></p>
-<p></p>
-<h3>2. 變數 Variable</h3>
-<hr>
-<section>
-	<h4>a.  宣告 Declare 及指派 Assign</h4>
-	<p class="p_left">變數為記憶體上的一塊空間，在Python中可以透過呼叫變數名稱來叫出變數的值，不像C語言，Python的變數宣告不需加上變數型別(Type)，宣告方法如下：</p>
-	<pre><code>
-variable_name = value
+					</div>
+				</div>
+				
+		<div class="box alt">
+			<div class="row uniform">
+	
+				<pre class="12u" style="padding-left:10%"><code>#Python 
+if n % 2 == 0:
+	print(“Even”)
+else:
+	print(“Odd”)</code></pre>
+			
+				
+				<pre class="12u"  style="padding-left:10%"><code>//C
+if (n % 2 == 0) {
+	printf(“Even”);
+} else {
+	printf(“Odd”);
+				}</code></pre>
+				</span>
+			</div>	
+		</div>
+
+			</section>
+
+
+			<section>
+				<h4>b.  Installation</h4>
+				<div class="box alt">
+					<div class="row uniform">
+						<p class="8u$">1.到: https://www.python.org/downloads/</p>
+						<p class="8u$">2.下載windows版本的 Python 3.5.1</p>
+						<div class="10u"><span class="image fit"><img src="image/python/image003.png" style="padding-left:10%"></span></div>
+						<p>3.下載完畢後，就按照你們應該都知道的順序一直按下去:</p>
+						<div class="10u"><span class="image fit"><img src="image/python/image005.png" style="padding-left:10%"></span></div>
+						
+						<div class="10u"><span class="image fit"><img src="image/python/image007.png" style="padding-left:10%"></span></div>
+						
+						<p>4.最後打開來就是這樣子了，不知道怎麼打開的話，就打開WINDOWS 搜尋視窗搜尋IDLE吧!</p>
+						<div class="10u"><span class="image fit"><img src="image/python/image009.png" style="padding-left:10%"></span></div>
+						
+					</div>
+				</div>
+
+			</section>
+			<p></p>
+			<p></p>
+			<h3>2. 變數 Variable</h3>
+			<hr>
+		
+			<section>
+				<h4>a.  宣告 Declare 及指派 Assign</h4>
+
+				<div class="box alt">
+				<div class="row uniform">
+					<div class="10u"><span class="image fit">變數為記憶體上的一塊空間，在Python中可以透過呼叫變數名稱來叫出變數的值，不像C語言，Python的變數宣告不需加上變數型別(Type)，宣告方法如下：</span></div>
+				</div>
+				</div>
+		<div class="box alt">
+			<div class="row uniform">
+			
+				<pre class="12u" style="padding-left:10%"><code>
+ivariable_name = value
 >>>fruit = “apple”
 >>>fruit
 “apple”
@@ -58,36 +94,50 @@ variable_name = value
 5
 >>>onSale = False
 >>>onSale
-False
-
-	</code></pre>
-
-	<p class="p_left">變數名稱的命名可以使用英文字母(a~b A~b)，數字(0~9)以及底線符號(_)來宣告，注意，數字僅能放在變數名稱中間，不可以放在字首。</p>
-	<pre><code>
+False</code></pre>
+			
+				<p class="p_left">變數名稱的命名可以使用英文字母(a~b A~b)，數字(0~9)以及底線符號(_)來宣告，注意，數字僅能放在變數名稱中間，不可以放在字首。</p>
+				
+				<pre class="12u"  style="padding-left:10%"><code>
 first3letters = “ABC”
 first_three_letters = “ABC”
 firstThreeLetters = “ABC”
-	</code></pre>
-</section>
+				}</code></pre>
+				</span>
+			</div>	
+		</div>
 
-<section>
-	<h4>b.  字串 String</h4>
-	<p class="p_left">字串用來表示文字，一串字母、一個句子、甚至一篇文章都可以使用字串來儲存，在Python中，字串會被標在單引號(‘ ‘)或雙引號(“ “)中，如下：</p>
-	<pre><code>
+		
+			</section>
+			
+			
+			<section>
+				<h4>b.  字串 String</h4>
+				<p class="p_left">字串用來表示文字，一串字母、一個句子、甚至一篇文章都可以使用字串來儲存，在Python中，字串會被標在單引號(‘ ‘)或雙引號(“ “)中，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 fruit1 = “apple”
 fruit2 = ‘orange’
 sentence = “I love INFOR.”
-	</code></pre>
-	<p class="p_left">若在句子中需要用到引號的話，需與標記字串的引號不同，或需要用到英文中單引號來省略be動詞的時候，需將字串用雙引號標記，如下：</p>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">若在句子中需要用到引號的話，需與標記字串的引號不同，或需要用到英文中單引號來省略be動詞的時候，需將字串用雙引號標記，如下：</p>
 
-	<pre><code>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 sentence1 = ‘I said, “I love INFOR.”’
 sentence2 = “INFOR’s the best!”
-	</code> </pre>
+				</code> </pre>
+			</div>
+		</div>
+				<p class="p_left">字串其實是由字元組成，為了取的組成字串的字元，我們可以使用Index，注意字串是由0開始，亦即第一個字元為string[0]，第二個字元為string[1]，如下：</p>
 
-	<p class="p_left">字串其實是由字元組成，為了取的組成字串的字元，我們可以使用Index，注意字串是由0開始，亦即第一個字元為string[0]，第二個字元為string[1]，如下：</p>
-
-	<pre><code>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 String:	a  p  p  l  e
 Index:	0  1  2  3  4
 >>>fruit = “apple”
@@ -95,19 +145,25 @@ Index:	0  1  2  3  4
 ‘a’
 >>>fruit[4]
 ‘e’
-	</code></pre>
-	<p class="p_left">在Python中字串有許多內建的函式，函式簡單來說就是像數學中學到的f(x)=3x+2，傳入參數x，傳回結果3x+2，在電腦中也是如此，舉字串內建函式print()為例，傳入一個字串，傳回字串列印的結果，如下：</p>
-	<pre> <code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">在Python中字串有許多內建的函式，函式簡單來說就是像數學中學到的f(x)=3x+2，傳入參數x，傳回結果3x+2，在電腦中也是如此，舉字串內建函式print()為例，傳入一個字串，傳回字串列印的結果，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>print(“I Love INFOR”)
 I Love INFOR
 >>>language = “Python”
 >>>print(language)
 Python
-	</code></pre>
-
-	<p class="p_left">有關函式的詳細介紹將在之後第三章 函式中說明，在此再多介紹print()的一些功能，以及另一個內建函式len()。若想要使用print()來列印變數的話，傳入非字串的變數，或想要使用print()來做排版的話，寫法如下：</p>
-
-	<pre> <code>
+				</code></pre>
+			</div>
+		</div>	
+				<p class="p_left">有關函式的詳細介紹將在之後第三章 函式中說明，在此再多介紹print()的一些功能，以及另一個內建函式len()。若想要使用print()來列印變數的話，傳入非字串的變數，或想要使用print()來做排版的話，寫法如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>subject = ‘I’
 >>>verb = “Love”
 >>>object = “INFOR”
@@ -119,11 +175,14 @@ ILoveINFOR
 >>>version = 3
 >>>print(“This is ” + language + str(version))
 >>>This is Python3
+				</code></pre>
+			</div>
+		</div>
 
-	</code></pre>
-
-	<p class="p_left">另外Python亦內建len()函式來取的一字串的長度，upper()即lower()函式將字串轉為全大寫及全小寫，如下：</p>
-	<pre> <code>
+				<p class="p_left">另外Python亦內建len()函式來取的一字串的長度，upper()即lower()函式將字串轉為全大寫及全小寫，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>string = “Heyayaya”
 >>>len(string)
 8
@@ -131,25 +190,31 @@ ILoveINFOR
 HEYAYAYA
 >>>print(string.lower())
 heyayaya
-	</code></pre>
-
-	<p class="p_left">最後介紹input()函式，可以讀取使用者由鍵盤輸入的內容，且讀入後的資料型別為字串，如下：</p>
-	<pre> <code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">最後介紹input()函式，可以讀取使用者由鍵盤輸入的內容，且讀入後的資料型別為字串，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>subject = input(“What’s your favorite subject?”)
 What’s your favorite subject?Math
 >>>print(subject)
 Math
-	</code></pre>
+				</code></pre>
+			</div>
+		</div>
+
+			</section>
 
 
-</section>
+			<section>
+				<h4>c.  數字 Number</h4>
 
-
-<section>
-	<h4>c.  數字 Number</h4>
-
-	<p class="p_left">在Python中，數字有兩種，一種是整數(Integer)，一種為浮點數(Floating Number)，前者資料型別為int，後者為float，如下：</p>
-	<pre><code>
+				<p class="p_left">在Python中，數字有兩種，一種是整數(Integer)，一種為浮點數(Floating Number)，前者資料型別為int，後者為float，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>number_integer = 7122
 >>>number_floating = 71.22
 >>>print(number_integer)
@@ -160,10 +225,13 @@ Math
 71.22
 >>>type(number_floating)
 &lt class ‘float’ &gt
-
-	</code></pre>
-	<p class="p_left">就像在數學中一樣，數字在Python中一樣可以做加減乘除等運算，其中除了熟悉的加(+)、減(-)、乘(*)、除(/)外，較不熟悉的還有取餘數(%)，指數(**)，如下：</p>
-	<pre> <code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">就像在數學中一樣，數字在Python中一樣可以做加減乘除等運算，其中除了熟悉的加(+)、減(-)、乘(*)、除(/)外，較不熟悉的還有取餘數(%)，指數(**)，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>sum = 1 + 2
 >>>difference = 71 - 22
 >>>product = 3 * 8
@@ -182,18 +250,21 @@ Math
 27
 >>>remainder
 1
-	</code></pre>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">字串和數字不能進行運算的動作，因為他們型別不同，若嘗試將一個數字及字串相加將會跳出錯誤，須先將字串使用int()或float()函式轉為數字後再做運算，如下：</p>
 
-	<p class="p_left">字串和數字不能進行運算的動作，因為他們型別不同，若嘗試將一個數字及字串相加將會跳出錯誤，須先將字串使用int()或float()函式轉為數字後再做運算，如下：</p>
-
-	<pre><code>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>number_int = 10
 >>>number_float = 0.3
 >>>string_number = ‘3’
 >>>total = number_int + string_number
 
 Traceback (most recent call last):
-  File “<pyshell#36>”, line 1, in <module>
+  File “&ltpyshell#36&gt”, line 1, in &ltmodule&gt
     total = number_int + string_number
 TypeError: unsupported operand type(s) for +: ‘int’ and ‘str’
 
@@ -203,33 +274,43 @@ TypeError: unsupported operand type(s) for +: ‘int’ and ‘str’
 >>>total = number_float + float(string_number)
 >>>total
 3.3
+				</code></pre>
+			</div>
+		</div>
 
-	</code></pre>
-
-	<p class="p_left">Note.  註解 Comments
-註解是寫程式的時候一個很重要的工具，電腦會自動忽略註解的存在，因此不影響執行的結果。就像上課做筆記一樣，可以幫助自己註明某一段程式碼的用途，更可以在以後Teamwork的時候讓你的程式碼能讓整個團隊人輕易地看懂。註解的方法包含單行註解及多行註解，單行註解是使用#，而多行則是使用”””，如下：
-</p>
-	<pre><code>
+				<p class="p_left">Note.  註解 Comments
+			註解是寫程式的時候一個很重要的工具，電腦會自動忽略註解的存在，因此不影響執行的結果。就像上課做筆記一樣，可以幫助自己註明某一段程式碼的用途，更可以在以後Teamwork的時候讓你的程式碼能讓整個團隊人輕易地看懂。註解的方法包含單行註解及多行註解，單行註解是使用#，而多行則是使用”””，如下：
+			</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 # This is a comment. Python ignores comments.
 “””I Love INFOR.
    I Love Python.”””
-	</code></pre>
+				</code></pre>
+			</div>
+		</div>
+			</section>
 
-</section>
-
-<section>
-	<h4>d.  布林值及流程控制 Booleans & Conditionals</h4>
-	<p class="p_left">布林值是一種只有兩種值的資料型別，分別為True及False，沒有其他可能的值會出現。指派Boolean的方法同字串及數字，如下：</p>
-	<pre><code>
+			<section>
+				<h4>d.  布林值及流程控制 Booleans & Conditionals</h4>
+				<p class="p_left">布林值是一種只有兩種值的資料型別，分別為True及False，沒有其他可能的值會出現。指派Boolean的方法同字串及數字，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>I_Love_INFOR = True
 >>>I_Hate_INFOR = False
 >>>print(I_Love_INFOR)
 True
 >>>print(I_Hate_INFOR)
 False
-	</code></pre>
-	<p class="p_left">跟數學上學到的一樣，當兩個數字互相比較的時候，有等於(==)、大於(>)、小於(<)、大於等於(>=)、小於等於(<=)以及不等於(!=)，在電腦語言中你同樣可以進行這些比較，而且比較結果不是回傳True，就是回傳False，亦即回傳一個布林值，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">跟數學上學到的一樣，當兩個數字互相比較的時候，有等於(==)、大於(>)、小於(<)、大於等於(>=)、小於等於(<=)以及不等於(!=)，在電腦語言中你同樣可以進行這些比較，而且比較結果不是回傳True，就是回傳False，亦即回傳一個布林值，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>1 == 2
 False
 >>>1 > 2
@@ -242,9 +323,13 @@ False
 True
 >>>1 != 2
 True
-	</code></pre>
-	<p class="p_left">除了數字跟數字間的比較可以用布林值來表示外，布林值與布林值之間也可以「計算」，基本的有三種計算：and、or、not，前兩者需要兩個布林值計算，and只有當兩個布林值都為True時回傳True，否則回傳False，or則只要有一個為True即回傳True，最後not只需一個布林值進行運算，若為True則回傳False，若為False則回傳True，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">除了數字跟數字間的比較可以用布林值來表示外，布林值與布林值之間也可以「計算」，基本的有三種計算：and、or、not，前兩者需要兩個布林值計算，and只有當兩個布林值都為True時回傳True，否則回傳False，or則只要有一個為True即回傳True，最後not只需一個布林值進行運算，若為True則回傳False，若為False則回傳True，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>True and True
 True
 >>>True and False
@@ -257,25 +342,35 @@ False
 False
 >>>not False
 True
-	</code></pre>
-	<p class="p_left">那布林值在程式中有什麼用途呢？我們可以透過判斷一個狀態是否為True或是否為False決定程式要進行什麼，因此布林值在「流程控制」扮演一個重要的角色。設想一個狀況，如果今天考60分的話，那就及格，否則不及格，這其實可以用if敘述來描述，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">那布林值在程式中有什麼用途呢？我們可以透過判斷一個狀態是否為True或是否為False決定程式要進行什麼，因此布林值在「流程控制」扮演一個重要的角色。設想一個狀況，如果今天考60分的話，那就及格，否則不及格，這其實可以用if敘述來描述，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 if 成績 >= 60:
     及格
 else:
     不及格
-	</code></pre>
-
-	<p class="p_left">注意到在上述範例中，在if的後面有空了四個空白鍵，這個叫做縮排(Indent)，在Python中縮排是必要的，因為這代表縮排的區塊是在沒縮排的區塊內，是否執行縮排內的程式是取決於縮排外的程式，注意冒號是必須的，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">注意到在上述範例中，在if的後面有空了四個空白鍵，這個叫做縮排(Indent)，在Python中縮排是必要的，因為這代表縮排的區塊是在沒縮排的區塊內，是否執行縮排內的程式是取決於縮排外的程式，注意冒號是必須的，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 if n % 2 == 0:
     print(“Even”)
 else:
     print(“Odd”)
-	</code></pre>
-
-	<p class="p_left">if敘述中若不只有兩種結果，而有很多種結果的話，我們可以使用elif來做敘述，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">if敘述中若不只有兩種結果，而有很多種結果的話，我們可以使用elif來做敘述，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 if grade >= 90:
     print(“甲”)
 elif grade >= 80:
@@ -286,9 +381,13 @@ elif grade >= 60:
     print(“丁”)
 else:
     print(“不及格”)
-	</code></pre>
-	<p class="p_left">另一種流程控制叫做迴圈(Loop)，迴圈顧名思義，會不斷地執行在執行，直到不符合我們指定的條件為止，這邊我們只介紹一種while迴圈，剩下一種for迴圈將在介紹串列(List)的時候做說明。while迴圈後面需接一個條件判斷式，若判斷為True，則執行迴圈中的內容，判斷為False，則跳過迴圈，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">另一種流程控制叫做迴圈(Loop)，迴圈顧名思義，會不斷地執行在執行，直到不符合我們指定的條件為止，這邊我們只介紹一種while迴圈，剩下一種for迴圈將在介紹串列(List)的時候做說明。while迴圈後面需接一個條件判斷式，若判斷為True，則執行迴圈中的內容，判斷為False，則跳過迴圈，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>i = 1
 >>>while i <= 10:
        print(i)
@@ -304,14 +403,17 @@ else:
 8
 9
 10
-	</code></pre>
+				</code></pre>
+			</div>
+		</div>
+			</section>
 
-</section>
-
-<section>
-	<h4>e.  串列(List)、Tuple及字典(Dictionary)</h4>
-	<p class="p_left">當需要處理一堆資料的時候，可以使用串列，在裡面放入有關連的資料們，在使用Index去呼叫他們，資料可為不同型別，甚至可以在串列中放入串列，宣告方法為用中括號[]將元素放入，並用逗號分開，如下：</p>
-	<pre><code>
+			<section>
+				<h4>e.  串列(List)、Tuple及字典(Dictionary)</h4>
+				<p class="p_left">當需要處理一堆資料的時候，可以使用串列，在裡面放入有關連的資料們，在使用Index去呼叫他們，資料可為不同型別，甚至可以在串列中放入串列，宣告方法為用中括號[]將元素放入，並用逗號分開，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>one_to_ten = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 >>>one_to_ten[0]
 1
@@ -322,10 +424,13 @@ else:
 >>>animals = [“cat”, “dog”, “mouse”]
 >>>animals[1]
 “dog”
-	</code></pre>
-
-	<p class="p_left">有時候我們為需要在串列中加入元素，我們可以使用串列的函式append()或extend()來做到，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">有時候我們為需要在串列中加入元素，我們可以使用串列的函式append()或extend()來做到，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>number = [1, 2, 3, 4, 5]
 >>>number.append(6)
 >>>number
@@ -333,10 +438,13 @@ else:
 >>>number.extend([7, 8])
 >>>number
 [1, 2, 3, 4, 5, 6, 7, 8]
-	</code></pre>
-
-	<p class="p_left">另外我們也可以使用[]來將串列分割，亦可使用index()來尋找串列中某元素的Index，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">另外我們也可以使用[]來將串列分割，亦可使用index()來尋找串列中某元素的Index，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>animals = [“cat”, “dog”, “pig”, “mouse”, “cow”]
 >>>animals[1:4]
 [“dog”, “pig”, “mouse”]
@@ -346,9 +454,13 @@ else:
 [“mouse”, “cow”]
 >>>animals[:2]
 [“cat”, “dog”]
-	</code></pre>
-	<p class="p_left">剛剛介紹的while迴圈我們判斷條件是否為True來決定是否執行迴圈中的程式，而另一種常見的迴圈為for迴圈，我們設定一個迭代器iterator，他會從頭遍步一個串列直到串列結束，迴圈亦結束。而我們常用for迴圈來做固定次數的同一件事情，因此我們需要創在一個串列來讓迭代器遍步，這時候需要使用到range()，需傳入三個數字a、b、c，a代表串列開始的數值，b代表串列會在b-1時結束，而c則代表一次跳幾個數字，預設為1，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">剛剛介紹的while迴圈我們判斷條件是否為True來決定是否執行迴圈中的程式，而另一種常見的迴圈為for迴圈，我們設定一個迭代器iterator，他會從頭遍步一個串列直到串列結束，迴圈亦結束。而我們常用for迴圈來做固定次數的同一件事情，因此我們需要創在一個串列來讓迭代器遍步，這時候需要使用到range()，需傳入三個數字a、b、c，a代表串列開始的數值，b代表串列會在b-1時結束，而c則代表一次跳幾個數字，預設為1，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>range(0, 10)
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 >>>range(0, 10, 2)
@@ -373,23 +485,30 @@ else:
 cat
 dog
 cow
-
-	</code></pre>
-	<p class="p_left">有另一種與串列很像的結構叫做Tuple，宣告方法是將串列的中括號改成小括號，那Tuple跟串列有什麼不一樣呢？最基本的來說，Tuple不具append()、extend()等函式，他是不可變(Immutable)的，所以我們常常運用Tuple來做常數的宣告，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">有另一種與串列很像的結構叫做Tuple，宣告方法是將串列的中括號改成小括號，那Tuple跟串列有什麼不一樣呢？最基本的來說，Tuple不具append()、extend()等函式，他是不可變(Immutable)的，所以我們常常運用Tuple來做常數的宣告，如下：</p>
+		
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>days = (“Sunday”, “Monday”, “Tuesday”, “Wednesday”, “Thursday”, “Friday”, “Saturday”)
 >>>days[0]
 “Sunday”
 >>>days[1] = “ABC”
 
 Traceback (Most recent call last):
-  File “<pyshell#88>”, line 1, in <module>
+  File “&lt pyshell#88 &gt”, line 1, in &lt module &gt
     days[1] = “ABC”
 TypeError: ‘tuple’ object does not support item assignment
-
-	</code></pre>
-	<p class="p_left">同樣的我們也可以使用Tuple來使用for迴圈，在此就不贅述了。最後一種要介紹的是字典(Dictionary)，字典內的每個元素都是key: value的形式，並且用大括號把他們括起來。我們可以使用dict[key]來呼叫該key所對應的value，另外還有刪除元素、增加元素、找元素等函式或方法，將在範例中介紹，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">同樣的我們也可以使用Tuple來使用for迴圈，在此就不贅述了。最後一種要介紹的是字典(Dictionary)，字典內的每個元素都是key: value的形式，並且用大括號把他們括起來。我們可以使用dict[key]來呼叫該key所對應的value，另外還有刪除元素、增加元素、找元素等函式或方法，將在範例中介紹，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>member = {“wayne”: “heyayaya”, “william”: “sakisaki”}
 >>>member[“wayne”]
 “heyayaya”
@@ -407,31 +526,36 @@ False
 True
 >>>”I am fat.” in member.values()
 False
-	</code></pre>
+				</code></pre>
+			</div>
+		</div>
 
+			</section>
 
-</section>
-
-<h3>3.   函式 Function</h3>
-<hr>
-<section>
-	<h4>a.  def</h4>
-	<p class="p_left">什麼是函式呢？如同先前介紹過的一樣，在Python中的函式跟在數學中的函式是差不多的，在電腦語言中有一個很重要的原則就是「不做重複的事」，因此，我們將不斷重複的程式碼設計成函式，只要寫好一遍，之後就能隨時取用，有關函式的寫法如下：</p>
-	<pre><code>
+			<h3>3.   函式 Function</h3>
+			<hr>
+			<section>
+				<h4>a.  def</h4>
+				<p class="p_left">什麼是函式呢？如同先前介紹過的一樣，在Python中的函式跟在數學中的函式是差不多的，在電腦語言中有一個很重要的原則就是「不做重複的事」，因此，我們將不斷重複的程式碼設計成函式，只要寫好一遍，之後就能隨時取用，有關函式的寫法如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>def say():
        print(“I Love INFOR.”)
 
 >>>say()
 I Love INFOR.
+				</code></pre>
+			</div>
+		</div>
+			</section>
 
-	</code></pre>
-
-</section>
-
-<section>
-	<h4>b.  參數 Parameters</h4>
-	<p class="p_left">就跟數學中的函式一樣，可以傳入參數，而函式可以取用傳入的參數，如下：</p>
-	<pre><code>
+			<section>
+				<h4>b.  參數 Parameters</h4>
+				<p class="p_left">就跟數學中的函式一樣，可以傳入參數，而函式可以取用傳入的參數，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>def say(s):
        print(s)
 
@@ -450,10 +574,13 @@ Ya
 
 >>>big(1, 2)
 2
-
-	</code></pre>
-	<p class="p_left">在函式的參數中，我們可以設定他的預設值，若使用者沒有輸入該參數的話將會使用預設值，注意，有預設值的參數宣告需要放在參數列的後面，以免混淆，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">在函式的參數中，我們可以設定他的預設值，若使用者沒有輸入該參數的話將會使用預設值，注意，有預設值的參數宣告需要放在參數列的後面，以免混淆，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>def say(s, t = 1):
        print(s * t)
 
@@ -461,9 +588,13 @@ Ya
 YaYaYa
 >>>say(“No”)
 No
-	</code></pre>
-	<p class="p_left">最後，我們可以在函式中呼叫已經宣告過的函式，如下：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">最後，我們可以在函式中呼叫已經宣告過的函式，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>def get_name():
        name = input(“What’s your name?”)
        return name
@@ -474,14 +605,17 @@ No
 >>>say_name()
 What’s your name?Wayne
 My name is Wayne
+				</code></pre>
+			</div>
+		</div>
 
-	</code></pre>
-
-</section>
-<section>
-	<h4>c.  Import</h4>
-	<p class="p_left">Python一個強大的功能在於說他建立了大量的函式庫，很多函式其實我們不必自己慢慢一行一行寫，只需要要將別人寫好的函式匯入(Import)進來就可以直接使用了。我們舉時間(time)函式及隨機函式(random)來做說明，如下：</p>
-	<pre><code>
+			</section>
+			<section>
+				<h4>c.  Import</h4>
+				<p class="p_left">Python一個強大的功能在於說他建立了大量的函式庫，很多函式其實我們不必自己慢慢一行一行寫，只需要要將別人寫好的函式匯入(Import)進來就可以直接使用了。我們舉時間(time)函式及隨機函式(random)來做說明，如下：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>import time
 >>>print(time.asctime())
 Fri Jun  3 12:54:41 2016
@@ -492,25 +626,32 @@ Fri Jun  3 12:54:41 2016
 59
 >>>random.randrange(0, 101, 2)
 18
-	</code></pre>
-	<p class="p_left">注意到上述範例中，我們必須呼叫time.asctime()來得到現在的時間，這是因為asctime()是time中的一個函式，我們必須加上「.」來標明關係，如果不想要加上time.的話，可以改為以下的寫法：</p>
-	<pre><code>
+				</code></pre>
+			</div>
+		</div>
+				<p class="p_left">注意到上述範例中，我們必須呼叫time.asctime()來得到現在的時間，這是因為asctime()是time中的一個函式，我們必須加上「.」來標明關係，如果不想要加上time.的話，可以改為以下的寫法：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 >>>from time import *
 >>>print(asctime())
 Fri Jun  3 12:54:41 2016
 >>>from random import randint as ri
 >>>ri(0, 99)
 46
-	</code></pre>
+				</code></pre>
+			</div>
+		</div>
+			</section>
 
-</section>
-
-<h3>4.   類別 Class</h3>
-<hr>
-<section>
-	<h4>a.  成員Member</h4>
-	<p class="p_left">何謂類別？類別是物件導向中最重要的觀念，簡單來說，就是把有相關的東西放在一起，可以包含數字、字串、函式等等，亦可包含另一個類別，以下舉一個簡單的例子來說明：</p>
-	<pre><code>
+			<h3>4.   類別 Class</h3>
+			<hr>
+			<section>
+				<h4>a.  成員Member</h4>
+				<p class="p_left">何謂類別？類別是物件導向中最重要的觀念，簡單來說，就是把有相關的東西放在一起，可以包含數字、字串、函式等等，亦可包含另一個類別，以下舉一個簡單的例子來說明：</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 class student:
     name = “Wayne”
     sitNumber = 30
@@ -526,21 +667,32 @@ class student:
             return self.name
         else:
             return other.name
-	</code></pre>
+				</code></pre>
+			</div>
+		</div>
 
-</section>
+			</section>
 
-<section>
-	<h4>b.  建構子 Constructor</h4>
-	<p class="p_left">有的時候我們並不會再宣告類別的時候就知道內部成員的資訊，舉上述的例子來說，有各種不同名字的人，不同年齡的人，不同的成績，這個時候我們會需要用到建構子來「建構」這個類別，如下</p>
-	<pre><code>
+			<section>
+				<h4>b.  建構子 Constructor</h4>
+				<p class="p_left">有的時候我們並不會再宣告類別的時候就知道內部成員的資訊，舉上述的例子來說，有各種不同名字的人，不同年齡的人，不同的成績，這個時候我們會需要用到建構子來「建構」這個類別，如下</p>
+		<div class="box alt">
+			<div class="row uniform">
+				<pre class="12u" style="padding-left:10%"><code>
 class student:
     def __init__(n, a, s):
         self.name = n
         self.age = a
         self.score = s
-	</code></pre>
-</section>
+				</code></pre>
+			</div>
+		</div>
+			</section>
+
+	</div>
+</div>
+</module>
+
 
 </body>
 </html>
