@@ -6,7 +6,31 @@
 	<link rel="stylesheet" type="text/css" href="/class/java/assets/css/main.css">
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700italic' rel='stylesheet' type='text/css'>
 </head>
-<body>
+<body  id="demo" class="dark portrait big-mobile">
+<header id="demo-header">
+	<div class="left">
+		<h2>2016 Summer</h2>
+
+		<a href="/index" class="icon style2 fa-home" style="color:white;margin-top:2%; "><span class="label">home</span></a>
+	
+		
+		
+	</div>
+	<div class="right">
+		<!-- <ul class="share">
+
+			<li class="facebook"><div class="fb-like fb_iframe_widget" data-href="http://html5up.net/phantom" data-send="false" data-layout="button" data-width="100" data-show-faces="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=51&amp;href=http%3A%2F%2Fhtml5up.net%2Fphantom&amp;layout=button&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=true&amp;width=100"><span style="vertical-align: bottom; width: 51px; height: 20px;"><iframe name="f13d5e85c655a5" width="100px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/v2.0/plugins/like.php?app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2Fbz-D0tzmBsw.js%3Fversion%3D42%23cb%3Df122154e97496e4%26domain%3Dhtml5up.net%26origin%3Dhttps%253A%252F%252Fhtml5up.net%252Ff2e57bd0d6391e4%26relation%3Dparent.parent&amp;container_width=51&amp;href=http%3A%2F%2Fhtml5up.net%2Fphantom&amp;layout=button&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=true&amp;width=100" style="border: none; visibility: visible; width: 51px; height: 20px;" class=""></iframe></span></div></li>
+			<li></li>
+
+			
+		</ul> -->
+
+		<a href="/class/<%=inforClass.name%>" class="button back alt2" id="nav_bot">Book</a>
+		<a href="/class/<%=inforClass.name%>/note" class="button back alt2" id="nav_bot">Note</a>
+		<a href="/profile" class="button back alt2" id="nav_bot">Profile</a>
+		
+	</div>
+</header>
 <header id="header">
 	<div class="inner">
 			<nav>
@@ -19,14 +43,11 @@
 <nav id="menu">
 	<h2><%= realClassName[inforClass.name] %></h2>
 	<ul>
-		<li><a href="/">Home</a></li>
-		<li><a href="">Book</a></li>	
-		<li><a href="/class/<%= inforClass.name %>/note">Notes</a></li>
-		<li><a href="/class/<%= inforClass.name %>/resource">Resources</a></li>
-		<% if (inforClass.name == 'python' || inforClass.name == 'cpp' || inforClass.name == 'java') { %>
-			<li><a href="/class/<%= inforClass.name %>/judge">Judge</a></li>
-		<% } %>
-		<li><a href="/profile">Profile</a></li>
+		<li><a href="#j1">1. 安裝JDK</a></li>
+		<li><a href="#j2">2. 基本程式實作</a></li>
+		<li><a href="#j3">3. 基本概念</a></li>
+		<li><a href="#j4">4. 條件式與迴圈</a></li>
+		<li><a href="#j5">5. 輸入與輸出</a></li>
 	</ul>
 </nav>
 	<h1 style="text-align: center;margin-bottom:0px" class="title">JAVA</h1><br>
@@ -34,7 +55,7 @@
 	<br><hr><br>
 	<div id= "main">
 			<div class="inner">
-				<h2>Chapter1—安裝JDK</h2>
+				<h2 id='j1'>Chapter1—安裝JDK</h2>
 				
 				<section>
 					<p class="12u"><b>JDK(Java SE Development Kit)是Java的開發套件，內含函式庫、編譯器等寫程式所必要的元件，和一般電腦上所裝的Java(JRE)是不一樣的喔！</b></p>
@@ -89,7 +110,7 @@
 				<br><hr><br>
 
 				<section>
-					<h2>Chapter2—基本程式實作</h2>
+					<h2 id='j2'>Chapter2—基本程式實作</h2>
 
 					<div class="box alt">
 						<div class="row uniform">
@@ -129,7 +150,7 @@ public class HelloWorld
 				</section>
 				<br><hr><br>
 				<section>
-					<h2>Chapter3—基本概念</h2>
+					<h2 id='j3'>Chapter3—基本概念</h2>
 					<div class="box alt" >
 						<div class="row uniform">
 							<div class="8u"><span class="image fit"><h3>資料型別與變數</h3></span></div>
@@ -234,7 +255,7 @@ public class Var
 				<br><hr><br>
 
 				<section>
-					<h2>Chapter4—條件式與迴圈</h2>
+					<h2 id='j4'>Chapter4—條件式與迴圈</h2>
 					<div class="box alt">
 						<div class="row uniform">
 							<div class="8u"><span class="image fit"><h3>if條件式</h3></span></div>
@@ -305,7 +326,7 @@ for (起始值;條件;每次執行) {
 				</section>
 				<br><hr><br>
 				<section>
-					<h2>Chapter5—輸入與輸出</h2>
+					<h2 id='j5'>Chapter5—輸入與輸出</h2>
 					<div class="box alt">
 						<div class="row uniform">
 							<div class="8u">
