@@ -61,7 +61,7 @@ router.get('/profile', middleware.isLoggedIn, function(req, res) {
 			});
 		}
 	});
-	setTimeout(function(){
+	setTimeout(function() {
 		Class.findOne({name: 'cpp'}, function(err, foundClass) {
 			if (err) {
 				console.log(err);
@@ -83,13 +83,78 @@ router.get('/profile', middleware.isLoggedIn, function(req, res) {
 								cppCnt++;
 							}
 						}
-						res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt});
+						res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt, user: req.user});
 					}
 				});
 			}
 		});
 	}, delay);
 });
+
+//Profile
+router.get('/profile/:username', middleware.isLoggedIn, function(req, res) {
+	var pyCnt = 0; var cppCnt = 0;
+	var p = []; var c = [];
+	var t = 0;
+	var delay = 500;
+	// console.log(req.params.username);
+	User.findOne({username: req.params.username}, function(err, user) {
+		Class.findOne({name: 'python'}, function(err, foundClass) {
+			if (err) {
+				console.log(err);
+			} else {
+				for (let i = 0; i < foundClass.judges.length; i++) {
+					p.push(function(cb) {
+						Judge.findById(foundClass.judges[i], function(err ,judge) {
+							let j = judge;
+							cb(err, j);	
+						});
+					});
+				}
+				async.series(p, (err, results) => {
+					if (err) {
+						console.log(err);
+					} else {
+						for (let i = 0; i < foundClass.judges.length; i++) {
+							if (results[i]) {
+								pyCnt++;
+							}
+						}
+					}
+				});
+			}
+		});
+		setTimeout(function() {
+			Class.findOne({name: 'cpp'}, function(err, foundClass) {
+				if (err) {
+					console.log(err);
+				} else {
+					for (let i = 0; i < foundClass.judges.length; i++) {
+						c.push(function(cb) {
+							Judge.findById(foundClass.judges[i], function(err, judge) {
+								let j = judge;
+								cb(err, j);
+							});
+						});
+					}
+					async.series(c, (err, results) => {
+						if (err) {
+							console.log(err);
+						} else {
+							for (let i = 0; i < foundClass.judges.length; i++) {
+								if (results[i]) {
+									cppCnt++;
+								}
+							}
+							res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt, user: user});
+						}
+					});
+				}
+			});
+		}, delay);
+	});
+});
+
 
 
 //Rank

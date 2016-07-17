@@ -3,7 +3,7 @@
 <form action='/class/<%= inforClass.name %>/judge/<%= judge._id %>?_method=PUT' method='POST'>
 	<input type="text" name="name" value="<%= judge.name %>">
 	<input type="text" name="number" value="<%= judge.number %>">
-	<label>Description<textarea name='description'><%= judge.description %></textarea></label>
+	<label>Description<textarea name='description' required wrap='Virtual'><%= judge.description %></textarea></label>
 	<label>Sample Input<textarea name='exInput' required wrap="Virtual"></textarea></label>
 	<label>Sample Output<textarea name='exOutput' required wrap="Virtual"></textarea></label>
 	<% for (var i = 0; i < judge.data; i++) { %>

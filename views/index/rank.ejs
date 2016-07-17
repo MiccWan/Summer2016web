@@ -1,9 +1,32 @@
 <% include ../partials/header.ejs %>
 <ul>
 <% var rank = 1 %>
-<% allUser.forEach(function(user) { %>
-	<li><%= rank %> - <%=user.username %> - <%= rankSum(user) %></li>
-	<% rank++ %>
-<% }) %>
+<% var index = 1 %>
+<% var prev = 0 %>
+<table style=" width:60%;transform:translateX(50px);;height:40%" >
+	<tr>
+		<th>Rank</th>
+		<th>Username</th>
+		<th>Score</th>
+	</tr>
+	<% allUser.forEach(function(user) { %>
+		<tr>
+			<% if (rankSum(user) == prev) { %>
+				<td><%=rank%></td>
+				<td><a href="/profile/<%=user.username%>"><%=user.username%></a></td>
+				<td><%=rankSum(user)%></td>
+				<% index++ %>
+			<% } else { %>
+			<%rank = index %>
+			<%prev = rankSum(user) %>
+				<td><%=rank%></td>
+				<td><a href="/profile/<%=user.username%>"><%=user.username%></a></td>
+				<td><%=rankSum(user)%></td>
+				<% index++%>
+			<% } %>
+		</tr>
+	<% }) %>
+</table>
+
 </ul>
 <% include ../partials/footer.ejs %>
