@@ -68,7 +68,9 @@ router.post('/', middleware.isTeacher, function(req, res) {
 			var input = req.body.input;
 			var output = req.body.output;
 			var data = parseInt(req.body.data);
-			Judge.create({name: name, number: number, data: data, description: description, input: input, output: output}, function(err, judge) {
+			var exInput = req.body.exInput;
+			var exOutput = req.body.exOutput;
+			Judge.create({name: name, number: number, data: data, description: description, input: input, output: output, exInput: exInput, exOutput: exOutput}, function(err, judge) {
 				if (err) {
 					console.log(err);
 					req.flash('error', 'Jizz, something went wrong...');
@@ -113,13 +115,15 @@ router.put('/:id', middleware.isTeacher, function(req, res) {
 	var description = req.body.description;
 	var input = req.body.input;
 	var output = req.body.output;
+	var exInput = req.body.exInput;
+	var exOutput = req.body.exOutput;
 	Class.findOne({name: req.params.className}, function(err, foundClass) {
 		if (err) {
 			console.log(err);
 			req.flash('error', 'Jizz, something went wrong...');
 			res.redirect('back');
 		} else {
-			Judge.findByIdAndUpdate(req.params.id, {name: name, number: number, description: description, input: input, output: output}, function(err, judge) {
+			Judge.findByIdAndUpdate(req.params.id, {name: name, number: number, description: description, input: input, output: output, exInput: exInput, exOutput: exOutput}, function(err, judge) {
 				if (err) {
 					console.log(err);
 					req.flash('error', 'Jizz, something went wrong...');

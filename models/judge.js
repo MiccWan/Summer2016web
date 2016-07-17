@@ -6,7 +6,9 @@ var judgeSchema = new mongoose.Schema({
 	name: String,
 	description: String,
 	input: [String],
-	output: [String]
+	output: [String],
+	exInput: String,
+	exOutput: String
 });
 
 module.exports = mongoose.model("Judge", judgeSchema);

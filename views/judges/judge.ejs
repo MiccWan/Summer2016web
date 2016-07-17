@@ -40,6 +40,8 @@
 <div class='container'>
 	<h1><%=judge.number%>.&nbsp;<%= judge.name %></h1>
 	<p><%= judge.description %></p>
+  <p>Example Input : <%= judge.exInput%></p>
+  <p>Example Output : <%= judge.exOutput%></p>
 	<form action='/class/<%= inforClass.name %>/judge/<%= judge._id %>' method='POST'>
 	<% if (inforClass.name == 'python') {%>
 	<article>
