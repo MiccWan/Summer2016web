@@ -4,8 +4,8 @@
 	<input type="text" name="name" value="<%= judge.name %>">
 	<input type="text" name="number" value="<%= judge.number %>">
 	<label>Description<textarea name='description'><%= judge.description %></textarea></label>
-	<input type="text" name="exInput" value='<%=judge.exInput%>'>
-	<input type="text" name="exOutput" value='<%=judge.exOutput%>'>
+	<textarea name='exInput'></textarea>
+	<textarea name='exOutput'></textarea>
 	<% for (var i = 0; i < judge.data; i++) { %>
 	<label>Input<%=i + 1%><textarea name='input[<%=i%>]'><%= judge.input[i] %></textarea></label>
 	<label>Output<%=i + 1%><textarea name='output[<%=i%>]'><%= judge.output[i] %></textarea></label>
