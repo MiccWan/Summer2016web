@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Summer WEB</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="/class/web/assets/css/main.css">
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700italic' rel='stylesheet' type='text/css'>
+</head>
+<body  id="demo" class="dark portrait big-mobile">
+<header id="demo-header">
+	<div class="left">
+		<h2>2016 Summer</h2>
+
+		<a href="#" class="icon style2 fa-home" style="color:white;margin-top:2%; "><span class="label">home</span></a>
+	
+		
+		
+	</div>
+	<div class="right">
+		<!-- <ul class="share">
+
+			<li class="facebook"><div class="fb-like fb_iframe_widget" data-href="http://html5up.net/phantom" data-send="false" data-layout="button" data-width="100" data-show-faces="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=51&amp;href=http%3A%2F%2Fhtml5up.net%2Fphantom&amp;layout=button&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=true&amp;width=100"><span style="vertical-align: bottom; width: 51px; height: 20px;"><iframe name="f13d5e85c655a5" width="100px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/v2.0/plugins/like.php?app_id=&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2Fbz-D0tzmBsw.js%3Fversion%3D42%23cb%3Df122154e97496e4%26domain%3Dhtml5up.net%26origin%3Dhttps%253A%252F%252Fhtml5up.net%252Ff2e57bd0d6391e4%26relation%3Dparent.parent&amp;container_width=51&amp;href=http%3A%2F%2Fhtml5up.net%2Fphantom&amp;layout=button&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=true&amp;width=100" style="border: none; visibility: visible; width: 51px; height: 20px;" class=""></iframe></span></div></li>
+			<li></li>
+
+			
+		</ul> -->
+
+		<a href="/class/web" class="button back alt2" id="nav_bot">Book</a>
+		<a href="/class/web/note" class="button back alt2" id="nav_bot">Note</a>
+		<!-- <a href="/" class="button back alt2" id="nav_bot">Judge</a> -->
+		<a href="/rank" class="button back alt2" id="nav_bot">Rank</a>
+		<a href="/profile" class="button back alt2" id="nav_bot">Profile</a>
+		<a href="#menu" id="top_menu">Menu</a>
+	</div>
+</header>
+
+<h1 style="text-align: center;" class="title"><img src="/class/web/art/logo.svg" width="40" height="40"> WEB 入門</h1>
+<h2 style="text-align: center;">by INFOR 29th 空空、粉筆</h2>
+<nav id="menu">
+	<h2><%= realClassName[inforClass.name] %></h2>
+	<ul>
+		
+		<li><a href="#w1">1. 網頁概論</a></li>
+		<li><a href="#w2">2. HTMl基本語法</a></li>
+		<li><a href="#w3">3. 基本 Javascrip</a></li>
+		<li><a href="#w4">4. CSS 的使用</a></li>
+		
+	</ul>
+</nav>
+<div id= "main">
+		<div class="inner">
+		<br><hr><br>
+		<h2 id='w1'>Chapter1  網頁概論</h2>
+
+			<section>
+				<h3>I. WWW</h3>
+				<ul style="padding-left:10%">
+					<li><h4>架構</h4>
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="4u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image001.gif" style="padding-left:10% ;"><b>客戶端</b></span></div>
+
+							<div class="4u"><span class="image fit"><img src="/class/web/image/image000.jpg" style="padding-left:10%"></span></div>
+
+							<div class="4u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image001.gif" style="padding-left:10%"><b>伺服端</b></span></div>
+
+						</div>
+					</div>
+					</li>
+
+					<li>
+						<h4>URL(網址)</h4>
+						<div class="4u$"><span class="image fit"><b>[資源取用方法]://[URL 位址]/[目錄]/…/[檔案名稱] </b></span></div>
+
+						<div class="4u"><span class="image fit">Ex：http://www.w3schools.com/html/html_intro.asp </span></div>
+						
+					</li>
+				</ul>
+			</section>
+			<br><hr><br>
+
+			<section>
+				<h3>II. HTML</h3>
+				<ul style="padding-left:10%">
+					<li><div class="8u$"><span class="image fit"><b>HTML  的全名是「Hyper Text Markup Language」，即「超文件標記語言」。 
+ 					</b></span></div></li>
+
+ 					<li><div class="8u$"><span class="image fit"><b>HTML 是可供任何瀏覽器解讀的共通語言，但是不同的瀏覽器，對  HTML 有不
+					太一樣的解釋，使得轉換ft來的效果也不盡相同。
+ 					</b></span></div></li>
+
+ 					<li><div class="8u$"><span class="image fit"><b>其功能就是編寫網頁，用來將文字、圖片、聲音等顯示在網頁內，但是 HTML 語 言只能單向將網頁傳給瀏覽者，並無法產Th互動式的網頁，所以需要 JavaScript 的輔助。
+ 					</b></span></div></li>
+
+				</ul>
+			</section>
+			<br>
+			<hr><br>
+			<section>
+				<h3>III. JavaScript</h3>
+				<ul style="padding-left:10%">
+					<li><div class="8u$"><span class="image fit"><b>JavaScript 使網頁的功能更多樣化，如動態效果、互動式網站等功能。
+ 					</b></span></div></li>
+
+ 					<li><div class="8u$"><span class="image fit"><b>JavaScript 與 Java 是不同的程式語言，但是是由 Java 發展ft來的，因此也是一 種物件導向語言，而語法又比 Java 簡單易懂，可以說是寫網頁的必備工具。
+ 					</b></span></div>
+
+
+
+ 					</li>
+				</ul>
+				
+			</section>
+			<br><hr><br>
+			<section>
+				<h3>IIII. CSS</h3>
+				<ul style="padding-left:10%">
+					<li><div class="8u$"><span class="image fit"><b>如果直接在 HTML 裡面編輯內容的樣式、字型、大小等等會使得 HTML 非常的 複雜繁亂，CSS  可以幫你簡化檔案的內容，並且更簡單的做ft高難度的排版。
+ 					</b></span></div></li>
+
+ 					<li><div class="8u$"><span class="image fit"><b>通常都會找現成的設計來使用，我們稱作「套版」，常見的有：Bootstrap、HTML5 up、Materialize…等
+ 					</b></span></div></li>
+				</ul>
+			</section>
+			<br><hr><br>
+			<h2 style="text-align:center">講了這麼多都是空談，趕快進入實戰吧！</h2><br>
+
+		<h2 id='w2'>Chapter2  HTMl基本語法</h2><br>
+			<section>
+				<ol style="padding-left:10%">
+				
+					<li>
+				<div class="box alt">
+					<div class="row uniform">
+					<div class="6u" ><span class="image fit" ><b>這是最基本的 HTML 檔案。但是這樣打 開什麼都沒有，所以我們可以先試著加上 標題跟一些內容。
+ 					</b></span></div>
+
+ 					<div class="6u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image004.jpg" style="padding-left:10%"></span></div>
+
+ 					</div>
+				</div>
+ 					</li>
+ 					
+ 					<li>
+ 						<div class="10u" ><span class="image fit" ><b>
+ 					就像下面這樣，這樣子網頁就可以顯示你剛剛打的內容
+ 					</b></span></div>
+					
+				<div class="box alt">
+					<div class="row uniform">
+ 					<div class="6u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image005.jpg" style="padding-left:10%"></span></div>
+ 					<div class="6u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image006.gif" style="padding-left:10%"></span></div>
+
+					</div>
+				</div>					
+
+				<div class="10u" ><span class="image fit" ><b>
+ 					&lt head &gt就是包一些跟網頁本身有關的東西
+&lt body &gt就是會ft現在頁面裡面的東西。
+ 					</b></span></div>
+ 					</li>
+
+
+					<li>
+						<div class="10u" ><span class="image fit" ><b>
+ 					這是簡單可以改變字體大小的標籤。
+ 					</b></span></div>
+
+ 					<div class="box alt">
+					<div class="row uniform">
+ 					<div class="6u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image008.jpg" style="padding-left:10%"></span></div>
+ 					<div class="4u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image007.gif" style="padding-left:10%"></span></div>
+
+					</div>
+				</div>	
+					</li>
+
+					<li>
+						<div class="10u" ><span class="image fit" ><b>另外，&lt br &gt可以用來換行，不然你在檔案裡不管按了幾個 enter 都還是只有換
+一行而已。要注意的是，HTML 的標籤，大部分都有前後標，像是
+&lt body &gt &lt /body &gt這樣。不過&lt br &gt就是一個不需要尾標的範例。</b></span></div>
+					</li>
+
+					<li>
+						<div class="10u" ><span class="image fit" ><b>當然你也可以製作一個表格。注意&lt tr &gt在外，&lt td &gt
+在內。 &lt table>標籤內的 border 可以設定外框。第 二個 table 中的&lt td &gt裡的 colspan 表示延伸兩格， 像是合併儲存格的感覺。如果是 rowspan 就是往下 合併。右邊的 code 看起來就像這樣。
+</b></span></div>
+
+						<div class="box alt">
+							<div class="row uniform">
+			 					<div class="3u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image010.gif" style="padding-left:10%"></span></div>
+			 					<div class="4u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image009.jpg" style="padding-left:10%"></span></div>
+
+							</div>
+						</div>	
+
+					</li>
+
+					<li>
+						<div class="10u" ><span class="image fit" ><b>此外，你也可以製作一個列表。每個列表項目都是一個&ltli>標籤中的文字內容， 當然也可以不是文字。通常，在&ltli>的外面會有個
+&ltol>或是&ltul>，分別表示有序列表(order list)跟 無序列表(unorder list...?)。如果在外面沒有加上
+&ltol>或是&ltul>的話，預設會變成&ltul>的樣式，但是邏輯上他就不成一串列表只是單一項的物件 了。
+
+</b></span></div>
+
+						<div class="box alt">
+							<div class="row uniform">
+			 					<div class="5u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image012.gif" style="padding-left:10%"></span></div>
+			 					<div class="5u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image011.jpg" style="padding-left:10%"></span></div>
+
+							</div>
+						</div>	
+
+					</li>
+				</ol>
+				<br>
+				<h3>以上是一些 HTML 的常用功能、接下來是 JavaScript。</h3>
+				<br>
+			</section>
+			<hr><br>
+
+			<section>
+				<h2 id='w3'>Chapter3—基本 Javascript</h2>
+				<ol style="padding-left:10%">
+					<li>
+						<div class="10u" ><span class="image fit" ><b>Javascript 其中一個功能是創造一個新元素，就像這樣。我們先在 HTML 檔案內 寫上一個 id 是 a 的 div。</b></span></div>
+
+						<div class="8u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image013.jpg" style="padding-left:10%"></span></div>
+					</li>
+
+					<li>
+						<div class="10u" ><span class="image fit" ><b>然後在 script 標籤內用 JavaScript 創造了一個 input 元素，指定為按鈕型態跟 他的值之後，就把他 append 在剛剛創造的 div 裡面。如果以原本的 HTML 寫 起來就像是這樣。</b></span></div>
+
+						<div class="8u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image014.jpg" style="padding-left:10%"></span></div>
+						<div class="box alt">
+							<div class="row uniform">
+								<div class="6u" ><span class="image fit" ><b>在網頁中開啟就會像是這樣  ========></b></span></div>
+								<div class="3u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image015.jpg" style="padding-left:10%"></span></div>
+							</div>
+						</div>
+					</li>
+
+					<li>
+						<div class="10u" ><span class="image fit" ><b>我們還可以把按鈕多加一些功能，如果你希望按下去之後就跳ft視窗之類的，可 以這樣：</b></span></div>
+
+						<div class="10u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image017.jpg" style="padding-left:10%"></span></div>
+					</li>
+
+					<li>
+						<div class="10u" ><span class="image fit" ><b>另外還有一些像是 confirm，prompt  之類的彈ft式視窗，可以自己試試看。</b></span></div>
+
+						<div class="10u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image016.jpg" style="padding-left:10%"></span></div>
+					</li>
+
+
+				</ol>
+
+				<h3>JavaScript 是功能非常強大的語言，上課教的都只是它的一小部 分，還有更多更多的功能等著你們自己探索！</h3>
+			</section>
+			<br><hr><br>
+			<section>
+				<h2 id='w4'>Chapter４—CSS 的使用</h2>
+				<ol style="padding-left:10%">
+					<li>
+						<div class="10u" ><span class="image fit" ><b>CSS的部份我們就不多講，只要知道如何套版並新增/修改自己喜歡的樣式即可</b></span></div>
+					</li>
+
+					<li>
+					<div class="box alt">
+							<div class="row uniform">
+						<div class="6u" ><span class="image fit" ><b>這個範例中，我們修改了： <br>
+						&ltp>標籤內的字體大小和字型 <br>
+						&lth5>標籤內的字體顏色和背景顏色 <br>
+						新增了 custom-font 這個 class 並 指定他的字體顏色、背景顏色、字 體粗細
+						</b></span></div>
+						<div class="6u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image018.jpg" style="padding-left:10%"></span></div>
+						</div>
+					</div>
+						
+					</li>
+
+					<li>
+						<div class="10u" ><span class="image fit" ><b>仿照相同的方法就可以修改其他的屬性囉</b></span></div>
+					</li>
+
+					<li><br>
+
+					<div class="box alt">
+						<div class="row uniform">
+							<div class="6u" ><span class="image fit" ><b>這裡列ft一些常用的屬性，其實在 網路上都可以搜尋到喔。</b></span></div>
+
+							<div class="6u"><span class="image fit" style="text-align:center"><img src="/class/web/image/image019.jpg" style="padding-left:10%"></span></div>
+						</div>
+					</div>
+					</li>
+
+					<li>
+						<div class="10u" ><span class="image fit" ><b>要製作精美的網頁我們通常不會自 己製作複雜的 CSS，我們會使用如 Bootstrap、HTML5 up、 Materialize 等現成的的模板來用， 要注意的是，不同的板有的使用方
+式，網站上都會有詳細的說明，使用前務必看仔細！
+</b></span></div>
+					</li>
+
+
+				</ol>
+			</section>
+
+			<h3>CSS 的方便性使它成為不可或缺的工具，學會利用/修改現成的 模板會讓你的網站更加精美！</h3>
+
+			<br><h2 style="text-align:center">THE END</h2>
+		</div>
+</div>
+<% include ../partials/footer.ejs %>
