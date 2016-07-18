@@ -26,13 +26,13 @@
 		<% if (user.judges.python[i]) { %>
 			<% var a = py[i] %>
 
-			<td><a href="/class/python/judge/<%=a%>">py<%= i + 1 %></a></a></td>
+			<td><a href="/class/python/judge/<%=a%>">py.<%= i + 1 %></a></a></td>
 			<td><%= user.judges.python[i] %></td>
 			<td><%= user.rank.python[i] %></td>
 		<% } else {%>
 		<% var a = py[i] %>
 			
-			<td><a href="/class/python/judge/<%=a%>">py<%= i + 1 %></a></a></td>
+			<td><a href="/class/python/judge/<%=a%>">py.<%= i + 1 %></a></a></td>
 			<td>N/A</td>
 			<td>0</td>
 		<% } %>	
@@ -53,13 +53,13 @@
 		<% if (user.judges.cpp[i]) { %>
 		<% var b = cpp[i] %>
 			
-			<td><a href="/class/cpp/judge/<%=b%>">c<%= i + 1 %></a></a></td>
+			<td><a href="/class/cpp/judge/<%=b%>">c.<%= i + 1 %></a></a></td>
 			<td><%= user.judges.cpp[i] %></td>
 			<td><%= user.rank.python[i] %></td>
 		<% } else {%>
 		<% var b = cpp[i] %>
 			
-			<td><a href="/class/cpp/judge/<%=b%>">c<%= i + 1 %></a></a></td>
+			<td><a href="/class/cpp/judge/<%=b%>">c.<%= i + 1 %></a></a></td>
 			<td>N/A</td>
 			<td>0</td>
 		<% } %>	
