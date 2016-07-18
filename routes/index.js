@@ -107,6 +107,8 @@ router.get('/profile/:username', middleware.isLoggedIn, function(req, res) {
 	var p = []; var c = [];
 	var t = 0;
 	var delay = 500;
+	var py = [];
+	var cpp = [];
 	// console.log(req.params.username);
 	User.findOne({username: req.params.username}, function(err, user) {
 		Class.findOne({name: 'python'}, function(err, foundClass) {
@@ -128,6 +130,7 @@ router.get('/profile/:username', middleware.isLoggedIn, function(req, res) {
 						for (let i = 0; i < foundClass.judges.length; i++) {
 							if (results[i]) {
 								pyCnt++;
+								py.push(results[i]._id);
 							}
 						}
 					}
@@ -154,9 +157,16 @@ router.get('/profile/:username', middleware.isLoggedIn, function(req, res) {
 							for (let i = 0; i < foundClass.judges.length; i++) {
 								if (results[i]) {
 									cppCnt++;
+									cpp.push(results[i]._id)
 								}
 							}
-							res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt, user: user});
+							Judge.find({}, function(err, allJudge) {
+								if (err) {
+									console.log(err);
+								} else {
+									res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt, user: req.user, py: py, cpp: cpp, allJudge: allJudge});
+								}
+							});	
 						}
 					});
 				}
