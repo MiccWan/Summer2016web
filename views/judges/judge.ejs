@@ -39,7 +39,7 @@
 	</div>
 <div class='container'>
 	<h1><%=judge.number%>.&nbsp;<%= judge.name %></h1>
-	<p><%= judge.description %></p>
+	<pre><%= judge.description %></pre>
   <pre>Example Input : <br><%= judge.exInput%></pre>
   <pre>Example Output :<br><%= judge.exOutput%></pre>
 	<form action='/class/<%= inforClass.name %>/judge/<%= judge._id %>' method='POST'>
