@@ -235,7 +235,8 @@ router.get('/register', function(req, res) {
 router.post('/register', function(req, res) {
 	var username = req.body.username;
 	var password = req.body.password;
-	User.register(new User({username: username}), password, function(err, user) {
+	var nickname = req.body.nickname;
+	User.register(new User({username: username, nickname: nickname}), password, function(err, user) {
 		if (err) {
 			console.log(err);
 			req.flash("error", "Jizz, something went wrong...");

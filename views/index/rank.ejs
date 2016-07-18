@@ -7,6 +7,7 @@
 	<tr>
 		<th>Rank</th>
 		<th>Username</th>
+		<th>Nickname</th>
 		<th>Score</th>
 	</tr>
 	<% allUser.forEach(function(user) { %>
@@ -14,6 +15,7 @@
 			<% if (rankSum(user) == prev) { %>
 				<td><%=rank%></td>
 				<td><a href="/profile/<%=user.username%>"><%=user.username%></a></td>
+				<td><a href="/profile/<%=user.username%>"><%=user.nickname%></a></td>
 				<td><%=rankSum(user)%></td>
 				<% index++ %>
 			<% } else { %>
@@ -21,6 +23,7 @@
 			<%prev = rankSum(user) %>
 				<td><%=rank%></td>
 				<td><a href="/profile/<%=user.username%>"><%=user.username%></a></td>
+				<td><a href="/profile/<%=user.username%>"><%=user.nickname%></a></td>
 				<td><%=rankSum(user)%></td>
 				<% index++%>
 			<% } %>

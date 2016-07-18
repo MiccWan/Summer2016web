@@ -14,7 +14,7 @@
 		</header>
 		<nav id="menu">
 			<% if (currentUser) { %>
-				<h2><%= currentUser.username %></h2>
+				<h2><%= currentUser.username %> <%= currentUser.nickname %></h2>
 			<% } else {%>
 				<h2>Please Sign Up or Login</h2>
 			<% } %>
