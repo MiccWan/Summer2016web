@@ -6,12 +6,12 @@ var userSchema = new mongoose.Schema({
 	nickname: String,
 	password: String,
 	rank: {
-		python: [{type: Number, default: 0}],
-		cpp: [{type: Number, default: 0}],
+		python: [],
+		cpp: [],
 	},
 	judges: {
-		python: [{type: String, default: "--"}],
-		cpp: [{type: String, default: "--"}],
+		python: [],
+		cpp: [],
 	}
 });
 
