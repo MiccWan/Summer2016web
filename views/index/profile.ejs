@@ -19,15 +19,18 @@
 <tr>
 	<th>Problem No.</th>
 	<th>Status</th>
+	<th>Score</th>
 </tr>
 	<% for (var i = 0; i < pyCnt; i++) { %>
 	<tr>
 		<% if (user.judges.python[i]) { %>
 			<td><%= i + 1 %></a></td>
 			<td><%= user.judges.python[i] %></td>
+			<td><%= user.rank.python[i] %></td>
 		<% } else {%>
 			<td><%= i + 1 %></td>
 			<td>N/A</td>
+			<td>0</td>
 		<% } %>	
 	</tr>
 	
@@ -39,15 +42,18 @@
 <tr>
 	<th>Problem No.</th>
 	<th>Status</th>
+	<th>Score</th>
 </tr>
 	<% for (var i = 0; i < cppCnt; i++) { %>
 	<tr>
 		<% if (user.judges.cpp[i]) { %>
 			<td><%= i + 1 %></a></td>
 			<td><%= user.judges.cpp[i] %></td>
+			<td><%= user.rank.python[i] %></td>
 		<% } else {%>
 			<td><%= i + 1 %></td>
 			<td>N/A</td>
+			<td>0</td>
 		<% } %>	
 	</tr>
 	
