@@ -28,6 +28,7 @@ var classRouter = require('./routes/class.js'),
 
 
 var include     = require('./lib/include.js');
+var findJudge   = require('./lib/findJudge.js');
 
 var realClassName = {
 	'python': 'Python',
@@ -73,6 +74,7 @@ app.use(function(req, res, next) {
 	res.locals.include = include;
 	res.locals.jizz = req.flash('jizz');
 	res.locals.tle = req.flash('tle');
+	res.locals.findJudge = findJudge;
 	next();
 });
 
