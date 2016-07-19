@@ -4,7 +4,7 @@
 	<title>Summer Judge</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" type="text/css" href="/judge/assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700italic' rel='stylesheet' type='text/css'>
 	<style type="text/css">
 	button a{
@@ -60,24 +60,27 @@
 		<a href="#menu" id="top_menu">Menu</a>
 	</div>
 </header>
-<h1><%=realClassName[inforClass.name] %> Judge</h1>
-<br><br><br>
+<h1>Judge</h1>
+<br><hr><br>
 <div class="bg">
 <ul class="alt bor-shadow " style="border:solid 1px #ffffff;list-style-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4621/treehouse-marker.png);padding: 5%;background-clip: padding-box" >
 
-<% inforClass.judges.forEach(function(judge) { %>
-	<li><h2><a href="/class/<%= inforClass.name %>/judge/<%= judge._id%>"><%=judge.number%> - <%= judge.name %></a></h2></li>
-	<% if (include(roots, currentUser.username)) { %>
-		<button><a href="/class/<%=inforClass.name%>/judge/<%=judge._id%>/edit">Edit</a></button>
+	<li><h2><a href="/class/<%=inforClass.name%>/judge/<%=judge._id%>/edit" style="color:black">Py.1</a></h2></li>
+	<li><h2><a href="/class/<%=inforClass.name%>/judge/<%=judge._id%>/edit" style="color:black">Py.2</a></h2></li>
+	<li><h2><a href="/class/<%=inforClass.name%>/judge/<%=judge._id%>/edit" style="color:black">Py.3</a></h2></li>
+
+
+
+
+		<br>
 		<form action='/class/<%=inforClass.name%>/judge/<%=judge._id%>?_method=DELETE' method='POST'>
+		<button><a href="/class/<%=inforClass.name%>/judge/<%=judge._id%>/edit">Edit</a></button>
+
 			<button>Delete</button>
 		</form>
-	<% } %>
-<% }) %>
+	
 </ul>
-
-<% if (include(roots, currentUser.username)) { %>
-	<button><a href="/class/<%=inforClass.name%>/judge/new">New Judge</a></button>
-<% } %>
 </div>
-<% include ../partials/footer.ejs %>
+
+</body>
+</html>
