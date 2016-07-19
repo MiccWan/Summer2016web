@@ -23,7 +23,12 @@ var User  = require("../models/User.js"),
 
 //Index
 router.get('/', function(req, res) {
-	res.redirect('/login');
+	if (req.isAuthenticated()) {
+		res.redirect('/index');
+	} else {
+		res.redirect('/login');	
+	}
+	
 });
 
 router.get('/index', middleware.isLoggedIn, function(req, res) {
