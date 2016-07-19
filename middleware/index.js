@@ -9,7 +9,7 @@ var middleware = {
 	},
 	isTeacher: function(req, res, next) {
 		if (req.isAuthenticated()) {
-			if (req.user.username == 'infor' || req.user.username == 'infor_william' || req.user.username == 'infor_wayne') {
+			if (req.user.username == 'summer_wayne' || req.user.username == 'summer_william' || req.user.username == 'summer_hfy') {
 				next();
 			} else {
 				req.flash('error', 'Permission denied.');
