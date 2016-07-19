@@ -164,7 +164,7 @@ router.get('/profile/:username', middleware.isLoggedIn, function(req, res) {
 								if (err) {
 									console.log(err);
 								} else {
-									res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt, user: req.user, py: py, cpp: cpp, allJudge: allJudge});
+									res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt, user: user, py: py, cpp: cpp, allJudge: allJudge});
 								}
 							});	
 						}
@@ -186,6 +186,7 @@ router.get('/rank', function(req, res) {
 			res.redirect("back");
 			
 		} else {
+			allUser = allUser.filter(isStudent);
 			allUser.sort(function(a, b) {
 				return rankSum(a) < rankSum(b);
 			});
@@ -206,6 +207,10 @@ function rankSum(a) {
 			sum2 += p;
 	});
 	return sum1 + sum2;
+}
+
+function isStudent(a) {
+	return a.username.substring(0, 7) != 'summer_';
 }
 
 //Login
