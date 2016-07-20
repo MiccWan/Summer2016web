@@ -220,7 +220,12 @@ function isStudent(a) {
 
 //Login
 router.get('/login', function(req, res) {
-	res.render('index/login');
+	if (req.isAuthenticated()) {
+		res.redirect('/index');
+	} else {
+		res.render('index/login');	
+	}
+	
 });
 
 router.post('/login', passport.authenticate('local', {
