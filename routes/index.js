@@ -193,7 +193,7 @@ router.get('/rank', function(req, res) {
 		} else {
 			allUser = allUser.filter(isStudent);
 			allUser.sort(function(a, b) {
-				return rankSum(a) < rankSum(b);
+				return rankSum(a) > rankSum(b);
 			});
 			res.render('index/rank', {allUser: allUser, rankSum: rankSum});
 		}
