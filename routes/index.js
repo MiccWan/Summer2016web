@@ -196,22 +196,24 @@ router.get('/rank', function(req, res) {
 				return rankSum(a) < rankSum(b);
 			});
 			res.render('index/rank', {allUser: filtered, rankSum: rankSum});
+			// res.send(filtered);
 		}
 	});
 });
 
 function rankSum(a) {
-	var sum1 = 0;
-	var sum2 = 0;
+	var sum = 0;
 	a.rank.python.forEach(function(p) {
-		if (p)
-			sum1 += p;
+		if (p) {
+			sum += p;
+		}
 	});
 	a.rank.cpp.forEach(function(p) {
-		if (p)
-			sum2 += p;
+		if (p) {
+			sum += p;
+		}
 	});
-	return sum1 + sum2;
+	return sum;
 }
 
 function isStudent(a) {
