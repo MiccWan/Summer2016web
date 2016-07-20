@@ -14,6 +14,7 @@
 		width:70%;
 		max-width: 80%;
 
+
 	}
 		div.bg{
 			
@@ -35,6 +36,20 @@
 	</style>
 </head>
 <body id="demo" class="dark portrait big-mobile" >
+<div class='alertcontainer'>
+		<% if (error && error.length > 0) { %>
+		<div class="alert alert-danger" role="alert"><%=error%></div>
+	<% } %>
+	<% if (success && success.length > 0) {%>
+		<div class="alert alert-success" role="alert"><%=success %></div>
+	<%	} %>
+	<% if (jizz && jizz.length > 0) {%>
+		<div class='alert alert-warning' role='alert'><%=jizz%></div>
+	<% } %>
+	<% if (tle && tle.length > 0) { %>
+		<div class='alert alert-info' role='alert'><%= tle %></div>
+	<% } %>
+	</div>
 <header id="demo-header">
 	<div class="left ">
 		<h2>2016 Summer</h2>
