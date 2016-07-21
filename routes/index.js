@@ -191,7 +191,11 @@ router.get('/rank', function(req, res) {
 			res.redirect("back");
 			
 		} else {
-			var filtered = allUser.filter(isStudent);
+			let users = [];
+			for (let i = 0; i < allUser.length; i++) {
+				users.push(allUser[i]);
+			}
+			var filtered = users.filter(isStudent);
 			filtered.sort(function(a, b) {
 				return rankSum(a) < rankSum(b);
 			});
