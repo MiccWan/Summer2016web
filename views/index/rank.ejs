@@ -64,21 +64,21 @@
 		<th>Nickname</th>
 		<th>Score</th>
 	</tr>
-	<% allUser.forEach(function(user) { %>
+	<% for (var i = 0; i < allUser.length; i++) { %>
 		<tr>
-			<% if (rankSum(user) == prev) { %>
+			<% if (rankSum(allUser[i]) == prev) { %>
 				<td><%=rank%></td>
-				<td><a href="/profile/<%=user.username%>"><%=user.username%></a></td>
-				<td><a href="/profile/<%=user.username%>"><%=user.nickname%></a></td>
-				<td><%=rankSum(user)%></td>
+				<td><a href="/profile/<%=allUser[i].username%>"><%=allUser[i].username%></a></td>
+				<td><a href="/profile/<%=allUser[i].username%>"><%=allUser[i].nickname%></a></td>
+				<td><%=rankSum(allUser[i])%></td>
 				<% index++ %>
 			<% } else { %>
 			<%rank = index %>
-			<%prev = rankSum(user) %>
+			<%prev = rankSum(allUser[i]) %>
 				<td><%=rank%></td>
-				<td><a href="/profile/<%=user.username%>"><%=user.username%></a></td>
-				<td><a href="/profile/<%=user.username%>"><%=user.nickname%></a></td>
-				<td><%=rankSum(user)%></td>
+				<td><a href="/profile/<%=allUser[i].username%>"><%=allUser[i].username%></a></td>
+				<td><a href="/profile/<%=allUser[i].username%>"><%=allUser[i].nickname%></a></td>
+				<td><%=rankSum(allUser[i])%></td>
 				<% index++%>
 			<% } %>
 		</tr>
