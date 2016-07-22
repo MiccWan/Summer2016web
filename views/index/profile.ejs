@@ -81,7 +81,7 @@
 	<% for (var i = 0; i < pyCnt; i++) { %>
 	<tr>
 		<% if (user.judges.python[i]) { %>
-			<% var a = py[i] %>
+			<% var a = py[i]._id %>
 
 			<td><a href="/class/python/judge/<%=a%>">py.<%= i + 1 %></a></a></td>
 			<td><%= user.judges.python[i] %></td>
@@ -111,7 +111,7 @@
 	<% for (var i = 0; i < cppCnt; i++) { %>
 	<tr>
 		<% if (user.judges.cpp[i]) { %>
-		<% var b = cpp[i] %>
+		<% var b = cpp[i]._id %>
 			
 			<td><a href="/class/cpp/judge/<%=b%>">c.<%= i + 1 %></a></a></td>
 			<td><%= user.judges.cpp[i] %></td>

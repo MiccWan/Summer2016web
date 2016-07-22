@@ -62,7 +62,7 @@ router.get('/profile', middleware.isLoggedIn, function(req, res) {
 					for (let i = 0; i < foundClass.judges.length; i++) {
 						if (results[i]) {
 							pyCnt++;
-							py.push(results[i]._id);
+							py.push(results[i]);
 						}
 					}
 				}
@@ -89,7 +89,7 @@ router.get('/profile', middleware.isLoggedIn, function(req, res) {
 						for (let i = 0; i < foundClass.judges.length; i++) {
 							if (results[i]) {
 								cppCnt++;
-								cpp.push(results[i]._id)
+								cpp.push(results[i])
 							}
 						}
 						Judge.find({}, function(err, allJudge) {
@@ -141,7 +141,7 @@ router.get('/profile/:username', middleware.isLoggedIn, function(req, res) {
 						for (let i = 0; i < foundClass.judges.length; i++) {
 							if (results[i]) {
 								pyCnt++;
-								py.push(results[i]._id);
+								py.push(results[i]);
 							}
 						}
 					}
@@ -168,13 +168,19 @@ router.get('/profile/:username', middleware.isLoggedIn, function(req, res) {
 							for (let i = 0; i < foundClass.judges.length; i++) {
 								if (results[i]) {
 									cppCnt++;
-									cpp.push(results[i]._id)
+									cpp.push(results[i])
 								}
 							}
 							Judge.find({}, function(err, allJudge) {
 								if (err) {
 									console.log(err);
 								} else {
+									py.sort(function(a, b) {
+										return a.number - b.number;
+									});
+									cpp.sort(function(a, b) {
+										return a.number - b.number;
+									});
 									res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt, user: user, py: py, cpp: cpp, allJudge: allJudge});
 								}
 							});	
