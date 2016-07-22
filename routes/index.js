@@ -96,6 +96,12 @@ router.get('/profile', middleware.isLoggedIn, function(req, res) {
 							if (err) {
 								console.log(err);
 							} else {
+								py.sort(function(a, b) {
+									return a.number - b.number;
+								});
+								cpp.sort(function(a, b) {
+									return a.number - b.number;
+								});
 								res.render('index/profile', {pyCnt: pyCnt, cppCnt: cppCnt, user: req.user, py: py, cpp: cpp, allJudge: allJudge});
 							}
 						});	
