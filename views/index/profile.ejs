@@ -87,7 +87,7 @@
 			<td><%= user.judges.python[i] %></td>
 			<td><%= user.rank.python[i] %></td>
 		<% } else {%>
-		<% var a = py[i] %>
+		<% var a = py[i]._id %>
 			
 			<td><a href="/class/python/judge/<%=a%>">py.<%= i + 1 %></a></a></td>
 			<td>N/A</td>
@@ -117,7 +117,7 @@
 			<td><%= user.judges.cpp[i] %></td>
 			<td><%= user.rank.cpp[i] %></td>
 		<% } else {%>
-		<% var b = cpp[i] %>
+		<% var b = cpp[i]._id %>
 			
 			<td><a href="/class/cpp/judge/<%=b%>">c.<%= i + 1 %></a></a></td>
 			<td>N/A</td>
