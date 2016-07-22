@@ -35,7 +35,7 @@ router.get('/', middleware.isLoggedIn, function(req, res) {
 			
 		} else {
 			foundClass.judges.sort(function(a, b) {
-				return a.number > b.number;
+				return a.number - b.number;
 			});
 			res.render('judges/allJudges', {inforClass: foundClass});
 		}
