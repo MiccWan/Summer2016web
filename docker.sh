@@ -1,4 +1,4 @@
 #!/bin/sh
 docker-compose build
-docker-compose up -d
+docker-compose up
 exit 0
